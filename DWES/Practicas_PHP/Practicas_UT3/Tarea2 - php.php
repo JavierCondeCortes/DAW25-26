@@ -1,6 +1,7 @@
 <?php 
 
 if(isset($_POST["enviar"])){
+    $errores = [];
     if(empty($_POST["nombre" || "apellido" || "telefono"])){
         $errores[] = "faltan datos por rellenar";
     }
