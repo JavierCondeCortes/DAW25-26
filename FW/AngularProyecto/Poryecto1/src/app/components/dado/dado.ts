@@ -1,0 +1,12 @@
+import { Component,Input } from '@angular/core';
+
+@Component({
+  selector: 'app-dado',
+  imports: [],
+  templateUrl: './dado.html',
+  styleUrl: './dado.css'
+})
+export default class Dado {
+  @Input() valor: string= "";
+
+}
