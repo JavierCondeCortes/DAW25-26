@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <form action="./Tarea1 - php.php" method="post">
+    <form action="./Tarea1Php.php" method="post">
         <label>tomate:
             <input type="radio" name="fruta" value="tomate">
         </label>
