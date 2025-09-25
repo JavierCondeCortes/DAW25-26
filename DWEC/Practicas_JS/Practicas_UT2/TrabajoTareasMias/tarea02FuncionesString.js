@@ -17,13 +17,13 @@ console.log(cadenaTexto.charAt(1)); //s
 
 console.log(cadenaTexto.charCodeAt(1)); // 115 // s = 115
 
-    //indexOf(sub) devuelve posicion de la subcadena !!!!!
+    //indexOf(sub) devuelve posicion de la subcadena 
 
+console.log(cadenaTexto.indexOf("a",10)); // 10  // ("a",10) el diez es desde que caracter quiero que empieze a contar
 
+    //lastIndexOf(sub) devuelve la ultima posicion de la subcadena
 
-    //lastIndexOf(sub) devuelve la ultima posicion de la subcadena !!!!
-
-
+console.log(cadenaTexto.lastIndexOf("a",35)) // 17 ("a",35) el 35 es el numero de la posicion final que damos al texto
 
     //substr(i,f) //devuelve subcadena desde la i a la f
 
