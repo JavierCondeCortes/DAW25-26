@@ -13,7 +13,7 @@ console.log(cadenaTexto.concat(cadenaTextoDos)); //Esto es una cadena de texto d
 
 console.log(cadenaTexto.charAt(1)); //s
 
-    //charCodeAt(p) //devuelve el codigo Unicode de la posicion "pos"
+    //charCodeAt(pos) //devuelve el codigo Unicode de la posicion "pos"
 
 console.log(cadenaTexto.charCodeAt(1)); // 115 // s = 115
 
@@ -82,3 +82,4 @@ console.log(cadenaTexto.padStart(50,"0")); //0000000000000Esto es una cadena de 
     //padEnd() //añade espacios al final
 
 console.log(cadenaTexto.padEnd(50,"SIUU")) //Esto es una cadena de texto de pruebaSIUUSIUUSIUUS
+
