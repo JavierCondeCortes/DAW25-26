@@ -1,0 +1,13 @@
+<h1>{{ title() | uppercase }}</h1>
+
+<ul>
+  <li *ngFor="let nombre of nombresProductos()">{{ nombre }}</li>
+</ul>
+
+<p>
+  {{ haySinStock() ? 'Hay productos sin stock' : 'Todos los productos disponibles' }}
+</p>
+
+<app-producto [producto]="productos()[0]"></app-producto>
+
+<router-outlet />
