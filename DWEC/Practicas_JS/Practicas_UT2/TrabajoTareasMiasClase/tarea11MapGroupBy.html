@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>JavaScript Maps</h1>
+<h2>The Map.groupBy() Method</h2>
+
+<p id="demo"></p>
+
+<script>
+// Create a Map
+const fruits = [
+{name:"apples", quantity:300},
+{name:"bananas", quantity:500},
+{name:"oranges", quantity:200},
+{name:"kiwi", quantity:150}
+];
+
+const fruitsss = new Map ([
+[{name:"apples", quantity:300}],
+[{name:"bananas", quantity:500}],
+[{name:"oranges", quantity:200}],
+[{name:"kiwi", quantity:150}]
+]);
+
+const fruitss = new Map ([
+  ["apples", 300],
+  ["bananas", 500],
+  ["oranges", 200],
+  ["kiwi", 150]
+]);
+
+document.write(typeof(fruits)+ "\n");
+document.write(typeof(fruitss)+ "\n");
+document.write(typeof(fruitsss));
+
+// Callback function to select low volumes 
+function myCallback({ quantity }) {
+  return quantity > 200 ? "ok" : "low";
+}
+
+// Group by ok and low
+const result = Map.groupBy(fruits, myCallback);
+
+document.write(result);
+
+// Display Results
+let text ="These fruits are Ok: <br>";
+for (let x of result.get("ok")) {
+  text += x.name + " " + x.quantity + "<br>";
+}
+text += "<br>These fruits are low: <br>";
+for (let x of result.get("low")) {
+  text += x.name + " " + x.quantity + "<br>";
+}
+document.getElementById("demo").innerHTML = text;
+</script>
+
+</body>
+</html>
