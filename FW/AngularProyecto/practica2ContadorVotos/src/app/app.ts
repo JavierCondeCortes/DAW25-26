@@ -10,6 +10,7 @@ import { Botones } from './components/botones/botones';
 })
 export class App {
   protected readonly title = signal('practica2ContadorVotos');
+  
 }
 
 

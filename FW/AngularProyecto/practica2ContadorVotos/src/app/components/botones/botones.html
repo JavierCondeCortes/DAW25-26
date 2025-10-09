@@ -1,3 +1,8 @@
 <div *ngFor="let opcion of opciones">
-    {{opcion.nombre}} - {{opcion.votos}}
+  {{ opcion.nombre }} - {{ opcion.votos }}
+  <button (click)="votar(opcion.id)">Votar</button>
 </div>
+
+<hr />
+
+<p>{{ resultado }}</p>
