@@ -128,3 +128,26 @@ let saludo4 = (nombre,apellido) => {
 
 console.log(saludo3("sergio","gonzalez"))
 console.log(saludo4("javier","conde"));
+
+console.log("LLAMADO A LA FUNCIÓN MEDIANTE PARENTESIS");
+let hellos = function(){console.log("hola mundillo");}
+hellos();
+
+
+console.log("LLAMAR A FUNCION CON OTRA FUNCIÓN");
+function helloses() {
+        console.log("HOLA MUNDILLO");
+        return function(){return "HOLA INTERNO"};
+}
+console.log(helloses()); //este ejecuta una funcion
+console.log(helloses()()); //este ejecuta ambas
+
+
+
+let arr = [1,2,3];
+console.log(arr);
+
+let referencia = arr.pop(arr[1]) && console.log(arr);
+
+
+

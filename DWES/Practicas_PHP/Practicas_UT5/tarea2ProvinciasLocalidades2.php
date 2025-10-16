@@ -28,6 +28,16 @@ $coincidencia = $stmt->fetch(PDO::FETCH_ASSOC); //COMPARACION DE QUE EXISTA COIN
 <?php if(isset($_GET["buscar"])) : ?>
     <?php if($coincidencia) :?> <!--evitar que meta un dato inexsistente-->
         <h1>Buscando información sobre <?=($_GET["ciudad"])?></h1>
+
+        <?php 
+            $sql = 'SELECT * FROM localidades JOIN provincias USING (n_provincia) WHERE provincias.nombre = :nombre'; 
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':nombre', $_GET["ciudad"], PDO::PARAM_STR); 
+            $stmt->execute();
+        ?>
+
+    <!--FALTA MOSTRAR DATOS DE LAS LOCALIDADES-->
+
     <?php else :?>
         <?php
             header("Location: tarea2ProvinciasLocalidades.html"); 
