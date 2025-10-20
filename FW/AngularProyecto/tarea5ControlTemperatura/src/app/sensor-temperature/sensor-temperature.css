@@ -1,0 +1,14 @@
+.termostato{
+    display: inline-block;
+    min-width: 10rem;
+}
+.muestra{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button{
+    display: block;
+    justify-self: center;
+    width: 90%;
+}
