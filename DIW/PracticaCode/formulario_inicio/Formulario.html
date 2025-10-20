@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Formulario.css">
     <title>Formulario</title>
   </head>
+
   <body>
     <main>
       <article>
@@ -15,35 +17,38 @@
           aria-describedby="login-help"
         >
           <!--se puede poner off para datos sensibles-->
-          <h1>Iniciar Sesion</h1>
+          <h1>Iniciar Sesión</h1>
           <div>
             <label
-              >Correo electrónico
+              for="email">Correo electrónico</label>
               <input type="email" name="email" />
-            </label>
+            
           </div>
 
           <div>
             <label
-              >Contraseña
+               for="password">Contraseña</label>
               <div class="error-btn">
                 <input
                   type="password"
                   name="password"
                   id="password"
+                  placeholder="8 caracteres mínimo"
+                  minlength="8"
                   required
                   autocomplete="off"
                 />
               </div>
-            </label>
+            
             <button type="button" id="showPassword">Mostrar</button>
           </div>
 
-          <div>
-            <label>
-              <input type="checkbox" name="remember" required />
-            </label>
-            Recordarme
+          <div id="Recordarme">
+            <div>
+              <label>
+                <input type="checkbox" name="remember" required />
+              </label>Recordarme
+            </div>
 
             <a href="">¿Olvidaste tu contraseña?</a>
           </div>
@@ -55,28 +60,28 @@
 
         <p class="divisor">O continuar con</p>
 
-        <div>
+        <div id="inicioSesion">
           <a href="" target="_blank">
-            <img src="" alt="" />
+            <img src="./logos/google.png" alt="google" />
             google
           </a>
 
           <a href="" target="_blank">
-            <img src="" alt="" />
+            <img src="./logos/facebook.png" alt="facebook" />
             facebook
           </a>
 
           <a href="" target="_blank">
-            <img src="" alt="" />
+            <img src="./logos/apple.png" alt="apple" />
             apple
           </a>
 
           <a href="" target="_blank">
-            <img src="" alt="" />
+            <img src="./logos/microsoft.png" alt="microsoft" />
             microsoft
           </a>
         </div>
-        <p>
+        <p id="registro">
           ¿No tienes una cuenta?
           <a href="" target="_blank" rel="noopener noreferrer">Registrate</a>
         </p>
