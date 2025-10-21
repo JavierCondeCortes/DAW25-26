@@ -1,58 +1,76 @@
-<?php 
-
-try{
-$conn = new PDO ("mysql:host=localhost;dbname=dwes", "root", "");
-$conn ->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-
-}catch(PDOException $e){
+<?php
+// CONEXION A BASE DE DATOS
+try {
+    $conn = new PDO("mysql:host=localhost;dbname=geografia", "root", "");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
     die("conexion fallida") . $e->getMessage;
 }
+
+
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+
     <form action="" method="post">
 
         <label for="UsuarioContraseña">Usuario/Correo</label>
-            <input type="text" name="UserEmail" id="UsuarioContraseña">
-            
-        <label for="contraseña">Contraseña</label>
-            <input type="password" name="password" id="contraseña">
+        <input type="text" name="UserEmail" id="UsuarioContraseña" require>
 
-        <button type="submit">Iniciar Sesion</button>
+        <label for="contraseña">Contraseña</label>
+        <input type="password" name="password" id="contraseña" require>
+
+        <button type="submit" name="enviar">Iniciar Sesion</button>
     </form>
 
 </body>
+
 </html>
 
-<?php 
+<?php
+if (isset($_POST['enviar'])) {
+    if (isset($_POST['UserEmail'])) {
+        if (isset($_POST['password'])) {
 
-if(isset($_POST['UserEmail'])){
-    if(isset($_POST['password'])){
+            // SELECT Usuario,Contraseña FROM infousers WHERE Usuario = "Concor" AND Contraseña = "ConcorMine"
+            $contraseñaSegura = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-    // SELECT Usuario,Contraseña FROM infousers WHERE Usuario = "Concor" AND Contraseña = "ConcorMine"
-        $sql = 'SELECT Usuario,Contraseña 
+            $sql = 'SELECT Usuario,Contrasena 
             FROM infousers 
-            WHERE Usuario = :Usuario AND Contraseña = :Contraseña';
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':Usuario', $_POST["UserEmail"]);
-    $stmt->bindParam(':Contraseña', $_POST["password"]);
-    $stmt->execute();
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            WHERE Usuario = :Usuario AND Contrasena = :Contrasena';
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':Usuario', $_POST["UserEmail"], PDO::PARAM_STR);
+            $stmt->bindParam(':Contrasena', $contraseñaSegura, PDO::PARAM_STR);
+            $stmt->execute();
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+            //CREACION DE SESIONES
+            session_start();
+            $_SESSION["usuario"] = $user["Usuario"];
+            $_SESSION["pagina"]= $_SERVER["PHP_SELF"];
+            
+            //VISUALIZACION EN PAGINA
 
-    }else{
-        echo"error al introducir la contraseña";
+            if ($user == true) {
+                header("Location:./tarea3SessionsFinLogin.php");
+            } else {
+                echo ("Usuario no existe");
+            }
+        } else {
+            echo "error en la contraseña";
+        }
+    } else {
+        echo "error en el nombre o correo";
     }
-}else{
-    echo"error al introducir el nombre u correo";
 }
 
 ?>

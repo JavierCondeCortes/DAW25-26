@@ -1,0 +1,74 @@
+<!-- ej 1 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      let bucle = prompt ("iniciar 0 / salir 1");
+
+        let usuarios = new Map([
+          ["pedro", "Carlez", "platero"],
+        ]);
+
+      while( bucle == 0){
+
+
+        let opcion = prompt(
+          "opcion /añadir/modificar/eliminar/Mostrar colección"
+        );
+
+        switch (opcion) {
+          case "añadir":
+            let nombre = prompt("nombre");
+            let apellido1 = prompt("apellido1");
+            let apellido2 = prompt("apellido2");
+
+            if (usuarios.has(nombre)) {
+              alert("El numbre de usuario ya existe");
+            } else {
+              usuarios.set(nombre, apellido1, apellido2);
+              alert("El usuario se agrego de forma correcta");
+            }
+            break;
+
+          case "modificar":
+              let modificarUsuarrio = prompt ("Que usuario quieres modificar?");
+              let opcionModificar = prompt ("Que parametros quieres modificar? Nombre/Apellido1/Apellido2");
+              let valorSustitucion = prompt ("pon el valor que quieres poner a " + opcionModificar);
+                  usuarios.entries([modificarUsuarrio][opcionModificar]) = valorSustitucion;
+                    alert(muestraUsuarios);
+
+            break;
+
+          case "eliminar":
+              let nombreEliminar = prompt("Nombre a eliminar");
+              if(usuarios.has(nombreEliminar)){
+              usuarios.delete(usuarios.has(nombre));
+              alert(muestraUsuarios);
+            }
+            break;
+          case "Mostrar":
+            console.log("FOR EACH");
+            let muestraUsuarios = "";
+            usuarios.forEach(function ( valor, key) {
+              muestraUsuarios += key + " = " + valor + "\n";
+            });
+            alert(muestraUsuarios);
+
+            break;
+        
+        default:
+            let bucle = 1;
+        }
+
+
+      }
+    </script>
+  </body>
+</html>
