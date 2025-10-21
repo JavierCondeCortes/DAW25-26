@@ -3,7 +3,7 @@ let frase = "no luce la luna sin traérmela en sueños";
 console.log("Ejercicio 1:");
 
 let palabras = frase.split(" ")
-    .filter((palabra) => palabra.startsWith("l"))
+    // .filter((palabra) => palabra.startsWith("l"))
     .map((palabra) => palabra.toUpperCase());
 
 console.log(palabras);
