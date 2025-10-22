@@ -18,7 +18,6 @@
 
       while( bucle == 0){
 
-
         let opcion = prompt(
           "opcion /añadir/modificar/eliminar/Mostrar colección"
         );
@@ -43,16 +42,16 @@
               let valorSustitucion = prompt ("pon el valor que quieres poner a " + opcionModificar);
                   usuarios.entries([modificarUsuarrio][opcionModificar]) = valorSustitucion;
                     alert(muestraUsuarios);
-
             break;
 
           case "eliminar":
               let nombreEliminar = prompt("Nombre a eliminar");
               if(usuarios.has(nombreEliminar)){
-              usuarios.delete(usuarios.has(nombre));
-              alert(muestraUsuarios);
-            }
+                usuarios.delete(usuarios.has(nombre));
+                alert(muestraUsuarios);
+              }
             break;
+
           case "Mostrar":
             console.log("FOR EACH");
             let muestraUsuarios = "";
@@ -62,12 +61,10 @@
             alert(muestraUsuarios);
 
             break;
-        
+
         default:
             let bucle = 1;
         }
-
-
       }
     </script>
   </body>
