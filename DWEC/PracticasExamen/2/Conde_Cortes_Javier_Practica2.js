@@ -68,9 +68,10 @@ for(let i=0; i<libro.length ;i++){
 
 //2
 console.log("----ejercicio 2----");
-let fBiblioteca = () => {for (const {Nombre,Autor,Editorial} of libro) {
-	const biblioteca = [Nombre, Autor, Editorial];
-	console.log(biblioteca);
+let fBiblioteca = () => {
+	for (const {Nombre,Autor,Editorial} of libro) {
+		const biblioteca = [Nombre, Autor, Editorial].join(" ");
+		console.log(biblioteca);
 	}
 }
 fBiblioteca();
@@ -93,8 +94,13 @@ console.log("--verificacion CheckLibro--");
 let tituloBuscado = "Lagartijas";
 let checkLibro = (busqueda) =>{ 
 	for (const {Nombre:titulo} of libro) {
-		busqueda === titulo ? console.log("nice") : console.log("bad");
-	}	
+		busqueda === titulo ? console.log(true) : console.log(false);
+	}
 }
 checkLibro(tituloBuscado);
+
+console.log("--verificacion CheckLibro--");
+
+fBiblioteca.some()
+
 

@@ -24,11 +24,11 @@ Los Restaurantes **realizan los pedidos** a una empresa mayorista, para la adqui
 |contraseña |cantidad |precio(compraTotal)|
 |           |codigo(Categoría)|enviados(si,no)
 
-![BasesDeDatos](./img/bbdd.png).
+![BasesDeDatos](./img/bbdd.png) 
 
 ### Interpretar los datos
 
-- como podemos ver hay cosas que debemos tener en cuenta como pueden ser en **productos**. Este tiene una **claveForanea de categoria**, lo que nos permite ver a que categoria pertenece.
+- como podemos ver hay cosas que debemos tener en cuenta como pueden ser en **productos**. Este tiene una **claveForanea de categoria**, lo que nos permite ver a que categoria pertenece 
 
 - En **pedido** podemos ver que tiene **muchas clavesForaneas** con lo que queremos obtener: (productos pedidos, cantidad de productos, el precio total y si fueron enviados)
 
