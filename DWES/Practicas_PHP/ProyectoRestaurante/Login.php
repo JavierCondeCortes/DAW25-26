@@ -43,8 +43,9 @@ try {
 $email = $_POST["correo"] ?? null;
 $contraseniaIngresada = $_POST["contrasenia"] ?? null;
 $recordarme = $_POST["remember"] ?? null;
+$iniciar = $_POST["iniciar"] ?? null;
 
-if ($_POST["iniciar"]) {
+if (isset($iniciar)) {
     $sql = "SELECT nombre, contrasenia
                 FROM info_restaurantes 
                 WHERE correo = :email";
@@ -56,7 +57,7 @@ if ($_POST["iniciar"]) {
 
 
 //Opcion de recordar donde se almacena en una sesion
-if ($resultado && password_verify($contraseniaIngresada, $resultado["contrasenia"])) {
+if ($resultado ?? null && password_verify($contraseniaIngresada, $resultado["contrasenia"])) {
     echo "Bienvenido, " . $resultado["nombre"];
 
     // if ($recordarme == true) {
