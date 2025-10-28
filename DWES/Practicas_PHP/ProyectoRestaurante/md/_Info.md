@@ -35,3 +35,7 @@ Los Restaurantes **realizan los pedidos** a una empresa mayorista, para la adqui
 ### Analisis de estructura de página
 
 - solicitan una web donde, como restaurante, podamos iniciar sesion y podamos comprar los productos que deseemos.
+
+> faltan 
+> > parte 1 - 1,5 \
+> > parte 3 - 1,5
