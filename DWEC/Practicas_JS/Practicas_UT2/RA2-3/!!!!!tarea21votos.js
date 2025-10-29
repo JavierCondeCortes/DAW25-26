@@ -5,7 +5,7 @@ let nVotos = sedes.length-1*partidos.length;
 let table = [];
 
 for(let i=0; i<sedes.length; i++){
-    table.push(sedes[i][i]);
+    table.push(sedes);
 }
 
 console.table(table);
