@@ -35,9 +35,15 @@ if (isset($_GET["agregarCarrito"])) {
 
     $_SESSION["carrito"][] = $nuevoProducto;
 }
-
-
 ?>
+
+<!-- navbar de acceso a diferentes recursos -->
+<?php ?>
+<nav>
+    <a href="./Carrito.php">Ver carrito</a>
+    <!-- hacer que cuando se de al boton de cerrar sesion destruya la sesion -->
+    <a href="./Login.php">Cerrar sesión</a> 
+</nav>
 
 <!-- formulario de clasificacion de categoria de productos -->
 
@@ -90,7 +96,7 @@ $stmt->execute();
                     <input type="hidden" name="carritoDescripcion" value="<?= $producto["descripcion"] ?>">
                     <input type="hidden" name="carritoPrecio" value="<?= $producto["precio"] ?>">
                     <input type="hidden" name="carritoCantidad" value="<?= $producto["cantidad"] ?>">
-                    <input type="number" name="compraStock" value="1" min="1" max="<?= $producto["cantidad"] ?>">
+                    <input type="number" name="compraStock" value="0" min="0" max="<?= $producto["cantidad"] ?>">
                     <button type="submit" name="agregarCarrito">Añadir</button>
                 </form>
             </td>
@@ -99,5 +105,15 @@ $stmt->execute();
                 <td>¡Solo quedan <?= $producto["cantidad"] ?>!</td>
             <?php endif; ?>
         </tr>
+
+            <!-- vamos a poner unas condiciones al formulario para que en el caso de que en el carrito ya existan
+            productos con cantidad maxima no las agregue, debido de que se compraria mas de la cuenta -->
+
+        <!-- <?php
+            if (($_GET["compraStock"] + ($_SESSION["carrito"]["cantidad"])) > $producto["cantidad"]) {
+                echo ("Sin stock");
+            }
+        ?> -->
+
     <?php } ?> <!--  cierre de while para la lista de productos -->
 </table>
