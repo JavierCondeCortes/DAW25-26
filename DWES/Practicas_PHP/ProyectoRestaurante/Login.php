@@ -38,8 +38,6 @@ try {
 
 <?php
 
-// echo password_hash("torresta",PASSWORD_DEFAULT);
-
 $email = $_POST["correo"] ?? null;
 $contraseniaIngresada = $_POST["contrasenia"] ?? null;
 $recordarme = $_POST["remember"] ?? null;
@@ -56,9 +54,9 @@ if (isset($iniciar)) {
 }
 
 
-//Opcion de recordar donde se almacena en una sesion
+//Opcion de recordar donde se almacena en una sesion guardada en un token
 if ($resultado ?? null && password_verify($contraseniaIngresada, $resultado["contrasenia"])) {
-    echo "Bienvenido, " . $resultado["nombre"];
+    header("Location: ./Selection.php");
 
     // if ($recordarme == true) {
     //     // creamos una cookie donde se guardara un token del usuario para recordarle en la web
@@ -77,14 +75,9 @@ if ($resultado ?? null && password_verify($contraseniaIngresada, $resultado["con
     echo "Correo o contraseña incorrectos.";
 }
 
+echo password_hash("torres",PASSWORD_DEFAULT);
 
 ?>
-
-
-
-
-
-
 
 <!-- <pre>
     <?= var_dump($_POST); ?>
