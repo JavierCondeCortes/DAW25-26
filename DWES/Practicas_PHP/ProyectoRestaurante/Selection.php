@@ -1,13 +1,11 @@
-<!-- seleccion -->
-<!-- Iniciamos sesión en la base de datos -->
 <?php
+// Conexión a la base de datos
 $servidor = "localhost";
 $dbname = "proyectorestaurantes";
 $usuario = "root";
 $contraseña = "";
 
 try {
-
     $conn = new PDO("mysql:host=$servidor;dbname=$dbname", $usuario, $contraseña);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
@@ -15,9 +13,8 @@ try {
 }
 ?>
 
-<!-- hacemos una sesion donde guardaremos la informacion de los productos a comprar -->
-
 <?php
+// Gestión de sesión y carrito
 session_start();
 
 if (isset($_GET["agregarCarrito"])) {
@@ -37,47 +34,45 @@ if (isset($_GET["agregarCarrito"])) {
 }
 ?>
 
-<!-- navbar de acceso a diferentes recursos -->
-<?php ?>
+<!-- Navegación -->
 <nav>
     <a href="./Carrito.php">Ver carrito</a>
-    <!-- hacer que cuando se de al boton de cerrar sesion destruya la sesion -->
-    <a href="./Login.php">Cerrar sesión</a> 
+    <a href="./Logout.php">Cerrar sesión</a> 
 </nav>
 
-<!-- formulario de clasificacion de categoria de productos -->
-
+<!-- Formulario de filtro por categoría -->
 <form method="post">
-    <label for="lista">Lista categorias</label>
+    <label for="lista">Lista de categorías</label>
     <select name="categoria" id="lista">
         <option value="default">--Seleccione--</option>
         <?php
         $sql = "SELECT nombre FROM categoria ORDER BY nombre DESC";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            echo "<option>{$row["nombre"]}</option>";
+        }
         ?>
-        <!-- creacion en bucle de todas las categorias -->
-        <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
-            <option><?= $row["nombre"] ?></option>
-        <?php } ?>
     </select>
     <input type="submit" name="filtro" value="Filtrar">
 </form>
 
 <?php
-//select para mostrar por categorias
+// Consulta de productos por categoría
 $sql = "SELECT p.nombre, p.descripcion, p.precio, p.cantidad
-                FROM productos p JOIN categoria c ON (c.codigo = p.codCategoria)
-                WHERE c.nombre = :nombreCategoria";
+        FROM producto p JOIN categoria c ON (c.codigo = p.codigoCat)
+        WHERE c.nombre = :nombreCategoria";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(":nombreCategoria", $_POST["categoria"]);
 $stmt->execute();
 ?>
 
+<!-- Tabla de productos -->
 <table cellspacing="10">
     <tr>
         <th>Nombre</th>
-        <th>Descripcion</th>
+        <th>Descripción</th>
         <th>Precio</th>
         <th>Stock</th>
         <th>Unidades</th>
@@ -91,13 +86,31 @@ $stmt->execute();
             <td><?= $producto["cantidad"] ?></td>
 
             <td>
+                <?php
+                // Validación de stock en carrito
+                $cantidadEnCarrito = 0;
+                if (isset($_SESSION["carrito"])) {
+                    foreach ($_SESSION["carrito"] as $item) {
+                        if ($item["nombre"] === $producto["nombre"]) {
+                            $cantidadEnCarrito += $item["compra"];
+                        }
+                    }
+                }
+                $disponible = $producto["cantidad"] - $cantidadEnCarrito;
+                ?>
+
                 <form method="get">
                     <input type="hidden" name="carritoNombre" value="<?= $producto["nombre"] ?>">
                     <input type="hidden" name="carritoDescripcion" value="<?= $producto["descripcion"] ?>">
                     <input type="hidden" name="carritoPrecio" value="<?= $producto["precio"] ?>">
                     <input type="hidden" name="carritoCantidad" value="<?= $producto["cantidad"] ?>">
-                    <input type="number" name="compraStock" value="0" min="0" max="<?= $producto["cantidad"] ?>">
-                    <button type="submit" name="agregarCarrito">Añadir</button>
+
+                    <?php if ($disponible > 0): ?>
+                        <input type="number" name="compraStock" value="0" min="0" max="<?= $disponible ?>">
+                        <button type="submit" name="agregarCarrito">Añadir</button>
+                    <?php else: ?>
+                        <strong style="color:red;">Sin stock disponible</strong>
+                    <?php endif; ?>
                 </form>
             </td>
 
@@ -105,15 +118,5 @@ $stmt->execute();
                 <td>¡Solo quedan <?= $producto["cantidad"] ?>!</td>
             <?php endif; ?>
         </tr>
-
-            <!-- vamos a poner unas condiciones al formulario para que en el caso de que en el carrito ya existan
-            productos con cantidad maxima no las agregue, debido de que se compraria mas de la cuenta -->
-
-        <!-- <?php
-            if (($_GET["compraStock"] + ($_SESSION["carrito"]["cantidad"])) > $producto["cantidad"]) {
-                echo ("Sin stock");
-            }
-        ?> -->
-
-    <?php } ?> <!--  cierre de while para la lista de productos -->
+    <?php } ?>
 </table>

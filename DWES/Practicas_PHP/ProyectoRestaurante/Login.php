@@ -45,7 +45,7 @@ $iniciar = $_POST["iniciar"] ?? null;
 
 if (isset($iniciar)) {
     $sql = "SELECT nombre, contrasenia
-                FROM info_restaurantes 
+                FROM restaurante 
                 WHERE correo = :email";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':email', $email);
