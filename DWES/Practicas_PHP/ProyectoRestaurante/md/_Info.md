@@ -15,16 +15,15 @@ Los Restaurantes **realizan los pedidos** a una empresa mayorista, para la adqui
 
 ### Campos que se necesitan
 
-|restaurante|productos|pedido|categoría|
+|restaurante|producto|pedido|categoria|
 |-----------|---------|------|---------|
 |codigo     |codigo   |codigo|codigo   |
 |nombre     |nombre   |fecha |nombre   |
-|email      |descripción|productos(pedidos)|descripción
+|correo      |descripción|estado(si,no)|descripción
 |codPostal  |precio|productos(cantidad)|
-|contraseña |cantidad |precio(compraTotal)|
-|           |codigo(Categoría)|enviados(si,no)
+|contrasenia |cantidad |precio(compraTotal)|
+|           |codigoCat(Categoría)|
 
-![BasesDeDatos](./img/bbdd.png) 
 
 ### Interpretar los datos
 
@@ -36,6 +35,3 @@ Los Restaurantes **realizan los pedidos** a una empresa mayorista, para la adqui
 
 - solicitan una web donde, como restaurante, podamos iniciar sesion y podamos comprar los productos que deseemos.
 
-> faltan 
-> > parte 1 - 1,5 \
-> > parte 3 - 1,5
