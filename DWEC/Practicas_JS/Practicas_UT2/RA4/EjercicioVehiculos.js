@@ -62,6 +62,16 @@ function mostrarVehiculos() {
     }
 }
 
-// Ejecutar
-generarVehiculos();
-mostrarVehiculos();
+
+let contador = 0;
+let intervalo = setInterval(() => {
+    if (contador >= 10) {
+        clearInterval(intervalo);
+        console.log("Finalizado: se ejecutaron las funciones 10 veces.");
+        return;
+    }
+
+    generarVehiculos();
+    mostrarVehiculos();
+    contador++;
+}, 2000);
