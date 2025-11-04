@@ -1,0 +1,42 @@
+<div>
+  <h1>Administración de peliculas</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Codigo</th>
+        <th>Titulo</th>
+        <th>Horario</th>
+        <th>Precio</th>
+        <th>Seleccionar</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(peli of peliculas; track peli.codigo) {
+      <tr>
+        <td>{{peli.codigo}}</td>
+        <td>{{peli.titulo}}</td>
+        <td>{{peli.horario}}</td>
+        <td>{{peli.precio}}</td>
+        <td><button (click)="seleccionar(peli)">Seleccionar</button></td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  <div>
+    <p>
+      titulo:<input type="text" [(ngModel)]="peli.titulo" />
+    </p>
+    <p>
+      nombre:<input type="text"/>
+    </p>
+    <p>
+      butacas:<input type="text"/>
+    </p>
+    
+    <p>
+      <button (click)="reservar(peli.codigo)">reservar</button>
+    </p>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
