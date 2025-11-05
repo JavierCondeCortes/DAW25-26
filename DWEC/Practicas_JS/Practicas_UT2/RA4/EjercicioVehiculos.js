@@ -3,12 +3,13 @@ class Vehiculo {
         this._pasajeros = pasajeros;
     }
 
-    getPasajeros() {
+    get Pasajeros() {
         return this._pasajeros;
     }
 }
 
 class Camion extends Vehiculo {
+    //en el caso de que sea privado con # tendriamos que declararlo antes del constructur #tara (es propio)
     constructor(pasajeros, tara) {
         super(pasajeros);
         this._tara = tara;
@@ -40,20 +41,39 @@ function capturaRelog() {
 function generarVehiculos() {
     let nTurismo = Math.floor(Math.random() * 3) + 1;
     let nCamion = Math.floor(Math.random() * 3) + 1;
-    let listaColor = ["red", "blue", "green"];
 
-    for (let i = 0; i < nTurismo; i++) {
-        let nPasajeros = Math.floor(Math.random() * 6) + 1;
-        let color = listaColor[Math.floor(Math.random() * listaColor.length)];
-        array.push(new Turismos(nPasajeros, color));
-    }
+    rellenarVehiculo(nTurismo,"T");
 
-    for (let i = 0; i < nCamion; i++) {
+    // for (let i = 0; i < nTurismo; i++) {
+    //     let nPasajeros = Math.floor(Math.random() * 6) + 1;
+    //     let color = listaColor[Math.floor(Math.random() * listaColor.length)];
+    //     array.push(new Turismos(nPasajeros, color));
+    // }
+
+    rellenarVehiculo(nCamion,"C");
+
+    // for (let i = 0; i < nCamion; i++) {
+    //     let nPasajeros = Math.floor(Math.random() * 6) + 1;
+    //     let tara = Math.floor(Math.random() * 9000) + 1000;
+    //     array.push(new Camion(nPasajeros, tara));
+    // }
+}
+
+function rellenarVehiculo(nVehiculos,tipo){
+    
+    for (let i = 0; i < nVehiculos; i++) {
         let nPasajeros = Math.floor(Math.random() * 6) + 1;
-        let tara = Math.floor(Math.random() * 9000) + 1000;
-        array.push(new Camion(nPasajeros, tara));
+        if(tipo=="T"){
+            let listaColor = ["red", "blue", "green"];
+            let color = listaColor[Math.floor(Math.random() * listaColor.length)];
+            array.push(new Turismos(nPasajeros, color));
+        }else{
+            let tara = Math.floor(Math.random() * 9000) + 1000;
+            array.push(new Camion(nPasajeros, tara));
+        }
     }
 }
+
 
 function mostrarVehiculos() {
     let hora = capturaRelog();
