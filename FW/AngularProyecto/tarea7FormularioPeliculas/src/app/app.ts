@@ -1,46 +1,71 @@
 import { Component, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FormsModule],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class App {
-    peli = {
-    codigo: 0,
-    titulo: "",
-    horario: "",
-    butacasTotales: 0,
-    butacasOcupadas: 0,
-    precio: 0
+  peliculas = signal([
+    { codigo: 1, titulo: 'Avengers: Endgame', horario: '18:00', butacasTotales: 50, butacasOcupadas: 10, precio: 8 },
+    { codigo: 2, titulo: 'Avatar 2', horario: '20:00', butacasTotales: 60, butacasOcupadas: 45, precio: 10 },
+    { codigo: 3, titulo: 'Mario Bros', horario: '16:00', butacasTotales: 40, butacasOcupadas: 5, precio: 7 }
+  ]);
+
+  reservas = signal<
+    { nombre: string; pelicula: string; cantidad: number; precioTotal: number }[]
+  >([]);
+
+  reservaForm = signal({
+    nombre: '',
+    peliculaId: 1,
+    cantidad: 0
+  });
+
+  mensaje = signal('');
+
+  getPeliculaSeleccionada() {
+    return this.peliculas().find(p => p.codigo === this.reservaForm().peliculaId);
   }
 
-  peliculas = [
-  { codigo: 1, titulo: 'Gt4 cup', horario: "20:00" , butacasTotales:32 ,butacasOcupadas:2 ,precio:10},
-  { codigo: 2, titulo: 'Gran Turismo', horario: "22:30" , butacasTotales:35 ,butacasOcupadas:22 ,precio:8},
-  { codigo: 3, titulo: 'Le Mans', horario: "14:40" , butacasTotales:54 ,butacasOcupadas:54 ,precio:7},
-  { codigo: 4, titulo: 'Gt3 cup', horario: "16:00" , butacasTotales:35 ,butacasOcupadas:33 ,precio:9},
-  { codigo: 5, titulo: 'F1', horario: "18:00" , butacasTotales:75 ,butacasOcupadas:12 ,precio:11},
-  ];
-
-  hayRegistros() {
-    return this.peliculas.length > 0;
+  butacasDisponibles(): number {
+    const peli = this.getPeliculaSeleccionada();
+    return peli ? peli.butacasTotales - peli.butacasOcupadas : 0;
   }
 
-  reservar(codigo: number) {
-    for (let x = 0; x < this.peliculas.length; x++)
-      if (this.peliculas[x].codigo == codigo) {
-        this.peliculas[x].codigo--
-        return;
-      }
-  }
+  reservar(): void {
+    const peli = this.getPeliculaSeleccionada();
+    if (!peli) return;
 
-  seleccionar(peli: { codigo: number; titulo: string; horario: string; }) {
-    this.peli.codigo = peli.codigo;
-    this.peli.titulo = peli.titulo;
-    this.peli.horario = peli.horario;
+    const disponibles = this.butacasDisponibles();
+    const cantidad = this.reservaForm().cantidad;
+
+    if (cantidad > disponibles) {
+      this.mensaje(
+        disponibles === 0
+          ? 'No quedan butacas para esta película'
+          : `Solo quedan ${disponibles} butacas para esta película`
+      );
+      return;
+    }
+
+    peli.butacasOcupadas += cantidad;
+    const precioTotal = cantidad * peli.precio;
+
+    this.reservas.mutate(r =>
+      r.push({
+        nombre: this.reservaForm().nombre,
+        pelicula: peli.titulo,
+        cantidad,
+        precioTotal
+      })
+    );
+
+    this.mensaje('');
+    this.reservaForm.set({ nombre: '', peliculaId: 1, cantidad: 0 });
   }
 }
