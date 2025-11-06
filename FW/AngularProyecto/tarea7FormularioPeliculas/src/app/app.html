@@ -1,42 +1,45 @@
-<div>
-  <h1>Administración de peliculas</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Codigo</th>
-        <th>Titulo</th>
-        <th>Horario</th>
-        <th>Precio</th>
-        <th>Seleccionar</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for(peli of peliculas; track peli.codigo) {
-      <tr>
-        <td>{{peli.codigo}}</td>
-        <td>{{peli.titulo}}</td>
-        <td>{{peli.horario}}</td>
-        <td>{{peli.precio}}</td>
-        <td><button (click)="seleccionar(peli)">Seleccionar</button></td>
-      </tr>
-      }
-    </tbody>
-  </table>
-  <div>
-    <p>
-      titulo:<input type="text" [(ngModel)]="peli.titulo" />
-    </p>
-    <p>
-      nombre:<input type="text"/>
-    </p>
-    <p>
-      butacas:<input type="text"/>
-    </p>
-    
-    <p>
-      <button (click)="reservar(peli.codigo)">reservar</button>
-    </p>
-  </div>
-</div>
+<h2>🎬 Películas disponibles</h2>
+<ul>
+  <li *ngFor="let peli of peliculas">
+    <strong>{{ peli.titulo }}</strong> - {{ peli.horario }} - Precio: {{ peli.precio }}€ -
+    Butacas disponibles: {{ peli.butacasTotales - peli.butacasOcupadas }}
+  </li>
+</ul>
 
-<router-outlet></router-outlet>
+<h2>📝 Reservar entradas</h2>
+<form (ngSubmit)="reservar()">
+  <label>Nombre:</label>
+  <input type="text" [(ngModel)]="reservaForm.nombre" name="nombre" required />
+
+  <label>Película:</label>
+  <select [(ngModel)]="reservaForm.peliculaId" name="peliculaId" required>
+    <option *ngFor="let peli of peliculas" [value]="peli.codigo">{{ peli.titulo }}</option>
+  </select>
+
+  <label>Cantidad de butacas:</label>
+  <input type="number" [(ngModel)]="reservaForm.cantidad" name="cantidad" required />
+
+  <div *ngIf="reservaForm.peliculaId">
+    <em>Butacas disponibles: {{ butacasDisponibles() }}</em>
+  </div>
+
+  <button type="submit">Reservar</button>
+</form>
+
+<div *ngIf="mensaje" style="color: red; margin-top: 10px;">{{ mensaje }}</div>
+
+<h2>📋 Reservas realizadas</h2>
+<table border="1" cellpadding="5">
+  <tr>
+    <th>Nombre</th>
+    <th>Película</th>
+    <th>Cantidad</th>
+    <th>Precio Total</th>
+  </tr>
+  <tr *ngFor="let r of reservas">
+    <td>{{ r.nombre }}</td>
+    <td>{{ r.pelicula }}</td>
+    <td>{{ r.cantidad }}</td>
+    <td>{{ r.precioTotal }}€</td>
+  </tr>
+</table>
