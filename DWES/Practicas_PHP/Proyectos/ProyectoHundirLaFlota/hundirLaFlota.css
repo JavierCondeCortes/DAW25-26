@@ -1,0 +1,14 @@
+button{
+    background-color: grey;
+    border: solid 1px black;
+    cursor: pointer;
+    height: 4rem;
+    width: 4rem;
+    margin: 1px;
+}
+#restablecer{
+    height: 1.5rem;
+}
+#pulso{
+    background-color: blue;
+}
