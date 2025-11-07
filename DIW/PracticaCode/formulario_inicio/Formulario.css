@@ -1,78 +1,89 @@
-html{
+html {
     background-color: rgb(245, 245, 245);
     max-width: 30rem;
     margin: auto;
     font-family: Arial, Helvetica, sans-serif;
 }
-article{
+
+article {
     background-color: white;
     border-radius: 5px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 10px;
 }
 
-a{
-    text-decoration:none;
+a {
+    text-decoration: none;
     color: rgb(42, 130, 245);
 }
 
-form>h1{
+form>h1 {
     text-align: center;
     padding-top: 2rem;
 }
-label{
+
+label {
     display: block;
     margin-left: 2.5rem;
     margin-bottom: 0.5rem;
 }
-input{
+
+input[name="email"],[name="password"] {
     display: block;
     min-width: 80%;
     min-height: 2rem;
     margin: auto;
     border-radius: 5px;
     border-color: gainsboro;
-    border-style:solid;
+    border-style: solid;
 }
 
-input[name="email"]{
+input[name="email"] {
     margin-bottom: 1.5rem;
 }
 
-input[name="email"]:invalid{
+/* se necesita implementacion del js*/
+/* input[name="email"]:invalid {
     border-color: red;
 }
 
-input[name="password"]:invalid{
+input[name="password"]:invalid {
     border-color: red;
     outline: none;
-}
+} */
 
-#showPassword{
+#showPassword {
     position: relative;
     top: -1.8rem;
     left: 22rem;
     border-style: none;
     background: none;
-    color:  rgb(141, 141, 141);
+    color: rgb(141, 141, 141);
 }
 
-#showPassword:hover{
-    color:  rgb(104, 103, 103);
+#showPassword:hover {
+    color: rgb(104, 103, 103);
     cursor: pointer;
 }
 
-#Recordarme{
+#Recordarme {
     display: flex;
-    justify-items:stretch;
     justify-content: space-between;
-    max-width: 90%;
+    align-items: center;
+    margin-right: 2.5rem;
 }
-#Recordarme>div{
+
+#check{
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+}
+
+#Recordarme>div {
     align-content: center;
     display: flex;
 }
 
-#IniciarSesion{
+#IniciarSesion {
     display: block;
     min-width: 80%;
     min-height: 2.8rem;
@@ -85,21 +96,21 @@ input[name="password"]:invalid{
     margin-bottom: 0.5rem;
 }
 
-#IniciarSesion:hover{
+#IniciarSesion:hover {
     background-color: rgb(52, 113, 247);
 }
 
-.divisor{
+.divisor {
     text-align: center;
 }
 
-img{
+img {
     position: relative;
     height: 25px;
     top: 7px;
 }
 
-#inicioSesion>a{
+#inicioSesion>a {
     color: black;
     height: 3rem;
     justify-content: center;
@@ -112,12 +123,12 @@ img{
     display: block;
 }
 
-#inicioSesion>a:hover{
+#inicioSesion>a:hover {
     border-color: rgb(224, 222, 222);
     background-color: rgb(243, 243, 243);
 }
 
-#registro{
+#registro {
     text-align: center;
     padding-top: 1rem;
     padding-bottom: 3rem;
