@@ -28,7 +28,7 @@ class Edificio {
         return this.#propietario;
     }
 
-    afregarPropietario(propietario,puerta,piso){
+    agregarPropietario(propietario,puerta,piso){
         
     }
 }
