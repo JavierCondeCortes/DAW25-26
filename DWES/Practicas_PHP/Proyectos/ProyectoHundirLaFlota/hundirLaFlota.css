@@ -1,3 +1,7 @@
+body{
+    background-color: cadetblue;
+}
+
 button{
     background-color: grey;
     border: solid 1px black;

@@ -1,18 +1,8 @@
 <link rel="stylesheet" href="./hundirLaFlota.css">
-
-
-<!-- BLUCLE DE GENERACION DE BLOQUES DUPLICADO ANTES Y DESPUES DE RESET -->
-<!-- // Bucle para dar name y valor a los botones del juego
-for ($ix = 0; $ix < $x; $ix++) {
-    for ($iy = 0; $iy < $y; $iy++) {
-        $clave = $ix . "_" . $iy;
-        $tabla[$ix][$iy] = "<button type='submit' name='casilla[$clave]' value='$clave'>?</button>";
-    }
-} -->
-
-
+<!-- falta la creacion de la continuidad de los barcos punto 9 y 7 -->
 
 <?php
+session_start();
 //valores que damos al juego
 $x = 10;
 $y = 10;
@@ -21,10 +11,12 @@ $nBarcos = 4;
 $longBarcos = 4;
 
 //Sesiones para guardar las posiciones tecleadas
-session_start();
 if (!isset($_SESSION['pulsCasillas']) || !isset($_SESSION['posBarcos'])) {
     $_SESSION['pulsCasillas'] = [];
     $_SESSION['posBarcos'] = [];
+    //sesiones para guardar datos de pantalla y juego
+    $_SESSION['nIntentos'];
+    $_SESSION['barcosHundidos'];
 }
 
 // parametro para poder agregar las casillas pulsadas dentro de la sesion para que se queden guardadas
@@ -34,6 +26,8 @@ if (isset($_GET['casilla'])) {
         if (!in_array($valor, $_SESSION['pulsCasillas'])) {
             //no funciona con variable declarada $casillas que guarda la misma informacion que el original pero con delay porque espera al siguiente paso para asignar el valor 
             array_push($_SESSION['pulsCasillas'], $valor);
+            //por cada click baja el contador de intentos
+            $_SESSION['nIntentos']--;
         }
     }
 }
@@ -47,12 +41,15 @@ for ($ix = 0; $ix < $x; $ix++) {
 }
 
 //Generacion aleatoria de barcos en el panel, destruye y despues genera la nueva sesion para su implementacion
-if (isset($_GET['reset'])) {
+//al presionar reset, al momento que los intentos se hayan acabado o hasta que los barcos sean 0
+if (isset($_GET['reset']) || $_SESSION['nIntentos']==-1 || $_SESSION['barcosHundidos'] == 0) {
     session_destroy();
     session_start();
 
     $_SESSION['pulsCasillas'] = [];
     $_SESSION['posBarcos'] = [];
+    $_SESSION['barcosHundidos'] = $nBarcos;
+
 
     for ($i = 0; $i < $nBarcos; $i++) {
         $posicionTabla = (rand(0, $x - 1) . "_" . rand(0, $y - 1));
@@ -62,9 +59,8 @@ if (isset($_GET['reset'])) {
             $i--;
         }
     }
+    header("Location: entrada.php");
 }
-
-
 
 // Bucle para dar name y valor a los botones del juego
 for ($ix = 0; $ix < $x; $ix++) {
@@ -74,32 +70,24 @@ for ($ix = 0; $ix < $x; $ix++) {
 
         // acceso al array para cambiar de color la casilla que este seleccionada
         if (isset($_SESSION['pulsCasillas'])) {
-            // pintar barco
-            if (in_array($clave, $_SESSION['posBarcos'])) {
-                $tabla[$ix][$iy] = "<button type='submit' id='barco' name='casilla[$clave]' value='$clave'>x</button>";
-            }
             //pintar agua
             if (in_array($clave, $_SESSION['pulsCasillas'])) {
-                $tabla[$ix][$iy] = "<button type='submit' id='pulso' name='casilla[$clave]' value='$clave'>x</button>";
+                $tabla[$ix][$iy] = "<button type='submit' id='pulso' name='casilla[$clave]' value='$clave'></button>";
+            }
+            // pintar barco
+            if (in_array($clave, $_SESSION['posBarcos']) && (in_array($clave, $_SESSION['pulsCasillas']))) {
+                $tabla[$ix][$iy] = "<button type='submit' id='barco' name='casilla[$clave]' value='$clave'>x</button>";
+                
             }
         }
     }
 }
 
-//bucle para mostrar valor en el caso de que coincidan
-for ($x = 0; $x < count($_SESSION['pulsCasillas']); $x++) {
-    for ($y = 0; $y < count($_SESSION['posBarcos']); $y++) {
-        if ($_SESSION['pulsCasillas'][$x] === $_SESSION['posBarcos'][$y]) {
-            echo $_SESSION['pulsCasillas'][$x] ;
-        }
-    }
+//condicion a cumplir para que el contador de barcos dados reduzca
+if(in_array(end($_SESSION['pulsCasillas']),$_SESSION['posBarcos'])==true){
+    $_SESSION['barcosHundidos']--;
 }
-
-
-print_r($_SESSION['pulsCasillas']);
 print_r($_SESSION['posBarcos']);
-
-
 
 ?>
 
@@ -123,15 +111,15 @@ print_r($_SESSION['posBarcos']);
         <!-- tabla donde estableceremos los datos del juego + boton de reset -->
         <table id="info">
             <tr>
-                <td>Nº de intento/s:</td>
+                <td>Nº de intento/s: <?php  print_r($_SESSION['nIntentos']);?></td>
                 <td></td>
             </tr>
             <tr>
-                <td>A hundir:</td>
+                <td>A hundir: <?php echo $nBarcos ?></td>
                 <td></td>
             </tr>
             <tr>
-                <td>Hundidos:</td>
+                <td>Hundidos: <?php print_r($_SESSION['barcosHundidos'])?> </td>
                 <td></td>
             </tr>
             <tr>
