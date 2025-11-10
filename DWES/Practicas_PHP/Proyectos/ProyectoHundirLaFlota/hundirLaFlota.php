@@ -1,17 +1,5 @@
 <link rel="stylesheet" href="./hundirLaFlota.css">
 
-
-<!-- BLUCLE DE GENERACION DE BLOQUES DUPLICADO ANTES Y DESPUES DE RESET -->
-<!-- // Bucle para dar name y valor a los botones del juego
-for ($ix = 0; $ix < $x; $ix++) {
-    for ($iy = 0; $iy < $y; $iy++) {
-        $clave = $ix . "_" . $iy;
-        $tabla[$ix][$iy] = "<button type='submit' name='casilla[$clave]' value='$clave'>?</button>";
-    }
-} -->
-
-
-
 <?php
 //valores que damos al juego
 $x = 10;
@@ -41,64 +29,73 @@ if (isset($_GET['casilla'])) {
 // Bucle para dar name y valor a los botones del juego
 for ($ix = 0; $ix < $x; $ix++) {
     for ($iy = 0; $iy < $y; $iy++) {
-        $clave = $ix . "_" . $iy;
+        $clave = $ix . $iy;
         $tabla[$ix][$iy] = "<button type='submit' name='casilla[$clave]' value='$clave'>?</button>";
     }
 }
 
-//Generacion aleatoria de barcos en el panel, destruye y despues genera la nueva sesion para su implementacion
+//generamos una interacion cuando se de al boton de restart
 if (isset($_GET['reset'])) {
+    //destruimos las sesiones
     session_destroy();
     session_start();
 
+    //iniciarmos de nuevo las sesiones
     $_SESSION['pulsCasillas'] = [];
     $_SESSION['posBarcos'] = [];
 
+
+    //creamos un bucle para la aleatoriedad de los barcos con ejex e ejey, ademas de un parametro $orientacion barcos para determinar
+    //si es horizontal u vertical.
+
     for ($i = 0; $i < $nBarcos; $i++) {
-        $posicionTabla = (rand(0, $x - 1) . "_" . rand(0, $y - 1));
-        if (!in_array($posicionTabla, $_SESSION['posBarcos'])) {
-            $_SESSION['posBarcos'][] = $posicionTabla;
-        } else {
-            $i--;
-        }
+        $orientacionBarcos = rand(0,1);
+        $barcox = rand(0, $x - 1);
+        $barcoy = rand(0, $y - 1);
+        $posicionTabla = $barcox . $barcoy;
+
+        if($orientacion = 1){  
+            //horizontal 
+            // for($k=0; $k<$longBarcos; $k++){ //error de compilacion queda cargando
+                if (!in_array($posicionTabla, $_SESSION['posBarcos'])) {
+                    $_SESSION['posBarcos'][] = $posicionTabla;
+                } else {
+                    $i--;
+                }
+            // }
+        }//else{
+        //     if (!in_array($posicionTabla, $_SESSION['posBarcos'])) {
+        //             $_SESSION['posBarcos'][] = $posicionTabla;
+        //         } else {
+        //             $i--;
+        //         }
+        // }
     }
 }
-
-
 
 // Bucle para dar name y valor a los botones del juego
 for ($ix = 0; $ix < $x; $ix++) {
     for ($iy = 0; $iy < $y; $iy++) {
-        $clave = $ix . "_" . $iy;
+        $clave = $ix . $iy;
         $tabla[$ix][$iy] = "<button type='submit' name='casilla[$clave]' value='$clave'>?</button>";
 
         // acceso al array para cambiar de color la casilla que este seleccionada
         if (isset($_SESSION['pulsCasillas'])) {
-            // pintar barco
-            if (in_array($clave, $_SESSION['posBarcos'])) {
-                $tabla[$ix][$iy] = "<button type='submit' id='barco' name='casilla[$clave]' value='$clave'>x</button>";
-            }
             //pintar agua
             if (in_array($clave, $_SESSION['pulsCasillas'])) {
                 $tabla[$ix][$iy] = "<button type='submit' id='pulso' name='casilla[$clave]' value='$clave'>x</button>";
             }
+            // pintar barco
+            if (in_array($clave, $_SESSION['pulsCasillas']) && in_array($clave, $_SESSION['posBarcos'])) {
+                $tabla[$ix][$iy] = "<button id='barco' disabled>x</button>";
+            }
         }
     }
 }
 
-//bucle para mostrar valor en el caso de que coincidan
-for ($x = 0; $x < count($_SESSION['pulsCasillas']); $x++) {
-    for ($y = 0; $y < count($_SESSION['posBarcos']); $y++) {
-        if ($_SESSION['pulsCasillas'][$x] === $_SESSION['posBarcos'][$y]) {
-            echo $_SESSION['pulsCasillas'][$x] ;
-        }
-    }
-}
-
-
-print_r($_SESSION['pulsCasillas']);
+// echo ($orientacionBarcos);
+// print_r($_SESSION['pulsCasillas']);
 print_r($_SESSION['posBarcos']);
-
 
 
 ?>
@@ -109,16 +106,16 @@ print_r($_SESSION['posBarcos']);
         <table>
             <?php
             foreach ($tabla as $fila) {
-                ?>
+            ?>
                 <tr><?php
-                foreach ($fila as $valor) {
+                    foreach ($fila as $valor) {
                     ?>
                         <td id="tabla"><?= $valor ?></td><?php
-                }
-                ?>
+                                                        }
+                                                            ?>
                 </tr><?php
-            }
-            ?>
+                    }
+                        ?>
         </table>
         <!-- tabla donde estableceremos los datos del juego + boton de reset -->
         <table id="info">
