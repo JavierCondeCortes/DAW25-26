@@ -133,3 +133,12 @@ img {
     padding-top: 1rem;
     padding-bottom: 3rem;
 }
+.sr-only{
+    position:absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    margin: -10px;
+    overflow: hidden;
+}
