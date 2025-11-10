@@ -10,67 +10,69 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
-  reserva = {
-    nombre: '',
-    peliculaId: 0,
-    cantidad: 1
-  };
-
-  reservas: {
-    nombre: string;
-    pelicula: string;
-    cantidad: number;
-    precioTotal: number;
-  }[] = [];
+  peli = {
+    codigo: 0,
+    titulo: "",
+    precio: 0,
+    butacasTotales:0,
+    butacasOcupadas:0,
+  }
 
   peliculas = [
-    { id: 1, titulo: 'Avengers: Endgame', horario: '18:00', butacasTotales: 50, butacasOcupadas: 10, precio: 8 },
-    { id: 2, titulo: 'Avatar 2', horario: '20:00', butacasTotales: 60, butacasOcupadas: 45, precio: 10 },
-    { id: 3, titulo: 'Mario Bros', horario: '16:00', butacasTotales: 40, butacasOcupadas: 5, precio: 7 }
+  { codigo: 1, titulo: 'F1',butacasTotales:54,butacasOcupadas:10, precio: 10.55 },
+  { codigo: 2, titulo: 'Gt3 Race',butacasTotales:21,butacasOcupadas:20, precio: 12.10 },
+  { codigo: 3, titulo: 'GranTurismo',butacasTotales:76,butacasOcupadas:35, precio: 52.30 },
+  { codigo: 4, titulo: 'Gt4 Vuelta',butacasTotales:43,butacasOcupadas:21, precio: 17 },
+  { codigo: 5, titulo: '24h LeMans',butacasTotales:85,butacasOcupadas:43, precio: 20 },
   ];
+
+  reservaPeli={
+    nombreCliente: "",
+    peliculaSeleccionada:"",
+    cantidadButacas:0,
+    precioTotal:0
+  }
+
+  listaReserva = [];
 
   hayPeliculas() {
     return this.peliculas.length > 0;
   }
 
-  getButacasDisponibles(id: number): number {
-    const peli = this.peliculas.find(p => p.id === id);
-    return peli ? peli.butacasTotales - peli.butacasOcupadas : 0;
+
+  reserva() {
+    if (this.peli.butacasTotales - this.reservaPeli.cantidadButacas < 0) {
+      alert('No se puede reservar, no hay suficientes asientos disponibles');
+      return;
+    }
+
+    this.listaReserva.push({
+      cliente: this.reservaPeli.nombreCliente,
+      titulo: this.reservaPeli.peliculaSeleccionada,
+      precio: this.reservaPeli.precioTotal,
+      cantidadButacas: this.reservaPeli.cantidadButacas,
+      butacasOcupadas: this.peli.butacasOcupadas
+    });
+    this.reservaPeli.nombreCliente = "";
+    this.peli.titulo = "";
+    this.peli.precio = 0;
+    this.peli.butacasTotales = 0;
+    this.peli.butacasOcupadas= 0;
   }
 
-  reservar() {
-    const peli = this.peliculas.find(p => p.id === this.reserva.peliculaId);
-    const cantidad = this.reserva.cantidad;
+  seleccionar(peli: { codigo: number; titulo: string; precio: number; }) {
+    this.peli.codigo = peli.codigo;
+    this.peli.titulo = peli.titulo;
+    this.peli.precio = peli.precio;
+  }
 
-    if (!peli) {
-      alert('Seleccione una película válida');
-      return;
-    }
-
-    const disponibles = this.getButacasDisponibles(peli.id);
-
-    if (disponibles === 0) {
-      alert('No quedan butacas para esta película');
-      return;
-    }
-
-    if (cantidad > disponibles) {
-      alert(`Solo quedan ${disponibles} butacas para esta película`);
-      return;
-    }
-
-    peli.butacasOcupadas += cantidad;
-
-    this.reservas.push({
-      nombre: this.reserva.nombre,
-      pelicula: peli.titulo,
-      cantidad,
-      precioTotal: cantidad * peli.precio
-    });
-    
-    // Opcional: ver las reservas en la consola del navegador
-    console.log('Nueva reserva:', this.reservas[this.reservas.length - 1]);
-
-    this.reserva = { nombre: '', peliculaId: 0, cantidad: 1 };
+  modificar() {
+    for (let x = 0; x < this.peliculas.length; x++)
+      if (this.peliculas[x].codigo == this.peli.codigo) {
+        this.peliculas[x].titulo = this.peli.titulo;
+        this.peliculas[x].precio = this.peli.precio;
+        return;
+      }
+    alert('No existe el código de pelicula ingresado');
   }
 }
