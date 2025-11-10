@@ -46,3 +46,7 @@ ciudad1.generacionRegistro();
 
 const ciudad2 = new registroTemperatura("Valladolid")
 ciudad2.generacionRegistro();
+
+delete ciudad1.registroTemperatura;
+
+console.log(registroTemperatura.ciudad1);
