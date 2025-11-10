@@ -20,10 +20,18 @@
           <h1>Iniciar Sesión</h1>
           <div>
             <label for="email">Correo electrónico</label>
-            <input type="email" name="email" />
-            <div id="email_error" class="error_mesage" role="alert" aria-live="polite"> 
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              required
+              aria-required="true"
+              aria-label="introducir correo electronico"
+            />
+            <!-- implementacion de js -->
+            <!-- <div id="email_error" class="error_message" role="alert" aria-live="polite"> 
               por favor, introduzca un correo electronico valido
-            </div>
+            </div> -->
           </div>
 
           <div>
@@ -36,57 +44,78 @@
                 placeholder="8 caracteres mínimo"
                 minlength="8"
                 required
+                aria-required="true"
                 autocomplete="off"
+                aria-label="introducir contraseña"
               />
             </div>
 
             <button type="button" id="showPassword">Mostrar</button>
           </div>
-          <div id="password_error" class="error_mesage" role="alert" aria-live="polite"> 
-            La contreña debe de tener 8 caracteres como mínimo
-          </div>
+          <!-- implementacion de js -->
+          <!-- <div id="password_error" class="error_message" role="alert" aria-live="polite"> 
+            La contraseña debe de tener 8 caracteres como mínimo
+          </div> -->
 
           <div id="Recordarme">
-            <div>
-              <label>
-                <input type="checkbox" name="remember" required /> </label
-              >Recordarme
-            </div>
-
-            <a href="">¿Olvidaste tu contraseña?</a>
+            <label id="check">
+              <input 
+                type="checkbox" 
+                name="remember"
+                id="remember"
+                aria-checked="false"
+                aria-label="recordarme"
+              /> Recordarme
+            </label>
+            <a href=""
+                aria-label="Recuperar contraseña">
+                ¿Olvidaste tu contraseña?
+            </a>
           </div>
 
           <div>
-            <button type="submit" id="IniciarSesion">Iniciar sesión</button>
+            <button type="submit" 
+                    id="IniciarSesion"  
+                    aria-label="boton de iniciar sesion">
+                    Iniciar sesión
+            </button>
           </div>
         </form>
 
-        <p class="divisor">O continuar con</p>
+        <p class="divisor"
+            aria-live="polite">
+            O continuar con
+        </p>
 
         <div id="inicioSesion">
-          <a href="" target="_blank">
-            <img src="./logos/google.png" alt="google" />
+          <a href="" target="_blank" aria-label="iniciar con google">
+            <img src="./logos/google.png" alt="Logo de google" />
             google
           </a>
 
-          <a href="" target="_blank">
-            <img src="./logos/facebook.png" alt="facebook" />
+          <a href="" target="_blank" aria-label="iniciar con facebook">
+            <img src="./logos/facebook.png" alt="Logo de facebook" />
             facebook
           </a>
 
-          <a href="" target="_blank">
-            <img src="./logos/apple.png" alt="apple" />
+          <a href="" target="_blank" aria-label="iniciar con apple">
+            <img src="./logos/apple.png" alt="Logo de apple" />
             apple
           </a>
 
-          <a href="" target="_blank">
-            <img src="./logos/microsoft.png" alt="microsoft" />
+          <a href="" target="_blank" aria-label="iniciar con microsoft">
+            <img src="./logos/microsoft.png" alt="Logo de microsoft" />
             microsoft
           </a>
         </div>
         <p id="registro">
           ¿No tienes una cuenta?
-          <a href="" target="_blank" rel="noopener noreferrer">Registrate</a>
+          <a href="" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label="boton registrarse">
+            Registrate
+          </a>
         </p>
       </article>
     </main>
