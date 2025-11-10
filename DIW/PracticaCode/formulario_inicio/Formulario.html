@@ -7,6 +7,11 @@
     <title>Formulario</title>
   </head>
 
+  <script>
+    document.getElementById("showPassword");
+    addEventListener("click")
+  </script>
+
   <body>
     <main>
       <article>
@@ -16,6 +21,7 @@
           autocomplete="on"
           aria-describedby="login-help"
         >
+        <div id="login-help" class="sr-only">introduce correo y contraseña para iniciar sesión.</div>
           <!--se puede poner off para datos sensibles-->
           <h1>Iniciar Sesión</h1>
           <div>
@@ -28,7 +34,7 @@
               aria-required="true"
               aria-label="introducir correo electronico"
             />
-            <!-- implementacion de js -->
+
             <!-- <div id="email_error" class="error_message" role="alert" aria-live="polite"> 
               por favor, introduzca un correo electronico valido
             </div> -->
@@ -52,7 +58,7 @@
 
             <button type="button" id="showPassword">Mostrar</button>
           </div>
-          <!-- implementacion de js -->
+
           <!-- <div id="password_error" class="error_message" role="alert" aria-live="polite"> 
             La contraseña debe de tener 8 caracteres como mínimo
           </div> -->
