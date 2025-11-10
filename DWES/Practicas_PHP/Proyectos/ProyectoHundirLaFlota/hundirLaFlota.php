@@ -35,7 +35,7 @@ if (isset($_GET['casilla'])) {
 // Bucle para dar name y valor a los botones del juego
 for ($ix = 0; $ix < $x; $ix++) {
     for ($iy = 0; $iy < $y; $iy++) {
-        $clave = $ix . "_" . $iy;
+        $clave = $ix . $iy;
         $tabla[$ix][$iy] = "<button type='submit' name='casilla[$clave]' value='$clave'>?</button>";
     }
 }
@@ -46,6 +46,7 @@ if (isset($_GET['reset']) || $_SESSION['nIntentos']==-1 || $_SESSION['barcosHund
     session_destroy();
     session_start();
 
+    //iniciarmos de nuevo las sesiones
     $_SESSION['pulsCasillas'] = [];
     $_SESSION['posBarcos'] = [];
     $_SESSION['barcosHundidos'] = $nBarcos;
@@ -65,7 +66,7 @@ if (isset($_GET['reset']) || $_SESSION['nIntentos']==-1 || $_SESSION['barcosHund
 // Bucle para dar name y valor a los botones del juego
 for ($ix = 0; $ix < $x; $ix++) {
     for ($iy = 0; $iy < $y; $iy++) {
-        $clave = $ix . "_" . $iy;
+        $clave = $ix . $iy;
         $tabla[$ix][$iy] = "<button type='submit' name='casilla[$clave]' value='$clave'>?</button>";
 
         // acceso al array para cambiar de color la casilla que este seleccionada
@@ -97,16 +98,16 @@ print_r($_SESSION['posBarcos']);
         <table>
             <?php
             foreach ($tabla as $fila) {
-                ?>
+            ?>
                 <tr><?php
-                foreach ($fila as $valor) {
+                    foreach ($fila as $valor) {
                     ?>
                         <td id="tabla"><?= $valor ?></td><?php
-                }
-                ?>
+                                                        }
+                                                            ?>
                 </tr><?php
-            }
-            ?>
+                    }
+                        ?>
         </table>
         <!-- tabla donde estableceremos los datos del juego + boton de reset -->
         <table id="info">
