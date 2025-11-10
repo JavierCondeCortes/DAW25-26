@@ -37,11 +37,11 @@ class registroTemperatura{
         
         const media = (arrayRegistro.reduce((ac, n) => ac + n))/(arrayRegistro.length);
 
-        console.log("ciudad: " + this.#ciudad +" Temperaturas: "+arrayRegistro +" media: "+ media)
+        console.table("ciudad: " + this.#ciudad +" Temperaturas: "+arrayRegistro +" media: "+ media)
     }
 }
 
-const ciudad1 = new registroTemperatura("Oviedo",10);
+const ciudad1 = new registroTemperatura("Oviedo");
 ciudad1.generacionRegistro();
 
 const ciudad2 = new registroTemperatura("Valladolid")

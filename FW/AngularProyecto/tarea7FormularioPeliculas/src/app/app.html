@@ -1,38 +1,45 @@
-<h2>Formulario de Reserva</h2>
+<div>
+  <h1>Administración de peliículos</h1>
+  @if (hayPeliculas()) {
+  <table>
+    <thead>
+      <tr>
+        <th>Codigo</th>
+        <th>titulo</th>
+        <th>Precio</th>
+        <th>Seleccionar</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(peli of peliculas; track peli.codigo) {
+      <tr>
+        <td>{{peli.codigo}}</td>
+        <td>{{peli.titulo}}</td>
+        <td>{{peli.precio}}</td>
+        <td><button (click)="seleccionar(peli)">Seleccionar</button></td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  } @else {
+  <p>No hay peliculas.</p>
+  }
 
-<form (submit)="reservar()">
   <div>
-    <label for="nombre">Nombre:</label>
-    <input id="nombre" [(ngModel)]="reserva.nombre" name="nombre" required>
+    <p>
+      Codigo:<input type="number" [(ngModel)]="peli.codigo" />
+    </p>
+    <p>
+      titulo:<input type="text" [(ngModel)]="peli.titulo" />
+    </p>
+    <p>
+      precio:<input type="number" [(ngModel)]="peli.precio" />
+    </p>
+    <p>
+      <button (click)="reserva()">reserva</button>
+      <button (click)="modificar()">Modificar</button>
+    </p>
   </div>
-  
-  <div>
-    <label for="pelicula">Película:</label>
-    <select id="pelicula" [(ngModel)]="reserva.peliculaId" name="pelicula" required>
-      <option value="0" disabled>Seleccione una película</option>
-      <!-- Usamos la lista de películas para las opciones del select -->
-      <option *ngFor="let peli of peliculas" [value]="peli.id">
-        {{ peli.titulo }} ({{ peli.horario }})
-      </option>
-    </select>
-  </div>
-  
-  <div>
-    <label for="cantidad">Cantidad de butacas:</label>
-    <input id="cantidad" type="number" [(ngModel)]="reserva.cantidad" name="cantidad" min="1" required>
-  </div>
-  
-  <button type="submit" [disabled]="!hayPeliculas()">Reservar</button>
-</form>
+</div>
 
-<hr>
-
-<h2>Reservas Realizadas</h2>
-
-<p *ngIf="reservas.length === 0">No hay reservas realizadas aún.</p>
-
-<ul *ngIf="reservas.length > 0">
-  <li *ngFor="let res of reservas">
-    {{ res.nombre }} reservó {{ res.cantidad }} butaca(s) para "{{ res.pelicula }}". Precio total: ${{ res.precioTotal }}
-  </li>
-</ul>
+<router-outlet />

@@ -1,40 +1,25 @@
-div {
-    margin-bottom: 10px;
+/* Estilo para la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
-label {
-    display: block;
-    font-weight: bold;
+/* Estilo para las celdas de encabezado */
+th,
+td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: left;
 }
 
-input,
-select,
-button {
-    padding: 8px;
-    width: 200px;
+/* Estilo alternado para filas */
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
 
-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    width: auto;
-}
-
-button:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    background-color: #f9f9f9;
-    margin-bottom: 5px;
-    padding: 10px;
-    border: 1px solid #ddd;
+/* Estilo para el encabezado de la tabla */
+th {
+  background-color: #4caf50;
+  color: white;
 }
