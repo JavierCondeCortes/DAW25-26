@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="./hundirLaFlota.css">
-<!-- falta la creacion de la continuidad de los barcos punto 9 y 7 -->
+<!-- falta la creacion de la continuidad de los barcos, punto 9 -->
 
 <?php
 session_start();
@@ -28,6 +28,9 @@ if (isset($_GET['casilla'])) {
             array_push($_SESSION['pulsCasillas'], $valor);
             //por cada click baja el contador de intentos
             $_SESSION['nIntentos']--;
+        } else {
+            //en el caso de que la casilla seleccionada este repe se mostrara un mensaje advirtiendo que ya se seleccionó
+            echo ('-Casilla ya seleccionada ');
         }
     }
 }
@@ -42,7 +45,7 @@ for ($ix = 0; $ix < $x; $ix++) {
 
 //Generacion aleatoria de barcos en el panel, destruye y despues genera la nueva sesion para su implementacion
 //al presionar reset, al momento que los intentos se hayan acabado o hasta que los barcos sean 0
-if (isset($_GET['reset']) || $_SESSION['nIntentos']==-1 || $_SESSION['barcosHundidos'] == 0) {
+if (isset($_GET['reset']) || $_SESSION['nIntentos'] == -1 || $_SESSION['barcosHundidos'] == 0) {
     session_destroy();
     session_start();
 
@@ -51,22 +54,59 @@ if (isset($_GET['reset']) || $_SESSION['nIntentos']==-1 || $_SESSION['barcosHund
     $_SESSION['posBarcos'] = [];
     $_SESSION['barcosHundidos'] = $nBarcos;
 
-
+    //en la generacion de los barcos buscamos que se genere de forma aleatoria
     for ($i = 0; $i < $nBarcos; $i++) {
-        $posicionTabla = (rand(0, $x - 1) . "_" . rand(0, $y - 1));
+        $ejeX = rand(0, $x - 1);
+        $ejeY = rand(0, $y - 1);
+        $posicionTabla = $ejeX . "_" . $ejeY;
+
         if (!in_array($posicionTabla, $_SESSION['posBarcos'])) {
             $_SESSION['posBarcos'][] = $posicionTabla;
         } else {
             $i--;
         }
+
+        // //FASE EXPERIMENTAL----------------
+
+        // //una vez que se genere de forma aleatoria debemos de ver los laterales, como la tabal es 10x10, da igual si esta en una esquina que de vertical
+        // //u horizontal lo salva. La mision es generar un valor aleatorio que decida la direccion del barco, y apartir de ahí, generamos los barcos,
+        // //si vemos que hacia una direccion no puede (+), que la genere de forma contraria (-)
+        // $primerosBarcosAleatorios = $_SESSION['posBarcos'];
+        // //horizontal
+        // for ($i = 0; $i < count($primerosBarcosAleatorios); $i++) {
+        //     //la intencion es sacar los elementos del array es para que asi, que, estos elementos, no interfieran con los que se agregarán al array
+        //     //y poder analizar su ubicacion y poder interactuar con ellas.
+        //     $barcoAnalizar = array_splice($primerosBarcosAleatorios,1,1);
+
+        //     $posRand = rand(0, 1);
+
+        //     if ($posRand === 1) {
+        //         if ($_SESSION['posBarcos'][] = +$longBarcos - 1 < $x - 1) {
+        //             for ($i = 0; $i < $longBarcos - 1; $i++) {
+        //                 $ejeX = +$i;
+        //                 $posicionTabla = $ejeX . "_" . $ejeY;
+        //                 $_SESSION['posBarcos'][] = $posicionTabla;
+        //             }
+        //         }
+        //     }
+        // }
+        //     //FASE EXPERIMENTAL-------------------
     }
+
+
+
     header("Location: entrada.php");
+}
+
+//aviso de que no quedan intenos
+if ($_SESSION['nIntentos'] === 0) {
+    echo ('-Te quedaste sin intentos ');
 }
 
 // Bucle para dar name y valor a los botones del juego
 for ($ix = 0; $ix < $x; $ix++) {
     for ($iy = 0; $iy < $y; $iy++) {
-        $clave = $ix . $iy;
+        $clave = $ix . "_" . $iy;
         $tabla[$ix][$iy] = "<button type='submit' name='casilla[$clave]' value='$clave'>?</button>";
 
         // acceso al array para cambiar de color la casilla que este seleccionada
@@ -78,19 +118,23 @@ for ($ix = 0; $ix < $x; $ix++) {
             // pintar barco
             if (in_array($clave, $_SESSION['posBarcos']) && (in_array($clave, $_SESSION['pulsCasillas']))) {
                 $tabla[$ix][$iy] = "<button type='submit' id='barco' name='casilla[$clave]' value='$clave'>x</button>";
-                
             }
         }
     }
 }
 
 //condicion a cumplir para que el contador de barcos dados reduzca
-if(in_array(end($_SESSION['pulsCasillas']),$_SESSION['posBarcos'])==true){
+if (in_array(end($_SESSION['pulsCasillas']), $_SESSION['posBarcos']) == true) {
     $_SESSION['barcosHundidos']--;
+    echo ("-Tocado ");
 }
+
+// print_r($_SESSION['pulsCasillas']);
 print_r($_SESSION['posBarcos']);
 
 ?>
+
+<!-- ---------------------------------------------------FORMULARIO TABLA JUEGO--------------------------------------------------------------------- -->
 
 <form action="" method="get">
     <div id="principal">
@@ -102,17 +146,19 @@ print_r($_SESSION['posBarcos']);
                 <tr><?php
                     foreach ($fila as $valor) {
                     ?>
-                        <td id="tabla"><?= $valor ?></td><?php
-                                                        }
-                                                            ?>
-                </tr><?php
+                        <td id="tabla"><?= $valor ?></td>
+                    <?php
                     }
-                        ?>
+                    ?>
+                </tr>
+            <?php
+            }
+            ?>
         </table>
         <!-- tabla donde estableceremos los datos del juego + boton de reset -->
         <table id="info">
             <tr>
-                <td>Nº de intento/s: <?php  print_r($_SESSION['nIntentos']);?></td>
+                <td>Nº de intento/s: <?php print_r($_SESSION['nIntentos']); ?></td>
                 <td></td>
             </tr>
             <tr>
@@ -120,7 +166,7 @@ print_r($_SESSION['posBarcos']);
                 <td></td>
             </tr>
             <tr>
-                <td>Hundidos: <?php print_r($_SESSION['barcosHundidos'])?> </td>
+                <td>Hundidos: <?php print_r($_SESSION['barcosHundidos']) ?> </td>
                 <td></td>
             </tr>
             <tr>
