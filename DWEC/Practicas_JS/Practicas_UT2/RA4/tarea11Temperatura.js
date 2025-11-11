@@ -1,39 +1,35 @@
-    const maxTemp = 40;
-    const minTemp = -20;
+    const MAXTEMP = 40;
+    const MINTEMP = -20;
 
-class registroTemperatura{
+class RegistroTemperatura{
     #ciudad;
     #dias;
-    #temperatura;
+    #temperaturas;
 
-    constructor(ciudad, dias = 30, temperatura = Math.floor(Math.random()*(minTemp-maxTemp+1))+maxTemp){
+    constructor(ciudad, dias = 30, temperaturas){
         this.#ciudad = ciudad;
         this.#dias =  dias;
-        this.#temperatura = [] ?? temperatura;
+        this.#temperaturas = temperaturas;
     }
 
     //remove o editar,agregar ciudad
     set ciudad(nuevaCiudad){
-        if(nuevaCiudad == 0){
-            // delete temperatura.ciudad;
-            this.#ciudad = null;
-        }else{
-            this.#ciudad = nuevaCiudad;
-        }
+        this.#ciudad = nuevaCiudad;
     }
 
-    //establecer,modificar temperatura
-    set temperatura(nuevaTemperatura){
-        this.#temperatura = nuevaTemperatura[[]];
+    //establecer,modificar temperaturas
+    set temperaturas(nuevaTemperaturas){
+        this.#temperaturas = nuevaTemperaturas;
     }
 
     generacionRegistro(){
-        let arrayRegistro = [];
+        //ELIMINACIO DE VALORES AUXILIARES
+        // let arrayRegistro = [];
         for(let i=0; i<this.#dias; i++){
-            arrayRegistro.push(Math.floor(Math.random()*(minTemp-maxTemp+1))+maxTemp)
-            this.#temperatura = arrayRegistro;
+            // arrayRegistro.push(Math.floor(Math.random()*(MINTEMP-MAXTEMP+1))+MAXTEMP)
+            this.#temperaturas.push(Math.floor(Math.random()*(MINTEMP-MAXTEMP+1))+MAXTEMP)
+            // this.#temperaturas = arrayRegistro;
         }
-        const Registro = new registroTemperatura(this.#ciudad,arrayRegistro)
         
         const media = (arrayRegistro.reduce((ac, n) => ac + n))/(arrayRegistro.length);
 
@@ -41,12 +37,8 @@ class registroTemperatura{
     }
 }
 
-const ciudad1 = new registroTemperatura("Oviedo");
+const ciudad1 = new RegistroTemperatura("Oviedo");
 ciudad1.generacionRegistro();
 
-const ciudad2 = new registroTemperatura("Valladolid")
+const ciudad2 = new RegistroTemperatura("Valladolid")
 ciudad2.generacionRegistro();
-
-delete ciudad1.registroTemperatura;
-
-console.log(registroTemperatura.ciudad1);
