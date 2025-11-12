@@ -1,45 +1,31 @@
-<div>
-  <h1>Administración de peliículos</h1>
-  @if (hayPeliculas()) {
-  <table>
-    <thead>
-      <tr>
-        <th>Codigo</th>
-        <th>titulo</th>
-        <th>Precio</th>
-        <th>Seleccionar</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for(peli of peliculas; track peli.codigo) {
-      <tr>
-        <td>{{peli.codigo}}</td>
-        <td>{{peli.titulo}}</td>
-        <td>{{peli.precio}}</td>
-        <td><button (click)="seleccionar(peli)">Seleccionar</button></td>
-      </tr>
-      }
-    </tbody>
-  </table>
-  } @else {
-  <p>No hay peliculas.</p>
-  }
+<table>
+  <ul>
+    @for (pelis of peliculas; track pelis.id) {
+    <li>titulo: {{pelis.titulo}}, precio: {{pelis.precio}}, butatas disponibles: {{pelis.butacasTotales}}, butacas
+      ocupadas: {{pelis.butacasOcupadas}}</li>
+    }
+  </ul>
 
   <div>
     <p>
-      Codigo:<input type="number" [(ngModel)]="peli.codigo" />
+      titulo:<input type="number" min="0" [(ngModel)]="reser.idPeli">
     </p>
     <p>
-      titulo:<input type="text" [(ngModel)]="peli.titulo" />
+      nombre:<input type="string" [(ngModel)]="reser.nombre">
     </p>
     <p>
-      precio:<input type="number" [(ngModel)]="peli.precio" />
+      butacas:<input type="number" [(ngModel)]="reser.butacasReservadas">
     </p>
     <p>
       <button (click)="reserva()">reserva</button>
-      <button (click)="modificar()">Modificar</button>
     </p>
-  </div>
-</div>
 
+  </div>
+
+  <ul>
+    @for (reser of reservas; track reser.idPeli ) {
+      <li>idPeli: {{reser.idPeli}}, nombre: {{reser.nombre}}, butacasReservadas: {{reser.butacasReservadas}} precio total: {{reser.precioTotal}}</li>
+    }
+  </ul>
+</table>
 <router-outlet />
