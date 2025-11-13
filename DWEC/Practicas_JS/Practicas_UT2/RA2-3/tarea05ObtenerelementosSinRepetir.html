@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>ejercicio de arrays: obtener elementos sin repetir y ordenados</h1>
+    <script type="text/javascript">
+
+        let array =[4,0,3,4,7,11,3,6,8,1,8,8,0,2,3,1,2,5,7,3,2,5,1];
+        
+        document.write(array + "<br>");
+
+        let orden =array.sort(function(a,b){
+            return a-b
+
+        })
+
+        document.write(orden + "<br>");
+
+        for(let i=0 ; i<array.length-1 ; i++){
+            if (array[i]==array[i+1]){ // comprueba si la posicion i es el mismo valor al de la posicion i+1
+                array.splice(i+1,1); // el elemento i+1 es eliminado
+                i--; // retroceder para verificar el nuevo elemento en i+1
+            }
+        }
+
+        document.write(array);
+        
+
+    </script>
+    
+</body>
+</html>

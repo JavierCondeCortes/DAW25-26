@@ -67,7 +67,6 @@ if (isset($_GET["añadir"]) && isset($_GET["id"])) {
 }
 
 
-
 $sql = "SELECT * FROM tarea01cursos /*WHERE id=?*/";
 // CAMBIA: Preparar la consulta
 $stmt = $conn->prepare($sql);
