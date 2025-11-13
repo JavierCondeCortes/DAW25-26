@@ -10,69 +10,109 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
-  peli = {
-    codigo: 0,
+
+  pelis = {
+    id: 0,
     titulo: "",
-    precio: 0,
-    butacasTotales:0,
-    butacasOcupadas:0,
-  }
+    horario: "",
+    butacasTotales: 0,
+    butacasOcupadas: 0,
+    precio: 0
+  };
 
   peliculas = [
-  { codigo: 1, titulo: 'F1',butacasTotales:54,butacasOcupadas:10, precio: 10.55 },
-  { codigo: 2, titulo: 'Gt3 Race',butacasTotales:21,butacasOcupadas:20, precio: 12.10 },
-  { codigo: 3, titulo: 'GranTurismo',butacasTotales:76,butacasOcupadas:35, precio: 52.30 },
-  { codigo: 4, titulo: 'Gt4 Vuelta',butacasTotales:43,butacasOcupadas:21, precio: 17 },
-  { codigo: 5, titulo: '24h LeMans',butacasTotales:85,butacasOcupadas:43, precio: 20 },
+    { id: 0, titulo: "24h LeMans", horario: "15:00", butacasTotales: 43, butacasOcupadas: 20, precio: 6, },
+    { id: 1, titulo: "F1", horario: "20:00", butacasTotales: 40, butacasOcupadas: 15, precio: 5, },
+    { id: 2, titulo: "GranTurismo", horario: "16:00", butacasTotales: 37, butacasOcupadas: 30, precio: 7, },
+    { id: 3, titulo: "GT3World", horario: "18:00", butacasTotales: 59, butacasOcupadas: 50, precio: 9, }
   ];
 
-  reservaPeli={
-    nombreCliente: "",
-    peliculaSeleccionada:"",
-    cantidadButacas:0,
-    precioTotal:0
-  }
+  reser = {
+    nombre: "",
+    idPeli: 0,
+    butacasReservadas: 0,
+    precioTotal: 0
+  };
 
-  listaReserva = [];
-
-  hayPeliculas() {
-    return this.peliculas.length > 0;
-  }
+  //insertar valores al interactuar con el formulario de reserva principal
+  reservas: { idPeli: number; nombre: string; butacasReservadas: number; precioTotal: number }[] = [];
 
 
   reserva() {
-    if (this.peli.butacasTotales - this.reservaPeli.cantidadButacas < 0) {
-      alert('No se puede reservar, no hay suficientes asientos disponibles');
+
+    //error
+    // if (this.reser.nombre == "") {
+    //   if (this.reser.butacasReservadas <= 0) {
+    //     alert("debes de introducir un valor mayor que 0");
+    //     if (this.reser.butacasReservadas > (this.pelis.butacasTotales - this.pelis.butacasOcupadas)) {
+    //       alert("error , no hay suficientes butacas disponibles");
+    //     } else {
+    //       //agrega valores al array de objetos reservas 
+    //       this.reservas.push({
+    //         idPeli: this.reser.idPeli, nombre: this.reser.nombre, butacasReservadas: this.reser.butacasReservadas
+    //       });
+    //     }
+    //   }
+    // }
+
+    // Validar nombre
+    if (this.reser.nombre.trim() === "") {
+      alert("Debes introducir un nombre");
       return;
     }
 
-    this.listaReserva.push({
-      cliente: this.reservaPeli.nombreCliente,
-      titulo: this.reservaPeli.peliculaSeleccionada,
-      precio: this.reservaPeli.precioTotal,
-      cantidadButacas: this.reservaPeli.cantidadButacas,
-      butacasOcupadas: this.peli.butacasOcupadas
-    });
-    this.reservaPeli.nombreCliente = "";
-    this.peli.titulo = "";
-    this.peli.precio = 0;
-    this.peli.butacasTotales = 0;
-    this.peli.butacasOcupadas= 0;
-  }
+    // Validar número de butacas
+    if (this.reser.butacasReservadas <= 0) {
+      alert("Debes introducir un valor mayor que 0");
+      return;
+    }
 
-  seleccionar(peli: { codigo: number; titulo: string; precio: number; }) {
-    this.peli.codigo = peli.codigo;
-    this.peli.titulo = peli.titulo;
-    this.peli.precio = peli.precio;
-  }
+    // Buscar la película seleccionada
+    const peli = this.peliculas.find(p => p.id === this.reser.idPeli);
+    if (!peli) {
+      alert("Debes seleccionar una película válida");
+      return;
+    }
 
-  modificar() {
-    for (let x = 0; x < this.peliculas.length; x++)
-      if (this.peliculas[x].codigo == this.peli.codigo) {
-        this.peliculas[x].titulo = this.peli.titulo;
-        this.peliculas[x].precio = this.peli.precio;
-        return;
+    // Validar disponibilidad
+    const disponibles = peli.butacasTotales - peli.butacasOcupadas;
+    if (this.reser.butacasReservadas > disponibles) {
+      if (disponibles === 0) {
+        alert("No quedan butacas para esta película");
+      } else {
+        alert(`Solo quedan ${disponibles} butacas para esta película`);
       }
-    alert('No existe el código de pelicula ingresado');
+      return;
+    }
+
+    const precioTotal = this.reser.butacasReservadas * peli.precio;
+    this.reservas.push({
+      idPeli: this.reser.idPeli,
+      nombre: this.reser.nombre,
+      butacasReservadas: this.reser.butacasReservadas,
+      precioTotal
+    });
+
+
+    //agrega asientos ocupados a la pelicula seleccionada
+    for (let i = 0; i < this.peliculas.length; i++) {
+      if (this.peliculas[i].id === this.reser.idPeli) {
+        this.peliculas[i].butacasOcupadas += this.reser.butacasReservadas;
+      }
+    }
+
+    // reiniciamos los valores a su estado original
+    this.reser.nombre = "";
+    this.reser.idPeli = 0;
+    this.reser.butacasReservadas = 0;
   }
+
+  formulario(reser: { id: number; nombre: string; butacasReservadas: number }) {
+    this.reser.idPeli = reser.id;
+    this.reser.nombre = reser.nombre;
+    this.reser.butacasReservadas = reser.butacasReservadas;
+  }
+
+
+
 }
