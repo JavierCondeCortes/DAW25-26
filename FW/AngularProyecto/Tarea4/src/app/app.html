@@ -1,0 +1,14 @@
+<div>
+  <app-selectornumerico [minimo]="0" [maximo]="10" #selector1></app-selectornumerico>
+<button (click)="fijarSelector1(1)">fijar en 1</button>
+<button (click)="fijarSelector1(5)">fijar en 5</button>
+<button (click)="fijarSelector1(10)">fijar en 10</button>
+<hr>
+  <app-selectornumerico [minimo]="0" [maximo]="10" #selector2></app-selectornumerico>
+<button (click)="fijarSelector2(1)">fijar en 1</button>
+<button (click)="fijarSelector2(5)">fijar en 5</button>
+<button (click)="fijarSelector2(10)">fijar en 10</button>
+<hr>
+</div>
+  
+<router-outlet />
