@@ -1,0 +1,26 @@
+<!-- ejercicio 2 -->
+<div>
+    <table>
+        @for(producto of listaProductos; track producto.nombre) { 
+            <tr>
+                <td>Nombre: {{ producto.nombre }}</td>
+                <td>Precio: {{ producto.precio }}</td>
+                <td>Stock: {{ producto.stock }}</td>
+                <!-- ejercicio3 -->
+                <td>detalles: <button (click)="pulsado()">{{pulsacion}}</button></td>
+                <!-- ejercicio 3 fin -->
+            </tr>
+            @if(producto.stock==0){
+                <p>No hay Unidades disponibles de: {{ producto.nombre }}</p>
+            }@else{
+                @if (producto.stock <= 10) {
+                    <p>{{producto.nombre}} tiene un estock bajo</p>
+                }@else if (producto.stock <=20) {
+                    <p>{{producto.nombre}} tiene un stock </p>
+                }@else {
+                    <p>{{producto.nombre}} tiene mucho stock</p>
+                }
+            }
+        }   
+    </table>
+</div>
