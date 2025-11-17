@@ -1,0 +1,31 @@
+<table>
+  <ul>
+    @for (pelis of peliculas; track pelis.id) {
+    <li>titulo: {{pelis.titulo}}, precio: {{pelis.precio}}, butatas disponibles: {{pelis.butacasTotales}}, butacas
+      ocupadas: {{pelis.butacasOcupadas}}</li>
+    }
+  </ul>
+
+  <div>
+    <p>
+      titulo:<input type="number" min="0" [(ngModel)]="reser.idPeli">
+    </p>
+    <p>
+      nombre:<input type="string" [(ngModel)]="reser.nombre">
+    </p>
+    <p>
+      butacas:<input type="number" [(ngModel)]="reser.butacasReservadas">
+    </p>
+    <p>
+      <button (click)="reserva()">reserva</button>
+    </p>
+
+  </div>
+
+  <ul>
+    @for (reser of reservas; track reser.idPeli ) {
+      <li>idPeli: {{reser.idPeli}}, nombre: {{reser.nombre}}, butacasReservadas: {{reser.butacasReservadas}} precio total: {{reser.precioTotal}}</li>
+    }
+  </ul>
+</table>
+<router-outlet />
