@@ -1,0 +1,12 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+tr{
+    font-size: large;
+    background-color: bisque;
+    text-align: center;
+}
+td{
+    border: solid black 1px;
+    padding: 2px 10px;
+}
