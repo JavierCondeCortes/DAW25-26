@@ -1,10 +1,23 @@
 <app-eventos></app-eventos>
 <app-enlaces-prioridad></app-enlaces-prioridad>
-<div style="text-align:center">
-    <app-padre-hijo valor="{{valor1}}"></app-padre-hijo>
-    <hr>
-    <button (click)="tirar()">Tirar</button>
-    <hr>
+
+<!-- padrehijo -->
+
+<div style="text-align: center">
+  <app-padre-hijo valor="{{ valor1 }}"></app-padre-hijo>
+  <hr />
+  <button (click)="tirar()">Tirar</button>
+  <hr />
 </div>
+
+<!-- hijopadre -->
+
+<div style="text-align:center">
+  <h1>Prueba de la componente cronometro</h1>
+  <app-cronometro [inicio]="15" (multiplo10)="actualizar($event)"></app-cronometro>
+  <h2>Evento</h2>
+  <h3>{{mensaje}}</h3>
+</div>
+
 
 <router-outlet />
