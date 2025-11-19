@@ -38,4 +38,14 @@ En el tablero se notará que tenemos uno cuadros grises que, al hacer click podr
 
 ![imagen Agua Dado](./img/aguaDado.png)
 
+## DIAGRAMA DE FLUJO
+
 Vamos a realizar el diagrama de flujo donde podremos tener en cuenta como funciona el programa.
+
+Si el valor de intentos es menor o igual a 0 al numero casillas con barco, se asignaran 40 intentos de forma automática.
+
+Una vez estemos en la tabla de juego si encontramos todas las casillas de barcos antes de que se nos acaben los intentos se ganará la partida, sino perderemos.
+
+Si damos al boton de resetear, este nos mandará a la pagina de ``entrada.php`` reiniciando la partida
+
+![Diagrama de Flujo](./img/Diagramadeflujohundirlaflota.drawio.png)

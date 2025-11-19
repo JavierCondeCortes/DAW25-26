@@ -1,3 +1,15 @@
+
+
+
+
+
+
+
+
+
+
+
+
 //debio a la exportacion me marca este warning aunque el codigo sigue funcionando bien
 // ( (node:2588) [MODULE_TYPELESS_PACKAGE_JSON] is not specified and it doesn't parse as CommonJS. )
 //pero creo que solo es en la configuracion del package_json de mi equipo.
@@ -7,11 +19,12 @@ export default class Equipo{
     #fecha;
     #descripcion;
     #personal;
+    #dias
 
     constructor(descripcion, personal, dias ){
         this.#descripcion = descripcion;
         this.#personal = personal;
-        this.dias = dias;
+        this.#dias = dias;
     }
 
     //--set y get
