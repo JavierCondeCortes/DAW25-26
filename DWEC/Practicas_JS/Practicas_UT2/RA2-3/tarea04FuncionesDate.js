@@ -1,5 +1,6 @@
     //new date // hora actual
 let fecha = new Date();
+console.log(fecha)
 
 console.log(new Date()); //Thu Sep 25 2025 20:14:46 GMT+0200 (hora de verano de Europa central)
 
