@@ -10,16 +10,27 @@ import { DetalleProducto } from '../detalle-producto/detalle-producto';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('tienda-Javier-CondeCortes');
+  // protected readonly title = signal('tienda-Javier-CondeCortes');
 
+  // mensaje = "";
+
+  // actualizado(pulso:string){
+  //   this.mensaje = "pulsado";
+  // }
+
+  // oferta(oferta: string){
+  //   this.mensaje = "oferta aplicada";
+  // }
+
+    protected readonly title = signal('tienda-Javier-CondeCortes');
   mensaje = "";
 
-  actualizado(pulso:string){
-    this.mensaje = "pulsado";
+  actualizado(pulso: string) {
+    this.mensaje = pulso;
   }
 
-  oferta(oferta: string){
-    this.mensaje = "oferta aplicada";
+  oferta(oferta: string) {
+    this.mensaje = oferta;
   }
 }
 

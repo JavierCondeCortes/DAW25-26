@@ -11,6 +11,8 @@ import { GestionPista } from "./gestionPista.js";
 let valladolid = new RegistroFestival("FestivalInvierno","Valladolid");
 console.log(`${valladolid.nombre} se celebrará en: (${valladolid.provincia}) el ${valladolid.fecha}`);
 
+let valladolid2 = new RegistroFestival("FestivalInvierno2","palencia");
+console.log(`${valladolid2.nombre} se celebrará en: (${valladolid2.provincia}) el ${valladolid2.fecha}`);
 
 let pareja1 = new RegistroBailarines("paco","ramirez","estela","vazquez","as");
 console.log(pareja1.nombre1 +" y "+pareja1.nombre2 +" de nivel: "+ pareja1.nivel +" con nombre de grupo: "+ pareja1.nombrePareja());
