@@ -1,5 +1,20 @@
-<app-listado-productos (detalles)="actualizado($event)"></app-listado-productos>
+<!-- <app-listado-productos (detalles)="actualizado($event)"></app-listado-productos>
 <app-detalle-producto detalle></app-detalle-producto>
 <app-detalle-producto (descuento)="oferta($event)"></app-detalle-producto>
+-->
 
-<router-outlet />
+<h1>{{ title() }}</h1>
+
+<!-- Listado de productos con evento -->
+<app-listado-productos (detalles)="actualizado($event)"></app-listado-productos>
+
+<!-- Detalle con Input -->
+<app-detalle-producto [detalle]="'Producto especial'"></app-detalle-producto>
+
+<!-- Detalle con Output -->
+<app-detalle-producto (descuento)="oferta($event)"></app-detalle-producto>
+
+<!-- Mensaje que refleja los eventos -->
+<p>{{ mensaje }}</p>
+
+<router-outlet></router-outlet>
