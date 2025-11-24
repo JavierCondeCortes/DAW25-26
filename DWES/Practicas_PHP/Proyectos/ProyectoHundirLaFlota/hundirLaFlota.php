@@ -52,7 +52,7 @@ if (isset($_GET['reset']) || $_SESSION['nIntentos'] == -1 || $_SESSION['barcosHu
     //iniciarmos de nuevo las sesiones
     $_SESSION['pulsCasillas'] = [];
     $_SESSION['posBarcos'] = [];
-    $_SESSION['barcosHundidos'] = $nBarcos;
+    $_SESSION['barcosHundidos'] = $nBarcos*4;
 
     //en la generacion de los barcos buscamos que se genere de forma aleatoria
     for ($i = 0; $i < $nBarcos; $i++) {
@@ -68,28 +68,57 @@ if (isset($_GET['reset']) || $_SESSION['nIntentos'] == -1 || $_SESSION['barcosHu
 
         // //FASE EXPERIMENTAL----------------
 
-        // //una vez que se genere de forma aleatoria debemos de ver los laterales, como la tabal es 10x10, da igual si esta en una esquina que de vertical
-        // //u horizontal lo salva. La mision es generar un valor aleatorio que decida la direccion del barco, y apartir de ahí, generamos los barcos,
-        // //si vemos que hacia una direccion no puede (+), que la genere de forma contraria (-)
-        // $primerosBarcosAleatorios = $_SESSION['posBarcos'];
-        // //horizontal
-        // for ($i = 0; $i < count($primerosBarcosAleatorios); $i++) {
-        //     //la intencion es sacar los elementos del array es para que asi, que, estos elementos, no interfieran con los que se agregarán al array
-        //     //y poder analizar su ubicacion y poder interactuar con ellas.
-        //     $barcoAnalizar = array_splice($primerosBarcosAleatorios,1,1);
+        //en la generacion de los barcos buscamos que se genere de forma aleatoria
+        for ($i = 0; $i < $nBarcos; $i++) {
+            $ejeX = rand(0, $x - 1);
+            $ejeY = rand(0, $y - 1);
 
-        //     $posRand = rand(0, 1);
+            // Dirección aleatoria: 0 = horizontal, 1 = vertical
+            $posRand = rand(0, 1);
 
-        //     if ($posRand === 1) {
-        //         if ($_SESSION['posBarcos'][] = +$longBarcos - 1 < $x - 1) {
-        //             for ($i = 0; $i < $longBarcos - 1; $i++) {
-        //                 $ejeX = +$i;
-        //                 $posicionTabla = $ejeX . "_" . $ejeY;
-        //                 $_SESSION['posBarcos'][] = $posicionTabla;
-        //             }
-        //         }
-        //     }
-        // }
+            $posicionesBarco = [];
+
+            if ($posRand === 0) { // Horizontal
+                // Si cabe hacia la derecha, lo ponemos ahí; si no, hacia la izquierda
+                if ($ejeX + $longBarcos <= $x) {
+                    for ($j = 0; $j < $longBarcos; $j++) {
+                        $posicionesBarco[] = ($ejeX + $j) . "_" . $ejeY;
+                    }
+                } else {
+                    for ($j = 0; $j < $longBarcos; $j++) {
+                        $posicionesBarco[] = ($ejeX - $j) . "_" . $ejeY;
+                    }
+                }
+            } else { // Vertical
+                // Si cabe hacia abajo, lo ponemos ahí; si no, hacia arriba
+                if ($ejeY + $longBarcos <= $y) {
+                    for ($j = 0; $j < $longBarcos; $j++) {
+                        $posicionesBarco[] = $ejeX . "_" . ($ejeY + $j);
+                    }
+                } else {
+                    for ($j = 0; $j < $longBarcos; $j++) {
+                        $posicionesBarco[] = $ejeX . "_" . ($ejeY - $j);
+                    }
+                }
+            }
+
+            // Comprobar que ninguna posición esté ocupada antes de añadir
+            $ocupado = false;
+            foreach ($posicionesBarco as $pos) {
+                if (in_array($pos, $_SESSION['posBarcos'])) {
+                    $ocupado = true;
+                    break;
+                }
+            }
+
+            if ($ocupado) {
+                // Si hay solapamiento, repetimos este barco
+                $i--;
+            } else {
+                $_SESSION['posBarcos'] = array_merge($_SESSION['posBarcos'], $posicionesBarco);
+            }
+        }
+
         //     //FASE EXPERIMENTAL-------------------
     }
 
@@ -129,9 +158,6 @@ if (in_array(end($_SESSION['pulsCasillas']), $_SESSION['posBarcos']) == true) {
     echo ("-Tocado ");
 }
 
-// print_r($_SESSION['pulsCasillas']);
-print_r($_SESSION['posBarcos']);
-
 ?>
 
 <!-- ---------------------------------------------------FORMULARIO TABLA JUEGO--------------------------------------------------------------------- -->
@@ -142,16 +168,16 @@ print_r($_SESSION['posBarcos']);
         <table>
             <?php
             foreach ($tabla as $fila) {
-            ?>
+                ?>
                 <tr><?php
-                    foreach ($fila as $valor) {
+                foreach ($fila as $valor) {
                     ?>
                         <td id="tabla"><?= $valor ?></td>
-                    <?php
-                    }
-                    ?>
+                        <?php
+                }
+                ?>
                 </tr>
-            <?php
+                <?php
             }
             ?>
         </table>
@@ -162,11 +188,11 @@ print_r($_SESSION['posBarcos']);
                 <td></td>
             </tr>
             <tr>
-                <td>A hundir: <?php echo $nBarcos ?></td>
+                <td>barcos Totales: <?php echo $nBarcos*4 ?></td>
                 <td></td>
             </tr>
             <tr>
-                <td>Hundidos: <?php print_r($_SESSION['barcosHundidos']) ?> </td>
+                <td>restantes: <?php print_r($_SESSION['barcosHundidos']) ?> </td>
                 <td></td>
             </tr>
             <tr>
