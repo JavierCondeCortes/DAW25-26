@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // //abrir una ventana y carga la pagina "pag.html"
+        // v=window.open("BOM1.html","_blank","tollbar=no");
+        // v.close(); //cierrra ventana
+
+        // //carga de pagina cuya URL se especifica
+        // // window.location="https://www.google.com";
+
+        // //navega a la url anterior
+        // window.history.back();
+
+        // //define valor que aparece en la barra de estado
+        // window.status="Pagina de prueba";
+
+        // //imprime el documento contenido en la ventana
+        // window.print();
+
+        function f(){
+            document.images["1"].src = "./DOMimg/imagen.jpg"
+            document.images["2"].src = "./DOMimg/images.jpg"
+            document.images["3"].src = "./DOMimg/psocologia-emociones-imagenes.jpg"
+
+            let links = ["google.com","microsoft.com","imgur.com"];
+            alert(document.links[1]);
+        }
+        
+        </script>
+    
+</body onload="f()">
+<img name="1">
+<img name="2">
+<img name="3">
+
+    <button onclick="document.body.style.backgroundColor='red'">boton</button>
+    <button onclick="document.body.style.backgroundColor='white'">white</button>
+</html>
