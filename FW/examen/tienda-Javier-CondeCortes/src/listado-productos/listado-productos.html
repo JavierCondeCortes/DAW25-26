@@ -1,26 +1,29 @@
 <!-- ejercicio 2 -->
 <div>
-    <table>
-        @for(producto of listaProductos; track producto.nombre) { 
-            <tr>
-                <td>Nombre: {{ producto.nombre }}</td>
-                <td>Precio: {{ producto.precio }}</td>
-                <td>Stock: {{ producto.stock }}</td>
-                <!-- ejercicio3 -->
-                <td>detalles: <button (click)="pulsado()">{{pulsacion}}</button></td>
-                <!-- ejercicio 3 fin -->
-            </tr>
-            @if(producto.stock==0){
-                <p>No hay Unidades disponibles de: {{ producto.nombre }}</p>
-            }@else{
-                @if (producto.stock <= 10) {
-                    <p>{{producto.nombre}} tiene un estock bajo</p>
-                }@else if (producto.stock <=20) {
-                    <p>{{producto.nombre}} tiene un stock </p>
-                }@else {
-                    <p>{{producto.nombre}} tiene mucho stock</p>
-                }
-            }
-        }   
-    </table>
+  <table border="1" cellspacing="0" cellpadding="5">
+    <tr>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th>Stock</th>
+      <th>Detalles</th>
+      <th>Estado</th>
+    </tr>
+
+    @for (producto of listaProductos; track producto.nombre) {
+    <tr>
+      <td>{{ producto.nombre }}</td>
+      <td>{{ producto.precio }} €</td>
+      <td>{{ producto.stock }}</td>
+      <!-- ejercicio 3 -->
+      <td>
+        <button (click)="pulsado()">{{ pulsacion }}</button>
+      </td>
+      <!-- ejercicio 3 fin -->
+      <td>
+        @if (producto.stock == 0) { No hay unidades disponibles } @else if (producto.stock <= 10) {
+        Stock bajo } @else if (producto.stock <= 20) { Stock medio } @else { Mucho stock }
+      </td>
+    </tr>
+    }
+  </table>
 </div>
