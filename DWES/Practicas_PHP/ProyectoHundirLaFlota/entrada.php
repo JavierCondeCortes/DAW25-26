@@ -16,7 +16,7 @@ if (isset($_GET["enviar"])) {
 
     //lo que nos permite es que si el numero de intenes es menor al numero de barcos este se establecere como 40
     //puse cla condicion dero por tema de los criterios pero no tiene sentido alguno en este caso
-    if($valorIntentos === 0 || $valorIntentos< 4){
+    if($valorIntentos === 0 || $valorIntentos< 4*4){
         $_SESSION["nIntentos"] = 40;
     }else{
         $_SESSION["nIntentos"] = $valorIntentos;

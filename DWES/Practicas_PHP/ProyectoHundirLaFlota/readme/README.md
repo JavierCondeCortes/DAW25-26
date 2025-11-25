@@ -38,6 +38,13 @@ En el tablero se notará que tenemos uno cuadros grises que, al hacer click podr
 
 ![imagen Agua Dado](./img/aguaDado.png)
 
+El boton de reiniciar nos rederigira al inicio (mostrando la primera imagen)
+
+Cuando sucede algo en el teblero, ocurre lo siguiente, mostrandonos texto de lo ocurrido.
+![alerta1](./img/alert1.png)
+![alerta2](./img/alert2.png)
+![alerta3](./img/alert3.png)
+
 ## DIAGRAMA DE FLUJO
 
 Vamos a realizar el diagrama de flujo donde podremos tener en cuenta como funciona el programa.
