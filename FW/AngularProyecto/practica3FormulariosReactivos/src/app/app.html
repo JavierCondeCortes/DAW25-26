@@ -1,0 +1,43 @@
+<form [formGroup]="usuario" (ngSubmit)="submit()">
+  <p>
+    nombre:
+    <input type="text" formControlName="nombre" />
+  </p>
+  <p>
+    email:
+    <input type="text" formControlName="email" />
+  </p>
+  <p>
+    biografia:
+    <textarea formControlName="biografia"></textarea>
+  </p>
+  <p>
+    genero: <input type="radio" formControlName="genero" value="Masculino" />Masculino
+    <input type="radio" formControlName="genero" value="Femenino" />Femenino
+    <input type="radio" formControlName="genero" value="Otro" />Otro
+  </p>
+  <div formGroupName="preferencias">
+    <p>
+      interes: <input type="checkbox" formControlName="intereses" />Música
+      <input type="checkbox" formControlName="intereses" />Deportes
+      <input type="checkbox" formControlName="intereses" />Videojuegos
+      <input type="checkbox" formControlName="intereses" />Lectura
+    </p>
+    <p>
+      experiencia:
+      <select formControlName="experiencia">
+        <option>Básico</option>
+        <option>Intermedio</option>
+        <option>Avanzado</option>
+      </select>
+    </p>
+  </div>
+  <button type="submit">Enviar</button>
+</form>
+
+<p>nombre:{{ nombre }}</p>
+<p>email:{{ email }}</p>
+<p>biografia:{{ biografia }}</p>
+<p>genero:{{ genero }}</p>
+<p>interes:{{ interes }}</p>
+<p>experiencia:{{ experiencia }}</p>
