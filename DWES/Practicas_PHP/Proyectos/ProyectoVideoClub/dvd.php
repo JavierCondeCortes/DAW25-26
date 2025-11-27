@@ -1,5 +1,4 @@
-<?php 
-include_once("soporte.php");
+<!-- include_once("soporte.php");
 
 class Dvd extends Soporte{
     public function __construct(
@@ -20,7 +19,26 @@ class Dvd extends Soporte{
         echo "<p>".$this->formaPantalla."</p>";
         echo "<p>".$this->idiomas."</p>";
     }
-}
-?>
+} -->
 
+<?php 
+include_once("soporte.php");
+
+class Dvd extends Soporte {
+    public function __construct(
+        int $numero,
+        int $precio,
+        string $titulo,
+        private string $formaPantalla,
+        private string $idiomas
+    ){
+        parent::__construct($numero, $precio, $titulo);
+    }
+
+    public function muestraResumen() {
+        parent::muestraResumen();
+        echo "<p>Pantalla: ".$this->formaPantalla."</p>";
+        echo "<p>Idiomas: ".$this->idiomas."</p>";
+    }
+}
 ?>
