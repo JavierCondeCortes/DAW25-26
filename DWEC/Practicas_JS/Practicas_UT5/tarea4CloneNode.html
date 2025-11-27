@@ -1,0 +1,20 @@
+<div id="id0" style="border:solid 1px black"> <p>contenedor</p> </div>
+<script>
+    const donde = document.querySelector('#id0');
+    const e1 = document.createElement('DIV');
+    e1.innerHTML="<strong>prueba1</strong>"
+    //apend hace que sean hijos
+    donde.append(e1);
+    const d = document.querySelector('#id0');
+    //true lo que hace es que copia todo del elemento d
+    const copiaProfunda = d.cloneNode(true);
+    //after hace que sean hermanos
+    d.after(copiaProfunda);
+    //true lo que hace es que copia los atributos d
+    const copiaLigera = d.cloneNode(false);
+    d.after(copiaLigera);
+    //elimina la original
+    d.remove();
+    console.log(copiaProfunda.outerHTML);
+    console.log(copiaLigera.outerHTML);
+</script>

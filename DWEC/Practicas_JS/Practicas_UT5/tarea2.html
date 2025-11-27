@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="0">
+      esto es un contenedor
+      <a href="http://uno.com">uno</a>
+      <div id="1">
+        estos es un bloque
+        <a href="http://dos.com">dos</a>
+        <input name="prueba" type="text" />
+        <input name="prueba" type="text" />
+      </div>
+    </div>
+
+    <script>
+      let divs = document.getElementsByTagName("div");
+
+      for (let i = 0; i < divs.length; i++) {
+        console.log(divs[i].textContent); 
+      }
+
+      for (let i = 0; i < document.getElementsByTagName("a").length; i++) {
+        console.log(
+          (document.getElementsByTagName("a").innerHTML =
+            document.links[i].href)
+        );
+      }
+    </script>
+  </body>
+</html>
