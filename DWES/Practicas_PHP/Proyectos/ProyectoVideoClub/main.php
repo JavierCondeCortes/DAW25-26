@@ -25,13 +25,16 @@ $cliente = new Cliente("Javier", 101);
 $videoclub = new VideoClub("Mi Videoclub");
 
 // Añadir productos y socios
-$videoclub->agregarProducto($cinta);
-$videoclub->agregarProducto($dvd);
-$videoclub->agregarProducto($juego);
+$videoclub->incluirProducto($cinta);
+$videoclub->incluirProducto($dvd);
+$videoclub->incluirProducto($juego);
 $videoclub->agregarSocio($cliente);
 
 // Simular alquiler
 echo "<h2>Alquiler</h2>";
 $cliente->alquilarSoporte($dvd);
 $cliente->alquilarSoporte($juego);
+$cliente->listaAlquileres();
+$cliente->devolverSoporte($juego);
+$cliente->listaAlquileres();
 ?>
