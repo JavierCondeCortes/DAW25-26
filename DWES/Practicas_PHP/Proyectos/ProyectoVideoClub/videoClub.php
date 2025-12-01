@@ -20,7 +20,7 @@ class VideoClub {
         private int $numSocios = 0
     ){}
 
-    public function agregarProducto($producto) {
+    public function incluirProducto($producto) {
         $this->productos[] = $producto;
         $this->numProductos++;
     }
@@ -29,5 +29,26 @@ class VideoClub {
         $this->socios[] = $cliente;
         $this->numSocios++;
     }
+
+    public function incluirCintaVideo($video){
+        $this->incluirProducto($video);
+    }
+    public function incluirJuego($juego){
+        $this->incluirProducto($juego);
+    }
+    public function incluirDvd($dvd){
+        $this->incluirProducto($dvd);
+    }
+
+    public function listaProductos(){
+        print_r($this->listaProductos());
+    }
+    // public function listaSocios(){
+    //     print_r($this->listaSocios());
+    // }
+    public function alquilerSocioProducto(){
+
+    }
+    
 }
 ?>

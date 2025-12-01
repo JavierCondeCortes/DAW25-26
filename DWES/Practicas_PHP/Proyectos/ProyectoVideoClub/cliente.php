@@ -16,7 +16,6 @@ class Cliente {
         public string $nombre,
         private int $numero,
         private array $soportesAlquilados = [], 
-        private int $duracion = 0,
         private int $maxAlquilerConcurrente = 3
     ){}
 
@@ -27,6 +26,30 @@ class Cliente {
         } else {
             echo "<p>No puedes alquilar más soportes.</p>";
         }
+    }
+    public function tieneAlquilado($soporte){
+        if(in_array($soporte,$this->soportesAlquilados)){
+            echo("el soporte esta alquilado");
+        }else{
+            echo("el soporte no esta alquilado");
+        }
+    }
+
+    public function devolverSoporte($soporte){
+        $posicion = array_search($soporte,$this->soportesAlquilados);
+        if($posicion == true){
+            array_splice($this->soportesAlquilados,$posicion,1);
+        }
+    }
+    
+    public function listaAlquileres(){
+        print_r($this->soportesAlquilados);
+    }
+
+    public function resumenCliente(){
+        echo("nombre".$this->nombre);
+        echo("numero".$this->numero);
+        echo("soportes Alquilados".$this->soportesAlquilados);
     }
 }
 ?>
