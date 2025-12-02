@@ -1,23 +1,15 @@
-<!-- class Cliente{
-    public function __construct(
-        public string $nombre,
-        private int $numero,
-        private array $soportesAlquilados=[], 
-        private int $duracion,
-        private int $maxAlquilerConcurrente
-    )
-    {}
-} -->
-
-
-<?php 
+<?php
 class Cliente {
     public function __construct(
         public string $nombre,
         private int $numero,
-        private array $soportesAlquilados = [], 
+        private array $soportesAlquilados = [],
         private int $maxAlquilerConcurrente = 3
-    ){}
+    ) {}
+
+    public function getNumero() {
+        return $this->numero;
+    }
 
     public function alquilarSoporte($soporte) {
         if(count($this->soportesAlquilados) < $this->maxAlquilerConcurrente) {
@@ -27,11 +19,12 @@ class Cliente {
             echo "<p>No puedes alquilar más soportes.</p>";
         }
     }
-    public function tieneAlquilado($soporte){
-        if(in_array($soporte,$this->soportesAlquilados)){
-            echo("el soporte esta alquilado");
-        }else{
-            echo("el soporte no esta alquilado");
+
+    public function tieneAlquilado($soporte) {
+        if(in_array($soporte, $this->soportesAlquilados, true)) {
+            echo "<p>El soporte está alquilado.</p>";
+        } else {
+            echo "<p>El soporte no está alquilado.</p>";
         }
     }
 
@@ -44,14 +37,12 @@ class Cliente {
     
     public function listaAlquileres(){
         print_r($this->soportesAlquilados);
-        echo("<br>");
     }
 
-    public function resumenCliente(){
-        echo("nombre".$this->nombre);
-        echo("numero".$this->numero);
-        echo("soportes Alquilados".$this->soportesAlquilados);
+    public function resumenCliente() {
+        echo "<p>Nombre: ".$this->nombre."</p>";
+        echo "<p>Número: ".$this->numero."</p>";
+        $this->listaAlquileres();
     }
 }
 ?>
-
