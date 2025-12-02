@@ -1,5 +1,6 @@
 <?php
 // Incluimos las clases necesarias
+
 include_once("VideoClub.php");
 
 // Crear videoclub
