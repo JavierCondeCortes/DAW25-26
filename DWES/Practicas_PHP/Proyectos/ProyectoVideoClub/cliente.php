@@ -44,6 +44,7 @@ class Cliente {
     
     public function listaAlquileres(){
         print_r($this->soportesAlquilados);
+        echo("<br>");
     }
 
     public function resumenCliente(){
