@@ -1,0 +1,14 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Open tarea4CloneNode.html",
+            "file": "e:\\DAW25-26\\DWEC\\Practicas_JS\\Practicas_UT5\\tarea4CloneNode.html"
+        }
+    ]
+}
