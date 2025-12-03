@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        function cambiarParrafo(elemento){
+            elemento.previousElementSibling.innerText = elemento.innerText;
+            elemento.nextElementSibling.innerText = elemento.innerText;
+        }
+    </script>
+
+    <h1>
+      dom_09 - Ejercicio: Cambiar el párrafo anterior y siguientes con el
+      contenido del párrafo sobre el que se hace click
+    </h1>
+    <hr />
+    <p onclick="cambiarParrafo(this)">Primer párrafo</p>
+    <p onclick="cambiarParrafo(this)">Segundo párrafo</p>
+    <p onclick="cambiarParrafo(this)">Tercer párrafo</p>
+    <p onclick="cambiarParrafo(this)">Cuarto párrafo</p>
+    <p onclick="cambiarParrafo(this)">Quinto párrafo</p>
+    <p onclick="cambiarParrafo(this)">Sexto párrafo</p>
+    <p onclick="cambiarParrafo(this)">Séptimo párrafo</p>
+    <p onclick="cambiarParrafo(this)">Octavo párrafo</p>
+  </body>
+</html>
