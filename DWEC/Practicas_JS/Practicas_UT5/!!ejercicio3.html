@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="principal" style="border: solid 1px black; height: 300px; width: 700px; margin: 0 auto; background-color: orange;" >
+        <script>
+            const mensajes=[
+                "Tomate una sidra, el manzanal",
+                "Compramos tu coche en compramos tu coche.com",
+                "carglass cambia, carglass repara",
+                "mazda-mx5 cup",
+                "simioLab",
+                "petunias a precio de pepinillos"
+            ];
+            
+
+            mensajes.forEach(anuncio => {
+                let caja = document.createElement("div");
+                caja.textContent=`${anuncio}`;
+                caja.appendChild("#principal")
+                // let ejeX = Math.random(Math.floor()*querySelector("#principal").getAttribute('width'));
+                // let estilo =`witdth:100px; border:solid 1px black; position:relative`
+            });
+        </script>
+    </div>
+
+</body>
+</html>

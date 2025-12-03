@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        function mostrarInformacion(){
+            let elementos=document.getElementsByTagName('*');
+            sinDuplicados= [...new Set(elementos)];
+            
+            for(let i=0;i<sinDuplicados.length;i++){
+              let cantidad=0;
+              elementos[i].nodeType;
+              longitudElementos=document.getElementsByTagName(sinDuplicados[i]).length;
+              if(cantidad<longitudElementos.length){
+                  cantidad=longitudElementos.length
+              }
+            }
+            alert(`${cantidad}`);
+        }
+    </script>
+    <h1>dom_04 - Ejercicio: Obtener la etiqueta que aparece más veces</h1>
+    <hr id="linea1" />
+
+    <p id="parrafo1">Primer párrafo</p>
+    <p id="parrafo2">Segundo párrafo</p>
+    <p id="parrafo3">Tercer párrafo</p>
+    <p id="parrafo4">Cuarto párrafo</p>
+    <p id="parrafo5">Quinto párrafo</p>
+    <p id="parrafo6">Sexto párrafo</p>
+    <p id="parrafo7">Séptimo párrafo</p>
+    <p id="parrafo8">Octavo párrafo</p>
+    <p id="parrafo9">Noveno párrafo</p>
+    <p id="parrafo10">Décimo párrafo</p>
+    <hr id="linea2" />
+    <button onclick="mostrarInformacion();" id="boton1">
+      Mostrar información
+    </button>
+  </body>
+</html>
