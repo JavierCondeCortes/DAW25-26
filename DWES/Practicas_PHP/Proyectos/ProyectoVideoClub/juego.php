@@ -1,4 +1,6 @@
 <?php
+namespace Dwes\ProyectoVideoclub;
+
 include_once("Soporte.php");
 
 class Juego extends Soporte {
@@ -13,14 +15,13 @@ class Juego extends Soporte {
         parent::__construct($numero, $precio, $titulo);
     }
 
-    public function jugadoresPosibles() {
-        echo "<p>Jugadores posibles: ".$this->minNumJugadores." - ".$this->maxNumJugadores."</p>";
+    public function jugadoresPosibles(): void {
+        echo "<p>Jugadores posibles: {$this->minNumJugadores} - {$this->maxNumJugadores}</p>";
     }
 
-    public function muestraResumen() {
+    public function muestraResumen(): void {
         parent::muestraResumen();
         $this->jugadoresPosibles();
-        echo "<p>Consola: ".$this->consola."</p>";
+        echo "<p>Consola: {$this->consola}</p>";
     }
 }
-?>
