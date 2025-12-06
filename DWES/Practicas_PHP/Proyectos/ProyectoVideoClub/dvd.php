@@ -1,4 +1,6 @@
 <?php
+namespace Dwes\ProyectoVideoclub;
+
 include_once("Soporte.php");
 
 class Dvd extends Soporte {
@@ -12,10 +14,9 @@ class Dvd extends Soporte {
         parent::__construct($numero, $precio, $titulo);
     }
 
-    public function muestraResumen() {
+    public function muestraResumen(): void {
         parent::muestraResumen();
-        echo "<p>Pantalla: ".$this->formaPantalla."</p>";
-        echo "<p>Idiomas: ".$this->idiomas."</p>";
+        echo "<p>Pantalla: {$this->formaPantalla}</p>";
+        echo "<p>Idiomas: {$this->idiomas}</p>";
     }
 }
-?>
