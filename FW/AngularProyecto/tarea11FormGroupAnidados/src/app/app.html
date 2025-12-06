@@ -1,23 +1,59 @@
-<form [formGroup]="formAlumno" (ngSubmit)="submit()">
-<p>Dni:
-  <input type="text" formControlName="dni">
-</p>
-<p>Nombre:
-  <input type="text" formControlName="nombre">
-</p>
-<div formGroupName="notas">
-  <p>primera nota:
-    <input type="text" formControlName="nota1">
+<form [formGroup]="formUsuario" (ngSubmit)="submit()">
+  <p>Nombre:
+    <input type="text" formControlName="nombre">
   </p>
-  <p>segunda nota:
-    <input type="text" formControlName="nota2">
+  <p>Email:
+    <input type="text" formControlName="email">
   </p>
-  <p>tercera nota:
-    <input type="text" formControlName="nota3">
+  <p>Biografía:
+    <textarea formControlName="biografia"></textarea>
   </p>
-</div>
-<p><button type="submit">Confirmar</button></p>
+
+  <p>Género:</p>
+  <label><input type="radio" formControlName="genero" value="Masculino"> Masculino</label>
+  <label><input type="radio" formControlName="genero" value="Femenino"> Femenino</label>
+  <label><input type="radio" formControlName="genero" value="Otro"> Otro</label>
+
+  <div formGroupName="preferencias">
+    <p>Intereses:</p>
+    <label><input type="checkbox" (change)="onCheckboxChange($event, 'Música')"> Música</label>
+    <label><input type="checkbox" (change)="onCheckboxChange($event, 'Deportes')"> Deportes</label>
+    <label><input type="checkbox" (change)="onCheckboxChange($event, 'Videojuegos')"> Videojuegos</label>
+    <label><input type="checkbox" (change)="onCheckboxChange($event, 'Lectura')"> Lectura</label>
+
+    <p>Nivel de experiencia en Angular:</p>
+    <select formControlName="experiencia">
+      <option value="Básico">Básico</option>
+      <option value="Intermedio">Intermedio</option>
+      <option value="Avanzado">Avanzado</option>
+    </select>
+  </div>
+
+  <p>
+    <button type="submit">Enviar</button>
+    <button type="button" (click)="resetForm()">Reset Formulario</button>
+    <button type="button" (click)="resetUsuarios()">Reset Usuarios</button>
+  </p>
 </form>
-<p>resultado: {{resultado}}</p>
+
+<hr>
+
+<h3>Usuarios registrados</h3>
+
+@if (usuarios.length === 0) {
+  <p>No hay usuarios registrados todavía.</p>
+} @else {
+  <ul>
+    @for (u of usuarios; track u) {
+      <li>
+        <strong>{{ u.nombre }}</strong> ({{ u.email }})  
+        <br> Género: {{ u.genero }}  
+        <br> Experiencia: {{ u.preferencias?.experiencia }}  
+        <br> Intereses: {{ (u.preferencias?.intereses || []).join(', ') }}  
+        <br> Biografía: {{ u.biografia }}
+      </li>
+    }
+  </ul>
+}
 
 <router-outlet />
