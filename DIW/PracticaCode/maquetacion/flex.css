@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+html{
+    /* tener en cuenta que se pone backgroud al html porque lo hereda del body */
+    background-color: white;
+
+}
+
+body{
+    /* no muestra el backgroud debido a que esta detras de todos los elementos  */
+    background-color: brown;
+    border: 2px solid black;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+header{
+    background-color: antiquewhite;
+
+    flex-basis: 100%;
+    padding: 1rem 0rem;
+
+}
+
+nav{
+    flex-basis: 100%;
+}
+
+nav > ol{
+    background-color:wheat;
+    list-style-type: none;
+
+    
+        /* con flex */
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    
+        /* recorte de navbar */
+    /* max-width: 50%; */
+    /* transform: translate(50%); */
+}
+nav li{
+    flex-grow:1;
+    text-align: center;
+}
+
+.aside{
+    background-color: burlywood;
+}
+.izq{
+    float: left;
+    flex-basis: 20%;
+}
+.der{
+    float: right;
+    flex-basis: 250px;
+}
+
+main{
+    background-color: bisque;
+    flex-basis: 30%;
+    flex-grow: 1;
+    float: left;
+}
+
+main img{
+
+    margin: 1rem;
+    display: block;
+        /*esto no nos permitira realizar los movimientos con top, left.. debio a que esta modo estatico no afectan las coordenadas*/
+    /* position: static;  */
+        /*buen uso del float*/
+    /* float: left; */
+    transition-duration: 1s;
+}
+
+main img:hover{
+    transition: all;
+    transition-duration: 1s;
+    transform: scale(105%);
+
+}
+
+footer{
+    background-color:wheat;
+    flex-basis: 100%;
+    text-align: center;
+    padding: 1rem 0rem;
+    /*elimina el efecto de float*/
+    clear: both;
+}
+
