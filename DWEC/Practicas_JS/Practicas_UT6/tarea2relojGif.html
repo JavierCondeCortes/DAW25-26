@@ -8,39 +8,46 @@
             position: absolute;
             color: red;
             font-size: 24px;
-            transform: translate(-50%, -50%);
             pointer-events: none;
         }
 
-        #cursorGif {
+        img {
             position: absolute;
             width: 50px;
             height: 50px;
             pointer-events: none; 
             transform: translate(50%, 50%);
         }
+
+        span{
+            border: solid 1px black;
+        }
+        p{
+            border: solid 1px black;
+        }
     </style>
 </head>
 
 <body>
 
-    <img id="cursorGif" src="https://cdn.pixabay.com/animation/2023/05/12/07/29/07-29-43-548_512.gif" alt="cursor gif">
+    <p>p</p>
+    <span>span</span>
+    <img src="https://cdn.pixabay.com/animation/2023/05/12/07/29/07-29-43-548_512.gif" alt="cursor gif">
 
     <script>
 
         document.addEventListener("click", function (event) {
-            const hashtag = document.createElement("span");
-            hashtag.textContent = "#";
+            const hashtag = document.createElement("p");
+            hashtag.textContent = "*";
             hashtag.classList.add("hashtag");
-
             hashtag.style.left = event.clientX + "px";
             hashtag.style.top = event.clientY + "px";
-
             document.body.appendChild(hashtag);
         });
 
         // Hacer que el GIF siga al cursor
-        const gif = document.getElementById("cursorGif");
+                            //getElementById("img"); //devuelve solo un elemento
+        const gif = document.getElementsByTagName("img")[0]; //devuelve un array de elementos
         document.addEventListener("mousemove", function (event) {
             gif.style.left = event.clientX + "px";
             gif.style.top = event.clientY + "px";
