@@ -3,6 +3,7 @@
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,3 +32,8 @@ Route::get('cliente/{id?}', function($id = 1){
 
 //vista + variables
 Route::view('pepinillo','si',['id' => 333, 'nombre' => 'manolo']);
+
+//obtencion de datos a la web
+use App\Http\Controllers\PagesController;
+Route::get('modelos',[PagesController::class, 'modelos']);
+?>
