@@ -1,7 +1,7 @@
 <?php 
 namespace ejercicio01Importar;
 
-const IVA =0.21;
+const IVA=0.21;
 
 class Producto {
     public $nombre;
