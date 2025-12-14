@@ -1,0 +1,74 @@
+/* =========================================
+   1. RESET Y ESTILOS GLOBALES
+   ========================================= */
+:root {
+    --base: #e2e8f0;
+    /* Para el HTML */
+    --primary: #4f46e5;
+    /* Índigo */
+    --secondary: #ec4899;
+    /* Rosa */
+    --dark: #1e293b;
+    /* Gris oscuro */
+    --light: #f8fafc;
+    /* Gris muy claro */
+    --white: #ffffff;
+    --gray: #94a3b8;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --radius: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background-color: var(--base);
+    color: var(--dark);
+    line-height: 1.6;
+    padding: 2rem;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Ejercicio 6: Santo Grial */
+.main-layout {
+    background-color: var(--white);
+    min-height: 400px;
+    border: 1px solid #ccc;
+    /* EL ALUMNO DEBE APLICAR FLEX AQUÍ */
+}
+
+.sidebar {
+    background-color: var(--dark);
+    color: var(--white);
+    padding: 1rem;
+}
+
+.content {
+    background-color: var(--light);
+    padding: 2rem;
+}
+
+/*codigo propuesto*/
+.main-layout{
+    display: flex;
+}
+
+.sidebar{
+    display: flex;
+    flex-basis: 250px;
+}
+.content{
+    display: flex;
+}

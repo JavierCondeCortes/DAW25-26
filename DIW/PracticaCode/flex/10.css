@@ -1,0 +1,103 @@
+/* =========================================
+   1. RESET Y ESTILOS GLOBALES
+   ========================================= */
+:root {
+    --base: #e2e8f0;
+    /* Para el HTML */
+    --primary: #4f46e5;
+    /* Índigo */
+    --secondary: #ec4899;
+    /* Rosa */
+    --dark: #1e293b;
+    /* Gris oscuro */
+    --light: #f8fafc;
+    /* Gris muy claro */
+    --white: #ffffff;
+    --gray: #94a3b8;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --radius: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background-color: var(--base);
+    color: var(--dark);
+    line-height: 1.6;
+    padding: 2rem;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Ejercicio 10: Mega Footer */
+
+.mega-footer {
+    background-color: #0f172a;
+    color: #94a3b8;
+    padding: 2rem;
+    min-height: 600px;
+    /* Altura fija IMPORTANTE para que sobre espacio */
+}
+
+.footer-col {
+    background-color: rgba(255,
+            255,
+            255,
+            0.05);
+    /* Fondo sutil para ver los bloques */
+    padding: 1rem;
+    width: 150px;
+    border-radius: 4px;
+}
+
+.footer-col h4 {
+    color: var(--white);
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 0.5rem;
+}
+
+/*codigo proporcionado*/
+.mega-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* o la altura que quieras */
+    gap: 1rem;
+
+}
+
+/* Cada fila */
+.mega-footer {
+    display: flex;
+    flex-wrap: wrap;
+    /* los bloques saltan de fila */
+    height: 600px;
+    /* altura fija para generar espacio sobrante */
+    padding: 2rem;
+    gap: 1rem;
+    /* separación mínima entre filas y columnas */
+    align-content: space-between;
+    /* reparte el espacio vertical sobrante entre filas */
+}
+
+/* Los bloques NO crecen ni horizontal ni verticalmente */
+.footer-col {
+    flex: 0 0 220px;
+    /* no grow, no shrink, ancho fijo */
+    display: flex;
+    flex-direction: column;
+    /* iguala altura dentro de cada fila */
+}

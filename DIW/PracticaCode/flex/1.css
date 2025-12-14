@@ -1,0 +1,84 @@
+/* =========================================
+   1. RESET Y ESTILOS GLOBALES
+   ========================================= */
+:root {
+    --base: #e2e8f0;
+    /* Para el HTML */
+    --primary: #4f46e5;
+    /* Índigo */
+    --secondary: #ec4899;
+    /* Rosa */
+    --dark: #1e293b;
+    /* Gris oscuro */
+    --light: #f8fafc;
+    /* Gris muy claro */
+    --white: #ffffff;
+    --gray: #94a3b8;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --radius: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background-color: var(--base);
+    color: var(--dark);
+    line-height: 1.6;
+    padding: 2rem;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Ejercicio 1: Navbar */
+
+.navbar {
+    background-color: var(--white);
+    padding: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+
+.menu-items li a {
+    color: var(--dark);
+    font-weight: 500;
+    padding: 0.5rem;
+}
+
+.menu-items li a:hover {
+    color: var(--primary);
+}
+
+/*  Solución propuesta  */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu-items {
+    display: flex;
+    gap: 3rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
