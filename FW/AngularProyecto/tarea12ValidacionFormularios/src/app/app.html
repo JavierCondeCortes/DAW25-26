@@ -1,0 +1,26 @@
+<form [formGroup]="formularioContacto", (submit)="submit()">
+  <p>Nombre:
+    <input type="text" formControlName="nombre" required>
+    @if(this.formularioContacto.get('nombre')?.errors?.['required']){
+      <span>Tiene que haber un nombre</span>
+    }
+    @if(this.formularioContacto.get('nombre')?.errors?.['minlength']){
+      <span>Tiene que tener minimo 10 caracteres</span>
+    }
+  </p>
+  <p>email:
+    <input type="text" formControlName="email" required>
+    @if(this.formularioContacto.get('email')?.errors?.['required']){
+      <span>Tiene que haber un email</span>
+    }
+  </p>
+  <p>mensaje:
+    <textarea rows="10" cols="70" formControlName="mensaje"></textarea>
+    @if(this.formularioContacto.get('mensaje')?.errors?.['required']){
+      <span>Tiene que haber un mensaje</span>
+    }
+  </p>
+  <button type="submit"> confirmar</button>
+</form>
+<div>{{resultado}}</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,9 @@
+<form [formGroup]="formularioNumero" (submit)="submit()">
+  <p>introducir numero
+    <input type="number" formControlName="numero">
+    @if(this.formularioNumero.get('numero')?.errors?.['multiplo5']){
+      <span>Debe ser multiplo de 5</span>
+    }
+  </p>
+  <button type="submit" [disabled]="formularioNumero.invalid">confirmar</button>
+</form>

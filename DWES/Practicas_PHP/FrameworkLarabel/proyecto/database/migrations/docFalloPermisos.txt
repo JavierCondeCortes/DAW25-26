@@ -1,0 +1,27 @@
+echo $env:USERNAME
+
+icacls .\bootstrap\cache /grant "javier.concor":F /T
+
+ls .\bootstrap\
+
+php artisan config:clear
+php artisan cache:clear
+php artisan view:clear
+php artisan migrate
+
+
+-para que ejecute todas de nuevo 
+
+php artisan migrate:refresh
+
+-borra todo y empieza de nuevo (recomendada)
+
+php artisan migrate:fresh
+
+-crea nueva migracion
+
+php artisan make:migration update_inscripcion_table
+
+-borra solo la tabla de migracion selecionada y vuelve a ejecutar
+
+php artisan migrate
