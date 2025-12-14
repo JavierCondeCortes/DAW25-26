@@ -1,0 +1,67 @@
+/* =========================================
+   1. RESET Y ESTILOS GLOBALES
+   ========================================= */
+:root {
+    --base: #e2e8f0;
+    /* Para el HTML */
+    --primary: #4f46e5;
+    /* Índigo */
+    --secondary: #ec4899;
+    /* Rosa */
+    --dark: #1e293b;
+    /* Gris oscuro */
+    --light: #f8fafc;
+    /* Gris muy claro */
+    --white: #ffffff;
+    --gray: #94a3b8;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --radius: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background-color: var(--base);
+    color: var(--dark);
+    line-height: 1.6;
+    padding: 2rem;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Ejercicio 9: Mosaico */
+.gallery-mosaic {
+    background-color: var(--dark);
+    padding: 1rem;
+}
+
+/*codigo propuesto*/
+.gallery-mosaic {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.gallery-mosaic .photo {
+    flex: 1 1 250px;
+    /* Crece, encoge y tiene un tamaño base */
+    max-width: 400px;
+    /* Límite para evitar estiramientos excesivos */
+}
+
+.gallery-mosaic img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}

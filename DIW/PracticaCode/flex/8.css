@@ -1,0 +1,68 @@
+/* =========================================
+   1. RESET Y ESTILOS GLOBALES
+   ========================================= */
+:root {
+    --base: #e2e8f0;
+    /* Para el HTML */
+    --primary: #4f46e5;
+    /* Índigo */
+    --secondary: #ec4899;
+    /* Rosa */
+    --dark: #1e293b;
+    /* Gris oscuro */
+    --light: #f8fafc;
+    /* Gris muy claro */
+    --white: #ffffff;
+    --gray: #94a3b8;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --radius: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background-color: var(--base);
+    color: var(--dark);
+    line-height: 1.6;
+    padding: 2rem;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Ejercicio 8: Etiquetas */
+
+.tags-container {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius);
+    max-width: 700px;
+    /* Ancho limitado para forzar el salto de línea */
+}
+
+.tag {
+    background-color: #e0e7ff;
+    color: var(--primary);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/*codigo propuesto*/
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.83rem;
+}
