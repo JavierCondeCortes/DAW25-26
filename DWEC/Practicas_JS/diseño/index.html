@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>FP Smart Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <header id="main-nav" class="nav">
+        <a href="index.html" class="logo" style="text-decoration:none;">
+            <div class="mark">JC</div>
+            <div class="brand">FP Smart</div>
+        </a>
+        <nav class="actions" id="nav-actions">
+            <!-- Filled by JS depending on session -->
+        </nav>
+    </header>
+
+    <section class="hero" role="img" aria-label="Banner FP Smart Tracker">
+        <div class="overlay">
+            <div class="inner">
+                <h2>FP Smart Tracker</h2>
+
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <h2 class="lead-title">FP Smart Tracker</h2>
+        <p class="lead-desc">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br>
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br>
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br>
+                    Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.
+                </p>
+        <div class="center-cta" id="main-cta">
+            <!-- CTA injected by JS when not logged -->
+        </div>
+
+        <h3 style="margin-top:28px">¿Por qué?</h3>
+        <div class="why">
+            <div class="card-why">
+                <h3>Integración</h3>
+                <p>Integración sencilla con sistemas existentes y fácil despliegue en centros educativos.</p>
+            </div>
+            <div class="card-why">
+                <h3>Privacidad</h3>
+                <p>Control de accesos y gestión de datos conforme a normativa, con opciones para centros y alumnado.</p>
+            </div>
+            <div class="card-why">
+                <h3>Analítica</h3>
+                <p>Informes y seguimiento que ayudan a mejorar la gestión educativa frente a soluciones tradicionales.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h4>FP Smart</h4>
+                <a href="#">Acerca de</a>
+                <a href="#">Contacto</a>
+            </div>
+            <div>
+                <h4>Recursos</h4>
+                <a href="#">Empresas</a>
+                <a href="#">Alumnado</a>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <a href="#">Términos</a>
+                <a href="#">Privacidad</a>
+            </div>
+            <div>
+                <h4>Soporte</h4>
+                <a href="#">Ayuda</a>
+                <a href="#">Estado</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simula estado de sesión. Cambia a true para ver estado logueado.
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === '1';
+
+        const navActions = document.getElementById('nav-actions');
+        const mainNav = document.getElementById('main-nav');
+        const mainCta = document.getElementById('main-cta');
+
+        function renderNav(){
+            navActions.innerHTML = '';
+            if(!isLoggedIn){
+                const btnReg = document.createElement('button');
+                btnReg.className = 'btn outline'; btnReg.textContent = 'Registrarse';
+                const btnLogin = document.createElement('button');
+                btnLogin.className = 'btn primary'; btnLogin.textContent = 'Iniciar sesión';
+                btnLogin.addEventListener('click', () => { window.location.href = 'login.html'; });
+                navActions.appendChild(btnReg);
+                navActions.appendChild(btnLogin);
+                mainNav.classList.remove('centered');
+
+                // CTA
+                mainCta.innerHTML = '';
+                const cta = document.createElement('button');
+                cta.className = 'btn primary';
+                cta.textContent = 'Iniciar sesión';
+                cta.addEventListener('click', () => { window.location.href = 'login.html'; });
+                mainCta.appendChild(cta);
+            } else {
+                mainNav.classList.add('logged-in');
+                const menu = document.createElement('div');
+                menu.className = 'menu';
+                ['Empresas','Alumnado','Mi zona'].forEach(text =>{
+                    const b = document.createElement('button');
+                    b.className = 'btn outline'; b.textContent = text;
+                    // Redirect 'Empresas' to empresa.html when logged in
+                    if(text === 'Empresas'){
+                        b.addEventListener('click', () => { window.location.href = 'empresa.html'; });
+                    }
+                    menu.appendChild(b);
+                });
+                const logout = document.createElement('button');
+                logout.className = 'btn logout-btn outline';
+                logout.textContent = 'Cerrar sesión';
+                logout.addEventListener('click', () => {
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('currentUser');
+                    window.location.href = 'index.html';
+                });
+                navActions.appendChild(menu);
+                navActions.appendChild(logout);
+                mainCta.innerHTML = '';
+            }
+        }
+
+        renderNav();
+    </script>
+</body>
+</html>

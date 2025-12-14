@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>INICIO DE SESION</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>/* small fallback */
+        :root{ --primary:#1e90ff }
+    </style>
+</head>
+<body>
+    <header class="nav">
+        <a href="index.html" class="logo" style="text-decoration:none;">
+            <div class="mark">JC</div>
+            <div class="brand">MiSitio</div>
+        </a>
+        <button class="btn-register">Registrarse</button>
+    </header>
+
+    <main class="container">
+        <section class="card" aria-labelledby="login-title">
+            <h1 id="login-title" class="title">INICIO DE SESION</h1>
+
+            <form action="#" method="post" novalidate>
+                <div>
+                    <label for="user">Usuario</label>
+                    <input id="user" name="user" type="text" placeholder="nombre de usuario">
+                </div>
+
+                <div>
+                    <label for="pass">Contraseña</label>
+                    <input id="pass" name="password" type="password" placeholder="contraseña">
+                </div>
+
+                <div class="row">
+                    <label class="remember"><input type="checkbox" name="remember"> Recordar</label>
+                    <a class="link-small" href="#">¿no recuerdas la contraseña?</a>
+                </div>
+
+                <button type="submit" class="btn-primary">INICIAR</button>
+
+                <a class="center-link" href="#">¿Aún no tienes cuenta?</a>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        // Usuarios válidos
+        const validUsers = {
+            'admin': '1234',
+            'usuario': 'contraseña',
+            'javier conde': '1234'
+        };
+
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const user = document.getElementById('user').value.trim();
+            const pass = document.getElementById('pass').value.trim();
+
+            if (validUsers[user] && validUsers[user] === pass) {
+                localStorage.setItem('isLoggedIn', '1');
+                localStorage.setItem('currentUser', user);
+                
+                let timerInterval;
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Bienvenido, ' + user + '!',
+                    html: 'Redirigiendo en <b></b> milisegundos.',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                        const timer = Swal.getPopup().querySelector('b');
+                        timerInterval = setInterval(() => {
+                            timer.textContent = `${Swal.getTimerLeft()}`;
+                        }, 100);
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval);
+                    }
+                }).then((result) => {
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        window.location.href = 'index.html';
+                    }
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Usuario o contraseña incorrectos',
+                    text: 'Intenta nuevamente con las credenciales correctas.',
+                });
+            }
+        });
+    </script>
+</body>
+</html>
