@@ -7,8 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    {!! 'hola' !!}
-    <p>el nombre es: {{$nombre}}</p>
-    <p>El ID es: {{ $id }}</p>
+    <a href="./formulario.blade.php">formulario</a>
+    <a href="./editar.blade.php">editar</a>
+
+
 </body>
 </html>
