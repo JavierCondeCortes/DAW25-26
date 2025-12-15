@@ -1,49 +1,149 @@
 <form [formGroup]="registroEventosForm" (ngSubmit)="submit()">
-  <h2>Datos Evento</h2>
-  <p>
-    <input type="text" formControlName="" required>
-  </p>
-  <p>
-    <input type="text" formControlName="" required>
-  </p>
-  <p>
-    <input type="text" formControlName="" required>
-  </p>
-  <p>
-    <input type="text" formControlName="" required>
-  </p>
-  <h2>Ubicacion Evento</h2>
-  <p>
-    <input type="text" formControlName="" required>
-  </p>
-  <p>
-    <input type="text" formControlName="" required>
-  </p>
-  <h2>Preferiencias Organizador</h2>
-  <p>
-    <input type="text" formControlName="" required>
-  </p>
-  <p>
-    <input type="text" formControlName="" required>
-  </p>
-  <p>
-    <input type="text" formControlName="" required>
-  </p>
-  <h2>Datos Organizador</h2>
-  <p>
-    <input type="text" formControlName="" required>
-  </p>
-  <p>
-    <input type="text" formControlName="" required>
-  </p>
-  <p>
-    <input type="text" formControlName="" required>
-  </p>
-  <h2>Terminos</h2>
-  <p>
-    <input type="text" formControlName="" required>
-  </p>
+
+  <!-- DATOS EVENTO -->
+  <div formGroupName="datosEvento">
+    <h2>Datos Evento</h2>
+
+    <p>
+      <input type="text" formControlName="titulo" placeholder="Título">
+      @if (registroEventosForm.get('datosEvento.titulo')?.invalid 
+            && registroEventosForm.get('datosEvento.titulo')?.touched) {
+        <span class="error">El título debe tener entre 5 y 10 caracteres.</span>
+      }
+    </p>
+
+    <p>
+      <input type="text" formControlName="descripcion" placeholder="Descripción">
+      @if (registroEventosForm.get('datosEvento.descripcion')?.invalid 
+            && registroEventosForm.get('datosEvento.descripcion')?.touched) {
+        <span class="error">La descripción debe tener mínimo 10 caracteres.</span>
+      }
+    </p>
+
+    <p>
+      <input type="date" formControlName="fecha">
+      @if (registroEventosForm.get('datosEvento.fecha')?.invalid 
+            && registroEventosForm.get('datosEvento.fecha')?.touched) {
+        <span class="error">La fecha es obligatoria.</span>
+      }
+    </p>
+
+    <p>
+      <input type="number" formControlName="aforo" placeholder="Aforo">
+      @if (registroEventosForm.get('datosEvento.aforo')?.invalid 
+            && registroEventosForm.get('datosEvento.aforo')?.touched) {
+        <span class="error">El aforo debe estar entre 1 y 500.</span>
+      }
+    </p>
+  </div>
+
+  <!-- UBICACIÓN -->
+  <div formGroupName="ubicacionEvento">
+    <h2>Ubicación Evento</h2>
+
+    <p>
+      <input type="text" formControlName="ciudad" placeholder="Ciudad">
+      @if (registroEventosForm.get('ubicacionEvento.ciudad')?.invalid 
+            && registroEventosForm.get('ubicacionEvento.ciudad')?.touched) {
+        <span class="error">La ciudad es obligatoria.</span>
+      }
+    </p>
+
+    <p>
+      <input type="text" formControlName="pais" placeholder="País">
+      @if (registroEventosForm.get('ubicacionEvento.pais')?.invalid 
+            && registroEventosForm.get('ubicacionEvento.pais')?.touched) {
+        <span class="error">El país es obligatorio.</span>
+      }
+    </p>
+  </div>
+
+  <!-- PREFERENCIAS -->
+  <div formGroupName="preferenciasOrganizador">
+    <h2>Preferencias Organizador</h2>
+
+    <p>
+      gratuito:
+      <input type="radio" formControlName="gratuito" value="si"> Sí
+      <input type="radio" formControlName="gratuito" value="no"> No
+      @if (registroEventosForm.get('preferenciasOrganizador.gratuito')?.invalid 
+            && registroEventosForm.get('preferenciasOrganizador.gratuito')?.touched) {
+        <span class="error">Selecciona si es gratuito.</span>
+      }
+    </p>
+
+    <p>
+      modalidad:
+      <input type="radio" formControlName="modalidad" value="online"> Online
+      <input type="radio" formControlName="modalidad" value="presencial"> Presencial
+      @if (registroEventosForm.get('preferenciasOrganizador.modalidad')?.invalid 
+            && registroEventosForm.get('preferenciasOrganizador.modalidad')?.touched) {
+        <span class="error">Selecciona una modalidad.</span>
+      }
+    </p>
+
+    <p>
+      categoría:
+      <input type="radio" formControlName="categoria" value="musica"> Música
+      <input type="radio" formControlName="categoria" value="deporte"> Deporte
+      <input type="radio" formControlName="categoria" value="teatro"> Teatro
+      @if (registroEventosForm.get('preferenciasOrganizador.categoria')?.invalid 
+            && registroEventosForm.get('preferenciasOrganizador.categoria')?.touched) {
+        <span class="error">Selecciona una categoría.</span>
+      }
+    </p>
+  </div>
+
+  <!-- DATOS ORGANIZADOR -->
+  <div formGroupName="datosOrganizador">
+    <h2>Datos Organizador</h2>
+
+    <p>
+      <input type="text" formControlName="nombre" placeholder="Nombre">
+      @if (registroEventosForm.get('datosOrganizador.nombre')?.invalid 
+            && registroEventosForm.get('datosOrganizador.nombre')?.touched) {
+        <span class="error">El nombre debe tener mínimo 3 caracteres.</span>
+      }
+    </p>
+
+    <p>
+      <input type="email" formControlName="email" placeholder="Email">
+      @if (registroEventosForm.get('datosOrganizador.email')?.invalid 
+            && registroEventosForm.get('datosOrganizador.email')?.touched) {
+        <span class="error">Introduce un email válido.</span>
+      }
+    </p>
+
+    <p>
+      <input type="text" formControlName="telefono" placeholder="Teléfono">
+      @if (registroEventosForm.get('datosOrganizador.telefono')?.invalid 
+            && registroEventosForm.get('datosOrganizador.telefono')?.touched) {
+        <span class="error">El teléfono es obligatorio.</span>
+      }
+    </p>
+  </div>
+
+  <!-- ACEPTACIÓN -->
+  <div formGroupName="aceptacion">
+    <h2>Términos</h2>
+
+    <p>
+      <input type="checkbox" formControlName="terminos"> Acepto los términos
+      @if (registroEventosForm.get('aceptacion.terminos')?.invalid 
+            && registroEventosForm.get('aceptacion.terminos')?.touched) {
+        <span class="error">Debes aceptar los términos.</span>
+      }
+    </p>
+  </div>
+
+  <button type="submit" [disabled]="registroEventosForm.invalid">
+    Enviar
+  </button>
+
 </form>
 
-
-<router-outlet></router-outlet>
+<!-- JSON RESULTADO -->
+@if (submittedData()) {
+  <h3>Datos enviados:</h3>
+  <pre>{{ submittedData() | json }}</pre>
+}
