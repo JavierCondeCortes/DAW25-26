@@ -2,73 +2,81 @@
    1. RESET Y ESTILOS GLOBALES
    ========================================= */
 :root {
-    --base: #e2e8f0;
-    /* Para el HTML */
-    --primary: #4f46e5;
-    /* Índigo */
-    --secondary: #ec4899;
-    /* Rosa */
-    --dark: #1e293b;
-    /* Gris oscuro */
-    --light: #f8fafc;
-    /* Gris muy claro */
-    --white: #ffffff;
-    --gray: #94a3b8;
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --radius: 8px;
+  --base: #e2e8f0;
+  /* Para el HTML */
+  --primary: #4f46e5;
+  /* Índigo */
+  --secondary: #ec4899;
+  /* Rosa */
+  --dark: #1e293b;
+  /* Gris oscuro */
+  --light: #f8fafc;
+  /* Gris muy claro */
+  --white: #ffffff;
+  --gray: #94a3b8;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --radius: 8px;
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-    background-color: var(--base);
-    color: var(--dark);
-    line-height: 1.6;
-    padding: 2rem;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background-color: var(--base);
+  color: var(--dark);
+  line-height: 1.6;
+  padding: 2rem;
 }
 
 /* Estilo genérico para botones (para que se vean clicables) */
 button,
 .btn-buy {
-    border: none;
-    background-color: var(--primary);
-    color: var(--white);
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.3s;
+  border: none;
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
 }
 
 button:hover,
 .btn-buy:hover {
-    background-color: #4338ff;
+  background-color: #4338ff;
 }
 
 /* Ejercicio 2: Hero */
 
 .hero-section {
-    background-image: url("https://placehold.co/1200x600/222/999");
-    color: var(--white);
-    text-align: center;
+  background-image: url("https://placehold.co/1200x600/222/999");
+  color: var(--white);
+  text-align: center;
 }
 
 .hero-section h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
-
-
 /*prepuesta de codigo*/
-.hero-section{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
+body {
+  padding: 0;
+}
+
+.hero-section {
+  height: 100vh;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-size: contain; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
