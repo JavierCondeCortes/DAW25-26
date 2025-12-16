@@ -11,6 +11,7 @@ class PagesController extends Controller
     {
         $modelos = Modelo::all();
         return view('modelos', compact('modelos'));
+        return auth();
     }
 
     public function crear(Request $request)
