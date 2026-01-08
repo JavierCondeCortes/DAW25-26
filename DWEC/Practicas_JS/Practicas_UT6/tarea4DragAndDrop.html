@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="tarea4.css" />
+  </head>
+  <body>
+    
+    <div draggable="true" class="caja1">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKblYlODsuLw9OgPGsCu6QdO1zt41qZVj4Wo1xdtEcd9zhIsXl5TDnJcw3r_O5xm1sEMnbZHMwIa064Mh9NpFRgzNtZ1fQYA5Qzfv4eVTG4g&s=10"
+        alt=""
+      />
+    </div>
+
+    <div draggable="true" class="caja2"></div>
+    <script>
+      const caja1 = document.querySelector(".caja1");
+      const caja2 = document.querySelector(".caja2");
+      caja1.addEventListener("drop", () => {
+        caja1.append(caja2.children[0]);
+      });
+      caja2.addEventListener("drop", () => {
+        if (caja2.childElementCount === 0) {
+          caja2.append(caja1.children[0]);
+        }
+      });
+
+      caja1.addEventListener("dragover", function (e) {
+        e.preventDefault();
+      });
+      caja2.addEventListener("dragover", function (e) {
+        e.preventDefault();
+      });
+    </script>
+
+    <!-- dragstart
+    drag
+    dragtend
+    dragenter
+    dragover
+    dragleave
+    drop -->
+    
+  </body>
+</html>

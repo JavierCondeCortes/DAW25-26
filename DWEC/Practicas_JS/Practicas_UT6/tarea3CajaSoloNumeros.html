@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <form action="">
+            <label for="numeros">Esta caja solo admite números</label>
+            <input type="text" onkeydown="onlyNumber(event)" />
+        </form>
+
+        <script>
+            function onlyNumber(event) {
+                const key = event.keyCode;
+
+                const esNumero = (key >= 48 && key <= 57) || (key >= 96 && key <= 105);
+                const teclasPermitidas = [8,37,38,39,46];
+
+                if (!esNumero && !teclasPermitidas.includes(key)) {
+                event.preventDefault();
+                }
+            }
+        </script>
+    </body>
+</html>
