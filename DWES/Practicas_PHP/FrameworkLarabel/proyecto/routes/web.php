@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,5 +32,12 @@ Route::middleware('auth')->group(function () {
 Route::get('/form',function(){
     return view('si');
 });
+
+
+//ns otro ejercicio
+
+use App\Http\Controllers\RelacionController;
+
+Route::get('muchos',[RelacionController::class, 'index']);
 
 require __DIR__.'/auth.php';
