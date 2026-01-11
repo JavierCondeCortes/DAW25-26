@@ -75,7 +75,8 @@ a {
 
 .menu-items {
     display: flex;
-    gap: 3rem;
+    /* gap: 3vw; */
+    gap: calc( 1rem + 3vw )
 }
 
 .logo {

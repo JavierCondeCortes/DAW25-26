@@ -1,15 +1,17 @@
+import { JsonPipe } from '@angular/common';
 import { Component, signal } from '@angular/core';
-import { ReactiveFormsModule,FormBuilder,FormGroup,Validators, Form } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,ReactiveFormsModule],
+  imports: [RouterOutlet, ReactiveFormsModule, JsonPipe],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   registroEventosForm: FormGroup;
+  submittedData = signal<any | null>(null);
 
   constructor(private fb: FormBuilder) {
 
@@ -28,23 +30,26 @@ export class App {
       }),
 
       preferenciasOrganizador: this.fb.group({
-        gratuito:[''],
-        modalidad:['',Validators.required],
-        categoria:['',Validators.required]
+        gratuito: ['', Validators.required],
+        modalidad: ['', Validators.required],
+        categoria: ['', Validators.required]
       }),
 
       datosOrganizador: this.fb.group({
-        nombre:['', Validators.required, Validators.minLength(3)],
-        email:['',Validators.required],
-        telefono:['',Validators.required] //validacion personalizada
+        nombre: ['', [Validators.required, Validators.minLength(3)]],
+        email: ['', [Validators.required, Validators.email]],
+        telefono: ['', Validators.required]
       }),
 
       aceptacion: this.fb.group({
-        terminos:['',Validators.required]
+        terminos: [false, Validators.requiredTrue]
       })
     });
   }
-  submit(){
-    
+
+  submit() {
+    if (this.registroEventosForm.valid) {
+      this.submittedData.set(this.registroEventosForm.value);
+    }
   }
 }
