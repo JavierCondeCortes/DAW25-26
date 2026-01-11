@@ -38,34 +38,18 @@ body {
     box-shadow: var(--shadow);
 }
 
-.avatar img {
+.avatar {
     border-radius: 50%;
     border: 3px solid var(--primary);
 }
 
 
 /*propuesta de codigo*/
-.comment-card {
+.comment-card{
     display: flex;
-    flex-direction: row;
     gap: 1rem;
-    flex-wrap: wrap;
+    align-items: flex-start;
 }
-.comment-body {
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    order: 0;
-}
-.avatar {
-    flex-shrink: 0;
-    width: 80px;
-    height: 80px;
-    order: 1;
-}
-
-.h3{
-    display: flex;
-    flex-grow: 3;
-    flex-basis: 100px;
+.avatar{
+    flex-grow: 1;
 }
