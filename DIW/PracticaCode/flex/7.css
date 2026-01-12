@@ -92,6 +92,15 @@ button:hover,
 /*codigo por alumno*/
 .pricing-table{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-shrink: 1;
+}
+
+.plan{
+    display: flex;
+    flex-direction: column;
+}
+
+.plan>ul{
+    flex-grow: 1;
 }
