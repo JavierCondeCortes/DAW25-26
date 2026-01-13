@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        display:grid;
+        height: 100vh;
+        width: 100vw;
+        grid-template-columns: repeat(3 1fr);
+        grid-template-rows: repeat(4 1fr);
+        gap: 10px;
+        grid-template-areas:
+            "encabezado encabezado encabezadoDer"
+            "aside1 central aside2"
+            "aside1 bajoCentral aside2"
+            "bajoIzq bajoCentral aside2"
+        ;
+        background-color: black;
+    }
+    .encabezado{
+        grid-area: encabezado;
+        background: beige;
+        border-radius: 16px;
+    }
+    aside:first-of-type{
+        grid-area: aside1;
+        background: green;
+        border-radius: 16px;
+    }
+    aside:last-of-type{
+        grid-area: aside2;
+        background-color: aquamarine;
+        border-radius: 16px;
+    }
+    .encabezadoDer{
+        grid-area: encabezadoDer;
+        background-color: burlywood;
+        border-radius: 16px;
+    }
+    .central{
+        grid-area: central;
+        background-color: blanchedalmond;
+        border-radius: 16px;
+    }
+    .bajoCentral{
+        grid-area: bajoCentral;
+        background-color: beige;
+        border-radius: 16px;
+    }
+    .bajoIzq{
+        grid-area: bajoIzq;
+        background-color: brown;
+        border-radius: 16px;
+    }
+    
+</style>
+<body>
+    <header class="encabezado">cabezera</header>
+    <header class="encabezadoDer">cabezera</header>
+    <aside>aside1</aside>
+    <main class="central">main</main>
+    <aside>aside2</aside>
+    <footer class="bajoCentral">footer</footer>
+    <footer class="bajoIzq">footer</footer>
+</body>
+</html>
