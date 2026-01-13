@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="caja1" draggable="true">texto</div>
+    <div class="caja2"></div>
+
+    <script>
+      const caja1 = document.querySelector(".caja1");
+      const caja2 = document.querySelector(".caja2");
+      caja1.addEventListener("dragstart", function (e) {
+        e.dataTransfer.setData("text", "String enviado");
+      });
+      caja2.addEventListener("drop", function (e) {
+        e.preventDefault();
+        console.log(e.dataTransfer.getData("text"));
+      });
+      caja2.addEventListener("dragover", function (e) {
+        e.preventDefault();
+      });
+    </script>
+  </body>
+</html>

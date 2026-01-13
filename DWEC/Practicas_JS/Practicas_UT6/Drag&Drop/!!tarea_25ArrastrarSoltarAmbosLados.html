@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      eventos_24 - Arrastrar y soltar: Mover al cuadro azul el texto y la imagen
+    </title>
+    <style>
+      .c1 {
+        border: 5px solid red;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 5cm;
+        left: 8cm;
+      }
+
+      .c2 {
+        border: 5px solid blue;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 5cm;
+        left: 12cm;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      eventos_24 - Arrastrar y soltar: Mover al cuadro azul el texto y la imagen
+    </h1>
+    <hr />
+
+    <div class="c1" id="origen">
+      <span draggable="true" id="texto"
+        >EL TEXTO</span
+      >
+      <img
+        draggable="true"
+        src="./recursos/ball.gif"
+        id="pelota"
+      />
+    </div>
+
+    <div
+      class="c2"
+      id="destino"
+    ></div>
+
+    <script type="text/javascript">
+      origen = document.querySelector("#origen");
+      destino = document.querySelector("#destino");
+
+      origen.addEventListener("dragstart", function (e) {
+        e.dataTransfer.setData("texto", "String enviado");
+      });
+
+      destino.addEventListener("drop", function (e) {
+        destino.append(origen.children[0]);
+        console.log(e.dataTransfer.getData("texto"));
+      });
+      origen.addEventListener("drop", () => {
+        if (origen.childElementCount === 0) {
+          origen.append(destino.children[0]);
+        }
+      });
+
+      destino.addEventListener("dragover", function (e) {
+        e.preventDefault();
+      });
+      origen.addEventListener("dragover", function (e) {
+        e.preventDefault();
+      });
+    </script>
+  </body>
+</html>
