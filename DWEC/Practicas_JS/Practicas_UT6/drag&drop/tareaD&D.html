@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        .contenedor {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .caja {
+            width: 150px;
+            height: 150px;
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .caja.over {
+            background: lightblue;
+        }
+
+        img {
+            width: 100px;
+        }
+
+        #eventos {
+            margin-top: 20px;
+            font-family: monospace;
+            background: #f0f0f0;
+            padding: 10px;
+            height: 100px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>Drag & Drop</h3>
+
+    <div class="contenedor">
+        <div class="caja" id="caja1">
+            <img draggable="true" id="imagen"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKblYlODsuLw9OgPGsCu6QdO1zt41qZVj4Wo1xdtEcd9zhIsXl5TDnJcw3r_O5xm1sEMnbZHMwIa064Mh9NpFRgzNtZ1fQYA5Qzfv4eVTG4g&s=10">
+        </div>
+
+        <div class="caja" id="caja2"></div>
+        <div class="caja" id="caja3"></div>
+    </div>
+
+    <div id="eventos"></div>
+
+    <script>
+        const imagen = document.getElementById("imagen");
+        const cajas = document.querySelectorAll(".caja");
+        const log = document.getElementById("eventos");
+
+        function registrar(texto) {
+            log.innerHTML += texto + "<br>";
+            log.scrollTop = log.scrollHeight;
+        }
+
+        // Eventos del elemento arrastrado
+        imagen.addEventListener("dragstart", () => registrar("dragstart"));
+        imagen.addEventListener("drag", () => registrar("drag"));
+        imagen.addEventListener("dragend", () => registrar("dragend"));
+
+        // Eventos de las cajas
+        cajas.forEach(caja => {
+
+            caja.addEventListener("dragenter", () => {
+                registrar("dragenter en " + caja.id);
+                caja.classList.add("over");
+            });
+
+            caja.addEventListener("dragover", (e) => {
+                e.preventDefault();
+                registrar("dragover en " + caja.id);
+            });
+
+            caja.addEventListener("dragleave", () => {
+                registrar("dragleave en " + caja.id);
+                caja.classList.remove("over");
+            });
+
+            caja.addEventListener("drop", () => {
+                registrar("drop en " + caja.id);
+                caja.classList.remove("over");
+                caja.appendChild(imagen);
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
