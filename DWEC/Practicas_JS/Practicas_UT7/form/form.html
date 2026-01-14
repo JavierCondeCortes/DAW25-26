@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="cliente" action="#">
+        <label for="nombre">nombre</label>
+        <input type="text" name="nombre" id="nombre" value="pedro">
+        <label for="telefono">telefono</label>
+        <input type="number" name="telefono" id="telefono" value="9796234">
+        <label for="datos">datos</label>
+        <textarea name="datos" id="datos"></textarea>
+        <input type="submit" value="Enviar">
+    </form>
+    <script>
+        const fo = document.querySelector('#cliente');
+        console.log(fo['nombre'].value);
+        console.log(fo[0].value);
+        console.log(fo.elements['telefono'].value);
+        console.log(fo.elements[1].value);
+
+        let res = "";
+        for (const e of fo){
+            res += e.value + " ";
+        }
+        console.log(res);
+    </script>
+</body>
+</html>
