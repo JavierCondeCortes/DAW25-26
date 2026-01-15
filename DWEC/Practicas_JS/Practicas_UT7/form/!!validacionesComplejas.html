@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <!-- implementar setcustomvalidity y checkvalidity -->
+  <body>
+    <form name="formulario" action="" method="post">
+      <!-- nombre del usuario. obligatorio -->
+      usuario:
+      <input
+        type="text"
+        name="nombre"
+        placeholder="Nombre"
+        minlength="5"
+        maxlength="20"
+        required
+      />
+      <!-- contraseña obligatoria -->
+      password:
+      <input
+        type="password"
+        name="pass"
+        placeholder="contraseña"
+        minlength="10"
+        required
+      />
+      <!-- N.I.F obligatorio con expresion regular -->
+      NIF:
+      <input
+        type="text"
+        name="nif"
+        placeholder="N.I.F"
+        pattern="\d{7,8}[a-z]A-Z]\"
+        required
+      />
+      <input type="submit" name="enviar" value="enviar">
+    </form>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="cliente" action="#">
+        <label for="nombre">nombre</label>
+        <input type="text" name="nombre" id="nombre" value="pedro">
+        <label for="telefono">telefono</label>
+        <input type="number" name="telefono" id="telefono" value="9796234">
+        <label for="datos">datos</label>
+        <textarea name="datos" id="datos"></textarea>
+        
+        <!-- radio -->
+        <label for="pregunta">pregunta</label>
+        <input type="radio" name="pregunta" value="si">si
+        <input type="radio" name="pregunta" value="no">no
+        
+        <!-- checkbox -->
+        <label for="color">color</label>
+        <input type="checkbox" name="color", value="a",checked>azul
+        <input type="checkbox" name="color", value="r",checked>rojo
+        <input type="checkbox" name="color", value="v",checked>verde
+        
+        <!-- checkbox solor -->
+        <input type="checkbox" name="solor", value="s",checked>solo
+
+        <input type="submit" value="Enviar">
+    </form>
+    <script>
+        const fo = document.querySelector('#cliente');
+
+        fo.addEventListener('submit',function(){
+
+            //radiobuttons
+            let rnl=fo['pregunta'];
+            console.log(`${rnl[0].value} -> ${rnl[0].checked}`)
+            console.log(`${rnl[1].value} -> ${rnl[1].checked}`)
+
+            //checkbox
+            let cb=fo['color'];
+            console.log(`${cb[0].value} -> ${cb[0].checked}`)
+            console.log(`${cb[1].value} -> ${cb[1].checked}`)
+            console.log(`${cb[2].value} -> ${cb[2].checked}`)
+            
+            let un=fo['solo'];//con un solo check no acceder por indice
+            console.log(`${un.value} -> ${un.checked}`)
+        });
+
+        
+        console.log(fo['nombre'].value);
+        console.log(fo[0].value);
+        console.log(fo.elements['telefono'].value);
+        console.log(fo.elements[1].value);
+
+        let res = "";
+        for (const e of fo){
+            res += e.value + " ";
+        }
+        console.log(res);
+    </script>
+</body>
+</html>
