@@ -24,4 +24,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+//trabajo
+use App\Models\Chollo;
+
+Route::get('/chollos', function () {
+    $chollos = Chollo::all();
+    return view('chollos.index', compact('chollos'));
+});
+
+
+
 require __DIR__.'/auth.php';
