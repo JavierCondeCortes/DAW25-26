@@ -7,8 +7,6 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Open tarea4CloneNode.html",
-            "file": "e:\\DAW25-26\\DWEC\\Practicas_JS\\Practicas_UT5\\tarea4CloneNode.html"
         }
     ]
 }
