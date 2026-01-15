@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#" method="post" name="formulario">
+        <label for="nombre">nombre:</label>
+        <input type="text" id="nombre" name="nombre">
+        <label for="NIF">NIF:</label>
+        <input type="text" id="NIF" name="NIF" pattern="\d{7-8}[a-zA-Z]\">
+        <label for="edad">edad:</label>
+        <input type="number" id="edad" name="edad" min="18" max="65">
+        <label for="alta">fecha de alta:</label>
+        <input type="date">
+        <label for="email">email:</label>
+        <input type="email" pattern="[a-zA-Z]{3,}@[a-zA-Z]{3,}\.(pr|pt|fr)$">
+    </form>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form" action="#">
+        <select name="colores" id="">
+            <option value="">seleccionar color</option>
+            <option value="rojo">rojo</option>
+            <option value="verde">verde</option>
+        </select>
+        <input list="sabores" name="sabor" id="sabor">
+        <datalist id="sabores">
+            <option value="chocolate"></option>
+            <option value="coco"></option>
+            <option value="nata"></option>
+        </datalist>
+        <input type="submit" name="enviar" value="enviar">
+    </form>
+    <script>
+        const fo = document.querySelector("#form");
+        fo.addEventListener('submit', function(){
+            let lista=fo['colores'];
+            console.log(lista.selectedIndex);
+            console.log(`${lista[0].value} -> ${lista[0].selected}`);
+            console.log(`${lista[1].value} -> ${lista[1].selected}`);
+            console.log(`${lista[2].value} -> ${lista[2].selected}`);
+
+            let data=fo['sabores'];
+            console.log(data.selected);
+            console.log(`${lista[0].value} -> ${lista[0].selected}`);
+            console.log(`${lista[1].value} -> ${lista[1].selected}`);
+            console.log(`${lista[2].value} -> ${lista[2].selected}`);
+        })
+    </script>
+</body>
+</html>
