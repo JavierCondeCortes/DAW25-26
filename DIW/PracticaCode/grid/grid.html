@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <style>
-    body{
+    body {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: white;
         margin: 0;
-        display:grid;
+        display: grid;
         height: 100vh;
         width: 100vw;
-        grid-template-columns: repeat(3 1fr);
-        grid-template-rows: repeat(4 1fr);
-        gap: 10px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 2rem;
         grid-template-areas:
             "encabezado encabezado encabezadoDer"
             "aside1 central aside2"
@@ -22,50 +25,216 @@
         ;
         background-color: black;
     }
-    .encabezado{
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    img {
+        width: 80px;
+        height: 80px;
+        margin: 1rem;
+    }
+
+    .encabezado {
         grid-area: encabezado;
-        background: beige;
+        background: rgb(61, 61, 61);
         border-radius: 16px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 5rem;
+        font-weight: bold;
+        transition-duration: 1s;
     }
-    aside:first-of-type{
+
+    .encabezado:hover {
+        background-color: rgb(90, 90, 90);
+        cursor: pointer;
+        font-size: 6rem;
+    }
+
+    /* Estudios */
+    aside:first-of-type {
         grid-area: aside1;
-        background: green;
+        background: rgb(73, 73, 73);
         border-radius: 16px;
+        
     }
-    aside:last-of-type{
-        grid-area: aside2;
-        background-color: aquamarine;
-        border-radius: 16px;
-    }
-    .encabezadoDer{
-        grid-area: encabezadoDer;
-        background-color: burlywood;
-        border-radius: 16px;
-    }
-    .central{
-        grid-area: central;
-        background-color: blanchedalmond;
-        border-radius: 16px;
-    }
-    .bajoCentral{
-        grid-area: bajoCentral;
-        background-color: beige;
-        border-radius: 16px;
-    }
-    .bajoIzq{
-        grid-area: bajoIzq;
-        background-color: brown;
-        border-radius: 16px;
+
+    aside:first-of-type h2{
+        text-align: center;
     }
     
+    .derecha, .izquierda {
+        margin: 0;
+        width: 95%;
+        height: 21rem;
+        background-color: rgb(90, 90, 90);
+        margin: 1rem;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .derecha {
+        visibility: hidden;
+    }
+
+    aside:last-of-type {
+        grid-area: aside2;
+        background: rgb(73, 73, 73);
+        border-radius: 16px;
+    }
+
+    /* proyectos */
+    .encabezadoDer {
+        grid-area: encabezadoDer;
+        background: rgb(90, 90, 90);
+        border-radius: 16px;
+    }
+
+    .encabezadoDer h2 {
+        text-align: center;
+    }
+
+    .cardsProyects {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .cardProyect {
+        background: rgb(61, 61, 61);
+        margin: 1rem;
+        width: 40%;
+        padding: 0.5rem;
+        border-radius: 8px;
+
+        transition: all 1s;
+    }
+
+    .cardProyect:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+        background-color: rgb(219, 217, 217);
+        color: black;
+    }
+
+    /* tecnologias */
+    .central {
+        grid-area: central;
+        background: rgb(90, 90, 90);
+        border-radius: 16px;
+    }
+
+    .central h2 {
+        text-align: center;
+    }
+
+    .central ul {
+        display: flex;
+        margin: 0;
+    }
+
+    .central ul li {
+        transition: all 0.5s;
+    }
+
+    .central ul li:hover {
+        transform: scale(1.2);
+    }
+
+    /* habilidades */
+
+    .bajoCentral {
+        grid-area: bajoCentral;
+        background: rgb(61, 61, 61);
+        border-radius: 16px;
+    }
+
+    /* contacto */
+    .bajoIzq {
+        grid-area: bajoIzq;
+        background: rgb(90, 90, 90);
+        border-radius: 16px;
+    }
+
+    .bajoIzq h2 {
+        text-align: center;
+    }
+
+    .bajoIzq .medio {
+        font-weight: bold;
+        margin: 0 1rem;
+    }
+
+    .bajoIzq .content {
+        margin: 0.5rem 3rem;
+    }
+
+    .bajoIzq .content:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
 </style>
+
 <body>
-    <header class="encabezado">cabezera</header>
-    <header class="encabezadoDer">cabezera</header>
-    <aside>aside1</aside>
-    <main class="central">main</main>
-    <aside>aside2</aside>
-    <footer class="bajoCentral">footer</footer>
-    <footer class="bajoIzq">footer</footer>
+    <header class="encabezado">Javier Conde Cortés</header>
+    <header class="encabezadoDer">
+        <h2>Proyectos</h2>
+        <div class="cardsProyects">
+            <div class="cardProyect">
+                <h3 class="titulo">proyecto1</h3>
+                <p class="descripcion">descripcion que a duras penas sirve como descripcion</p>
+            </div>
+            <div class="cardProyect">
+                <h3 class="titulo">proyecto2</h3>
+                <p class="descripcion">descripcion que a duras penas sirve como descripcion</p>
+            </div>
+        </div>
+    </header>
+    <aside>
+        <h2>Estudios</h2>
+        <div class="contentEstudios">
+            <div class="izquierda">
+                izquierda
+            </div>
+            <div class="derecha">
+                derecha
+            </div>
+        </div>
+
+    </aside>
+    <main class="central">
+        <h2>Tecnologias</h2>
+        <ul>
+            <li><img src="RECURSOS/html5.png" alt=""></li>
+            <li><img src="RECURSOS/css-3.png" alt=""></li>
+            <li><img src="RECURSOS/js.png" alt=""></li>
+            <li><img src="RECURSOS/php.png" alt=""></li>
+            <li><img src="RECURSOS/github.png" alt=""></li>
+            <li><img src="RECURSOS/git.png" alt=""></li>
+    </main>
+    <aside>Experiencias</aside>
+    <footer class="bajoCentral">Habilidades</footer>
+    <footer class="bajoIzq">
+        <article>
+            <h2>Contacto</h2>
+            <main>
+                <p class="medio">email:</p>
+                <p class="content">xxxxxxxx@gmail.com</p>
+                <p class="medio">teléfono:</p>
+                <p class="content">xxxxxxxx</p>
+                <p class="medio">dirección:</p>
+                <p class="content">xxxxxxxx</p>
+            </main>
+        </article>
+    </footer>
 </body>
+
 </html>
