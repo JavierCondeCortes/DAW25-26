@@ -18,5 +18,15 @@
         <label for="email">email:</label>
         <input type="email" pattern="[a-zA-Z]{3,}@[a-zA-Z]{3,}\.(pr|pt|fr)$">
     </form>
+    <script>
+        let nifInput = document.formulario.NIF;
+        nifInput.addEventListener("input", function(event) {
+            if (!nifInput.checkValidity()) {
+                nifInput.setCustomValidity("El NIF debe tener entre 7 y 8 dígitos seguido de una letra");
+            } else {
+                nifInput.setCustomValidity("");
+            }
+        });
+    </script>
 </body>
 </html>
