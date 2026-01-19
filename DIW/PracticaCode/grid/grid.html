@@ -9,21 +9,25 @@
 <style>
     body {
         font-family: Verdana, Geneva, Tahoma, sans-serif;
+        background-color: black;
         color: white;
         margin: 0;
+        padding: 0;
         display: grid;
         height: 100vh;
         width: 100vw;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(4, 1fr);
+        grid-template-rows: 2.5fr 3fr 0.5fr 3fr;
         gap: 2rem;
-        grid-template-areas:
+        /* grid-template-areas:
             "encabezado encabezado encabezadoDer"
             "aside1 central aside2"
             "aside1 bajoCentral aside2"
             "bajoIzq bajoCentral aside2"
-        ;
-        background-color: black;
+        ; */
+        grid-auto-flow: row;
+        overflow: hidden;
+        user-select: none
     }
 
     ul {
@@ -39,7 +43,8 @@
     }
 
     .encabezado {
-        grid-area: encabezado;
+        /* grid-area: encabezado; */
+        grid-area: span 1/ span 2;
         background: rgb(61, 61, 61);
         border-radius: 16px;
 
@@ -59,20 +64,21 @@
 
     /* Estudios */
     aside:first-of-type {
-        grid-area: aside1;
+        /* grid-area: aside1; */
+        grid-area: span 2 / span 1;
         background: rgb(73, 73, 73);
         border-radius: 16px;
-        
+
     }
 
-    aside:first-of-type h2{
+    aside:first-of-type > h2, aside:first-of-type > p {
         text-align: center;
     }
-    
+
     .derecha, .izquierda {
         margin: 0;
         width: 95%;
-        height: 21rem;
+        height: 100%;
         background-color: rgb(90, 90, 90);
         margin: 1rem;
         border-radius: 8px;
@@ -84,20 +90,36 @@
         visibility: hidden;
     }
 
+    /* experiencias */
+
     aside:last-of-type {
-        grid-area: aside2;
+        /* grid-area: aside2; */
+        grid-area: span 3 / span 1;
         background: rgb(73, 73, 73);
         border-radius: 16px;
+    }
+    aside:last-of-type > h2, aside:last-of-type > p {
+        text-align: center;
+    }
+    .tarjeta{
+        margin: 3rem;
+    }
+    .invisible {
+        opacity: 0;
+        transition: all 1s;
+    }
+    aside:last-of-type:hover .invisible{
+        opacity: 1;
     }
 
     /* proyectos */
     .encabezadoDer {
-        grid-area: encabezadoDer;
+        /* grid-area: encabezadoDer; */
         background: rgb(90, 90, 90);
         border-radius: 16px;
     }
 
-    .encabezadoDer h2 {
+    .encabezadoDer > h2 {
         text-align: center;
     }
 
@@ -113,7 +135,9 @@
         margin: 1rem;
         width: 40%;
         padding: 0.5rem;
+        height: 50%;
         border-radius: 8px;
+        overflow-y: hidden;
 
         transition: all 1s;
     }
@@ -127,7 +151,7 @@
 
     /* tecnologias */
     .central {
-        grid-area: central;
+        /* grid-area: central; */
         background: rgb(90, 90, 90);
         border-radius: 16px;
     }
@@ -152,14 +176,39 @@
     /* habilidades */
 
     .bajoCentral {
-        grid-area: bajoCentral;
+        /* grid-area: bajoCentral; */
+        grid-area: span 2 / span 1;
         background: rgb(61, 61, 61);
         border-radius: 16px;
+        position: relative;
+    }
+    .bajoCentral h2, .bajoCentral p {
+        text-align: center;
+    }
+
+    .pantallaMuestra {
+        position: absolute;
+        border-radius: 16px;
+        height: 100%;
+        width: 100%;
+        top: 100%;
+        background-color: rgba(90, 90, 90, 0.884);
+        transition: all 1s;
+    }
+    .pantallaMuestra h3, .pantallaMuestra p {
+        text-align: center;
+    }
+
+    .bajoCentral:hover .pantallaMuestra {
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 
     /* contacto */
     .bajoIzq {
-        grid-area: bajoIzq;
+        /* grid-area: bajoIzq; */
+        grid-area: span 1 / span 1;
         background: rgb(90, 90, 90);
         border-radius: 16px;
     }
@@ -211,7 +260,7 @@
 
     </aside>
     <main class="central">
-        <h2>Tecnologias</h2>
+        <h2>Tecnologías</h2>
         <ul>
             <li><img src="RECURSOS/html5.png" alt=""></li>
             <li><img src="RECURSOS/css-3.png" alt=""></li>
@@ -220,8 +269,34 @@
             <li><img src="RECURSOS/github.png" alt=""></li>
             <li><img src="RECURSOS/git.png" alt=""></li>
     </main>
-    <aside>Experiencias</aside>
-    <footer class="bajoCentral">Habilidades</footer>
+    <aside>
+        <h2>Experiencias</h2>
+        <p>hover para ver experiencias</p>
+        <div class="tarjeta">
+            <div class="invisible">
+                <h3>empresa la cual trabajé</h3>
+                <p>no se, es una empresa bastante buena cual no recuerdo, pero me gustó</p>
+            </div>
+            <div class="invisible">
+                <h3>empresa 2 la cual trabajé</h3>
+                <p>no se, es una empresa bastante buena cual no recuerdo, pero me gustó, estaba barriendo</p>
+            </div>
+        </div>
+    </aside>
+    <footer class="bajoCentral">
+        <h2>Habilidades</h2>
+        <p>aqui mostrare un listado que aparecera del lado izq a derecho mostrando la informacion</p>
+        <div class="pantallaMuestra">
+            <div class="habilidad">
+                <h3>habilidad1</h3>
+                <p>una habilidad que esta bien pero mejorable</p>
+            </div>
+            <div class="habilidad">
+                <h3>habilidad2</h3>
+                <p>esta es otra habilidad</p>
+            </div>
+        </div>
+    </footer>
     <footer class="bajoIzq">
         <article>
             <h2>Contacto</h2>
