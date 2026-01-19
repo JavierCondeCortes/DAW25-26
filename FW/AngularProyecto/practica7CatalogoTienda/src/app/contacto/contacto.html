@@ -1,3 +1,17 @@
-<p>contacto </p>
+<div>
+    <form [formGroup]="formulario" (ngSubmit)="submit()" >
+        <p>nombre
+            <input type="text" formControlName="nombre">
+        </p>
+        <p>mail
+            <input type="text" formControlName="mail">
+        </p>
+        <p>mensaje
+            <textarea type="text" formControlName="mensaje"></textarea>
+        </p>
+        <input type="submit" value="enviar">
+    </form>
+    <div>{{this.dato}}</div>
+</div>
 
 
