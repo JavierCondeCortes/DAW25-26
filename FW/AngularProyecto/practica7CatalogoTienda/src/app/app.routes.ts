@@ -28,7 +28,18 @@ export const routes: Routes = [
     }, {
         path: 'productos/:id',
         component: ProductoDetalle
-    }, {
+    },
+    // {
+    //     path 'productos/electronica',
+    //     component: ProductosElectronica
+    // },{
+    //     path 'productos/ropa',
+    //     component: ProductosRopa
+    // },{
+    //     path 'productos/alimentos',
+    //     component: ProductosAlimentos
+    // },
+    {
         path: '**',
         redirectTo: 'pagina404'
     }

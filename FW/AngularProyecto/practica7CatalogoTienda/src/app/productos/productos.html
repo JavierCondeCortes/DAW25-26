@@ -1,7 +1,9 @@
 <p>productos </p>
 
 <nav>
-    <a routerLink="./1">Televisor</a>
-    <a routerLink="./2">Bufanda</a>
-    <a routerLink="./3">Zanahoria</a>
+    <ol>
+    @for (objeto of objetos; track $index) {
+        <li><a routerLink="{{objeto.ID}}">{{objeto.Nombre}}</a></li>
+    }
+    </ol>
 </nav>
