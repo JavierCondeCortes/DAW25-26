@@ -26,12 +26,19 @@ Route::middleware('auth')->group(function () {
 
 //trabajo
 use App\Models\Chollo;
+use App\Http\Controllers\ChollosController;
 
 Route::get('/chollos', function () {
     $chollos = Chollo::all();
     return view('chollos.index', compact('chollos'));
+})->name('inicio');
+
+Route::get('detalles/{id?}',[ChollosController::class, 'detalles'])->name('detalles');
+
+Route::get('/nuevoForm', function () {
+    return view('chollos.crearChollo');
 });
 
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
