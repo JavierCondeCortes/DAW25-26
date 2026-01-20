@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="formulario" action=""></form>
+    <script>
+      //   document.addEventListener('DOMContentLoaded', () => {
+
+      let dia = new Date();
+      if (dia.getDay() >= 1 && dia.getDay() <= 5) {
+        let diaLaboral = true;
+      } else {
+        let diaLaboral = false;
+      }
+
+      let formulario = document.getElementById("formulario");
+
+      let lNombre = document.createElement("label");
+      lNombre.textContent = "Nombre";
+      let iNombre = document.createElement("input");
+      iNombre.setAttribute("type", "text");
+      iNombre.setAttribute("placeholder", "Nombre");
+      iNombre.setAttribute("minlength", "20");
+      iNombre.required = true;
+      formulario.appendChild(lNombre);
+      formulario.appendChild(iNombre);
+
+      let lNif = document.createElement("label");
+      lNif.textContent = "NIF";
+      let iNif = document.createElement("input");
+      iNif.setAttribute("type", "text");
+      iNif.setAttribute("placeholder", "NIF");
+      iNif.setAttribute("pattern", "^\d{7,8}[A-Z]{1}$");
+      iNif.required = true;
+      formulario.appendChild(lNif);
+      formulario.appendChild(iNif);
+
+      let lEdad = document.createElement("label");
+      lEdad.textContent = "Edad";
+      let iEdad = document.createElement("input");
+      iEdad.setAttribute("type", "number");
+      iEdad.setAttribute("placeholder", "Edad");
+      iEdad.setAttribute("min", "18");
+      iEdad.setAttribute("max", "65");
+      iEdad.required = true;
+      formulario.appendChild(lEdad);
+      formulario.appendChild(iEdad);
+
+      let lDate = document.createElement("label");
+      lDate.textContent = "Fecha alta";
+      let iDate = document.createElement("input");
+      iDate.setAttribute("type", "date");
+      iDate.required = true;
+      formulario.appendChild(lDate);
+      formulario.appendChild(iDate);
+
+      let lMail = document.createElement("label");
+      lMail.textContent = "E-Mail";
+      let iMail = document.createElement("input");
+      iMail.setAttribute("type", "email");
+      iMail.setAttribute("placeholder", "E-Mail");
+      iMail.setAttribute("pattern", "^[a-zA-Z]{3,}@[a-zA-Z]{3}\.(es|pt|fr)$");
+      iMail.required = true;
+      formulario.appendChild(lMail);
+      formulario.appendChild(iMail);
+      
+      let lProvincia = document.createElement("label");
+      formulario.appendChild(lProvincia);
+      let Provincia = document.createElement("select")
+      formulario.appendChild(Provincia);
+      
+      lProvincia.textContent = "Provincia";
+      let Cyl = document.createElement('option')
+      Cyl.textContent='Castilla y Leon';
+      Provincia.appendChild(Cyl);
+      let Asturias = document.createElement('option')
+      Asturias.textContent='Asturias';
+      Provincia.appendChild(Asturias);
+      let Valencia = document.createElement('option')
+      Valencia.textContent='Valencia';
+      Provincia.appendChild(Valencia);
+
+      let Enviar = document.createElement("input");
+      Enviar.setAttribute("type", "submit");
+      Enviar.setAttribute("value", "enviar");
+      formulario.appendChild(Enviar);
+
+      //   });
+    </script>
+  </body>
+</html>
