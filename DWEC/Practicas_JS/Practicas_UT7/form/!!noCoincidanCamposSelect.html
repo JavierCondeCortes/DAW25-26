@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#" method="get" class="form">
+        <select name="circuito" id="">
+            <option value=""></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <label for="">circuito navarra</label>
+        <select name="circuito" id="">
+            <option value=""></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <label for="">circuito Nurburgring</label>
+        <select name="circuito" id="">
+            <option value=""></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <label for="">circuito Valencia</label>
+    </form>
+    <script>
+        const form = document.querySelector('.form');
+        const select = document.getElementsByName('circuito');
+
+        const c1 = select[0].value;
+        const c2 = select[1].value;
+        const c3 = select[2].value;
+
+        form.addEventListener('change',function(){
+            if(c1 === c2){
+                alert('es igual')
+            }
+            console.log(c1)
+        })
+    </script>
+</body>
+</html>
+
+<!-- obtener de lista select
+ 
+consultar numero o cantidad
+insertar nacionalidad francesa con indice 4
+eliminar la nacionalidad con indice 2
+obtener nacionalidad con indice 2-->
