@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="formAdd">
+        <label for="nacionalidad">nacionalidad</label>
+        <select name="nacion" id="nacionalidad">
+            <option value="esp">español</option>
+            <option value="jap">japones</option>
+            <option value="chi">chino</option>
+            <option value="por">portugues</option>
+            <option value="col">colombiano</option>
+        </select>
+
+        <input type="text" name="newNacion" id="nacionNew">
+        <input type="submit" id="insertarNacion" value="insertar">
+    </form>
+    <form action="" id="formRemove">
+        <input type="submit" name="eliminarNacion" value="Eliminar">
+        <input type="radio" name="opcion" value="ultima">última
+        <input type="radio" name="opcion" value="seleccionada">seleccionada
+    </form>
+
+    <script>
+        const formAdd = document.getElementById('formAdd');
+        const formRemove = document.getElementById('formRemove');
+
+        formAdd.addEventListener('submit',function(e){
+            e.preventDefault();
+            const nacion = document.getElementById('nacionNew');
+            
+            let nuevaNacion = document.createElement('option');
+            nuevaNacion.setAttribute('value',nacion.value);
+            nuevaNacion.textContent=nacion.value;
+            
+            console.log(nacion.value)
+
+            const listaNacion = document.getElementById('nacionalidad');
+            listaNacion.appendChild(nuevaNacion);
+        })
+
+        formRemove.addEventListener('submit',function(e){
+            e.preventDefault();
+            const listaRemove = document.getElementById('nacionalidad');
+            const radioRemove=formRemove['opcion'];
+
+            console.log(radioRemove.value);
+
+            if(radioRemove.value==='ultima'){
+                let ultimoHijo=listaRemove.lastElementChild
+                console.log(ultimoHijo)
+                listaRemove.removeChild(ultimoHijo);
+            }else{
+                const nacion = document.getElementById('nacionNew');
+                listaRemove.remove(nacion);
+                
+            }
+        })
+    </script>
+</body>
+</html>
