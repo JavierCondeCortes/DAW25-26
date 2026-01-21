@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="gCalendar.css" />
+  </head>
+
+  <body>
+    <main class="calendar-container">
+      <header class="calendar-header">
+        <h1>Octubre 2023</h1>
+        <div class="calendar-controls">
+          <button type="button" aria-label="Mes anterior">&lt;</button>
+          <button type="button">Hoy</button>
+          <button type="button" aria-label="Mes siguiente">&gt;</button>
+        </div>
+      </header>
+
+      <section class="days-grid">
+        <div class="weekday">Lun</div>
+        <div class="weekday">Mar</div>
+        <div class="weekday">Mié</div>
+        <div class="weekday">Jue</div>
+        <div class="weekday">Vie</div>
+        <div class="weekday">Sáb</div>
+        <div class="weekday">Dom</div>
+
+        <article class="day is-inactive">
+          <time datetime="2023-09-25">25</time>
+        </article>
+        <article class="day is-inactive">
+          <time datetime="2023-09-26">26</time>
+        </article>
+        <article class="day is-inactive">
+          <time datetime="2023-09-27">27</time>
+        </article>
+        <article class="day is-inactive">
+          <time datetime="2023-09-28">28</time>
+        </article>
+        <article class="day is-inactive">
+          <time datetime="2023-09-29">29</time>
+        </article>
+        <article class="day is-inactive">
+          <time datetime="2023-09-30">30</time>
+        </article>
+
+        <article class="day">
+          <time datetime="2023-10-01">1</time>
+        </article>
+
+        <article class="day">
+          <time datetime="2023-10-02">2</time>
+          <div class="events-container">
+            <div class="event event--timed">
+              <span class="circulo"></span>
+              <span class="event-time">10:00</span>
+              <span class="event-title">Daily Meeting</span>
+            </div>
+            <div class="event event--timed">
+              <span class="circulo"></span>
+              <span class="event-time">10:00</span>
+              <span class="event-title">Daily Meeting</span>
+            </div>
+            <div class="event event--timed">
+              <span class="circulo"></span>
+              <span class="event-time">10:00</span>
+              <span class="event-title">Daily Meeting</span>
+            </div>
+            <div class="event event--timed">
+              <span class="circulo"></span>
+              <span class="event-time">10:00</span>
+              <span class="event-title">Daily Meetingasdddddddddddddddddddddddddddddddddddddddd</span>
+            </div>
+            <div class="event event--timed">
+              <span class="circulo"></span>
+              <span class="event-time">10:00</span>
+              <span class="event-title">Daily Meeting</span>
+            </div>
+            <div class="event event--timed">
+              <span class="circulo"></span>
+              <span class="event-time">10:00</span>
+              <span class="event-title">Daily Meeting</span>
+            </div>
+            
+          </div>
+        </article>
+
+        <article class="day">
+          <time datetime="2023-10-03">3</time>
+          <div class="events-container">
+            <div class="event event--full-day event--purple">
+              <span class="event-title">Lanzamiento Proyecto Web</span>
+            </div>
+            <div class="event event--full-day event--purple">
+              <span class="event-title">Lanzamiento Proyecto Web</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="day">
+          <time datetime="2023-10-04">4</time>
+        </article>
+
+        <article class="day">
+          <time datetime="2023-10-05">5</time>
+          <div class="events-container">
+            <div class="event event--timed">
+              <span class="circulo"></span>
+              <span class="event-time">14:00</span>
+              <span class="event-title">Comida equipo</span>
+            </div>
+            <div class="event event--timed">
+              <span class="circulo"></span>
+              <span class="event-time">16:30</span>
+              <span class="event-title">Revisión de diseño</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="day">
+          <time datetime="2023-10-06">6</time>
+          <div class="events-container">
+            <div class="event event--full-day event--green">
+              <span class="event-title">Vacaciones (Juan)</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="day is-weekend">
+          <time datetime="2023-10-07">7</time>
+        </article>
+
+        <article class="day is-weekend">
+          <time datetime="2023-10-08">8</time>
+        </article>
+
+        <article class="day">
+          <time datetime="2023-10-09">9</time>
+          <div class="events-container">
+            <div class="event event--full-day event--red">
+              <span class="event-title">Festivo Local</span>
+            </div>
+            <div class="event event--timed">
+              <span class="circulo"></span>
+              <span class="event-time">19:00</span>
+              <span class="event-title">Gimnasio</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="day is-weekend">
+          <time datetime="2023-10-10">10</time>
+        </article>
+
+        <article class="day is-weekend">
+          <time datetime="2023-10-11">11</time>
+          <div class="events-container">
+            <div class="event event--timed">
+              <span class="circulo"></span>
+              <span class="event-time">18:00</span>
+              <span class="event-title">Reunión cliente</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="day is-weekend">
+          <time datetime="2023-10-12">12</time>
+          <div class="events-container">
+            <div class="event event--full-day event--purple">
+              <span class="event-title">Sprint Planning</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="day is-weekend">
+          <time datetime="2023-10-13">13</time>
+        </article>
+
+        <article class="day is-weekend">
+          <time datetime="2023-10-14">14</time>
+        </article>
+
+        <article class="day is-weekend">
+          <time datetime="2023-10-15">15</time>
+          <div class="events-container">
+            <div class="event event--timed">
+              <span class="circulo"></span>
+              <span class="event-time">09:30</span>
+              <span class="event-title">Café con equipo</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="day">
+          <time datetime="2023-10-16">16</time>
+        </article>
+
+        <article class="day">
+          <time datetime="2023-10-17">17</time>
+          <div class="events-container">
+            <div class="event event--timed">
+              <span class="circulo"></span>
+              <span class="event-time">12:00</span>
+              <span class="event-title">Demo interna</span>
+            </div>
+            <div class="event event--timed">
+              <span class="circulo"></span>
+              <span class="event-time">17:00</span>
+              <span class="event-title">Gimnasio</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="day">
+          <time datetime="2023-10-18">18</time>
+        </article>
+
+        <article class="day">
+          <time datetime="2023-10-19">19</time>
+          <div class="events-container">
+            <div class="event event--full-day event--green">
+              <span class="event-title">Teletrabajo</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="day">
+          <time datetime="2023-10-20">20</time>
+        </article>
+
+        <article class="day is-weekend">
+          <time datetime="2023-10-21">21</time>
+        </article>
+
+        <article class="day is-weekend">
+          <time datetime="2023-10-22">22</time>
+          <div class="events-container">
+            <div class="event event--timed">
+              <span class="circulo"></span>
+              <span class="event-time">20:00</span>
+              <span class="event-title">Cena familiar</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="day">
+          <time datetime="2023-10-23">23</time>
+        </article>
+
+        <article class="day">
+          <time datetime="2023-10-24">24</time>
+          <div class="events-container">
+            <div class="event event--full-day event--red">
+              <span class="event-title">Mantenimiento Servidores</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="day">
+          <time datetime="2023-10-25">25</time>
+        </article>
+
+        <article class="day">
+          <time datetime="2023-10-26">26</time>
+          <div class="events-container">
+            <div class="event event--timed">
+              <span class="circulo"></span>
+              <span class="event-time">11:00</span>
+              <span class="event-title">Revisión código</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="day">
+          <time datetime="2023-10-27">27</time>
+        </article>
+
+        <article class="day is-weekend">
+          <time datetime="2023-10-28">28</time>
+        </article>
+
+        <article class="day is-weekend">
+          <time datetime="2023-10-29">29</time>
+          <div class="events-container">
+            <div class="event event--full-day event--purple">
+              <span class="event-title">Hackathon</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="day">
+          <time datetime="2023-10-30">30</time>
+          <div class="events-container">
+            <div class="event event--timed">
+              <span class="circulo"></span>
+              <span class="event-time">15:00</span>
+              <span class="event-title">Planificación mensual</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="day">
+          <time datetime="2023-10-31">31</time>
+          <div class="events-container">
+            <div class="event event--full-day event--green">
+              <span class="event-title">Día libre</span>
+            </div>
+          </div>
+        </article>
+
+      </section>
+    </main>
+  </body>
+</html>

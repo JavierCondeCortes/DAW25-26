@@ -1,0 +1,93 @@
+body {
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  background-color: rgb(44, 44, 44);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 25%;
+}
+
+h1 {
+  color: white;
+}
+
+.weekday {
+  text-align: center;
+  background-color: rgb(18, 18, 20);
+  color: white;
+  gap: 0;
+}
+
+button{
+    background: none;
+    border: none;
+    color: white;
+    scale: 150%;
+    
+}
+
+.days-grid {
+  border-radius: 20px;
+  height: 90vh;
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 1.5rem repeat(6, 1fr);
+  overflow: hidden;
+}
+
+.day {
+  max-width: 1fr;
+  max-height: 1;
+  overflow: hidden;
+  background-color: rgb(18, 18, 20);
+  color: white;
+}
+
+.is-inactive {
+  background-color: rgb(17, 17, 19);
+}
+
+time {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.events {
+  display: flex;
+  align-items: center;
+}
+
+.event--timed {
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+.circulo {
+  padding: 0 6.7px;
+  border-radius: 100%;
+  background-color: rgb(74, 152, 210);
+  margin-right: 0.5rem;
+}
+
+.event--full-day {
+  height: 1rem;
+  border-radius: 5px;
+  margin: 0 0 0.5rem 0;
+}
+
+.event--purple {
+  background-color: purple;
+}
+.event--green {
+  background-color: green;
+}
+.event--red {
+  background-color: red;
+}
