@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- jugador1 -->
+    <form action="">
+        <h2>jugador 1</h2>
+        <label for="palabra">introduce una palabra</label>
+        <input type="text" id="palabra" pattern="\^[a-zA-Z]$\">
+        <input type="submit" name="submit1" value="confirmar palabra">
+    </form>
+
+    <!-- Jugador2 -->
+    <!-- numero de intentos / cuando 5 desabilitar form de decir letra -->
+    <!-- lista de letras intentadas -->
+    <!-- palabra a resolver / se muestran las palabras acertadas _ _ _ A-->
+    <!-- formulario de juego jugador 2-->
+    <form action="" name="ahorcado">
+        <h2>Jugador 2</h2>
+        <label for="letra">selecciona una letra</label>
+        <select name="letra" id="letra">
+            <option value="a">A</option>
+            <option value="b">B</option>
+            <option value="c">C</option>
+            <option value="d">D</option>
+            <option value="e">E</option>
+            <option value="f">F</option>
+            <option value="g">G</option>
+            <option value="h">H</option>
+            <option value="i">I</option>
+            <option value="j">J</option>
+            <option value="k">K</option>
+            <option value="l">L</option>
+            <option value="m">M</option>
+            <option value="n">N</option>
+            <option value="o">O</option>
+            <option value="p">P</option>
+            <option value="q">Q</option>
+            <option value="r">R</option>
+            <option value="s">S</option>
+            <option value="t">T</option>
+            <option value="u">U</option>
+            <option value="v">V</option>
+            <option value="w">W</option>
+            <option value="x">X</option>
+            <option value="y">Y</option>
+            <option value="z">Z</option>
+        </select>
+        <input type="submit" name="decirLetra" value="Decir letra">
+        <label for="solucion">introuce tu solucion</label>
+        <input type="text" id="solucion" name="solucion">
+        <input type="submit" name="submit2" value="Resolver">
+    </form>
+
+
+    <script>
+        let palabra;
+        let palabraJuegoP2;
+        let intentos;
+        let maxIntentos = 5;
+        let letras = [];
+
+        const formP1 = document.getElementsByTagName('form')[0];
+        const formP2 = document.getElementsByTagName('form')[1];
+        formP2.setAttribute('style','visibility:hidden')
+        formP1.addEventListener('submit',function(e){
+            e.preventDefault();
+            palabra = document.getElementById('palabra');
+            console.log(palabra.value);
+            //eliminamos el formulario de la vista
+            formP1.remove();
+            formP2.setAttribute('style','visibility:visible')
+        })
+
+    </script>
+</body>
+
+</html>
