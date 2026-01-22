@@ -1,1 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+/* Contenedor del menú */
+nav.menu {
+  display: flex;
+  gap: 1.5rem;
+  background-color: #1e1e1e;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+}
+
+/* Enlaces */
+nav.menu a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+/* Hover */
+nav.menu a:hover {
+  color: #4fc3f7;
+  transform: translateY(-2px);
+}
+
+/* Enlace activo (Angular lo aplica con routerLinkActive) */
+nav.menu a.active {
+  color: #81d4fa;
+  border-bottom: 2px solid #81d4fa;
+  padding-bottom: 2px;
+}
+
+.productMenu{
+    width: 15%;
+    margin-top: -5px;
+    border-radius: 0 0 8px 8px;
+    display: flex;
+    justify-content: center;
+}
