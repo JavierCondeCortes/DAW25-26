@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
 use App\Models\Chollo;
 use App\Http\Controllers\ChollosController;
 
-Route::get('/chollos', function () {
+Route::get('/', function () {
     $chollos = Chollo::all();
     return view('chollos.index', compact('chollos'));
 })->name('inicio');

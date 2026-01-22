@@ -16,6 +16,7 @@
     <body>
 
         <h1 class="with-full text-center text-7xl bg-gray-600 text-white pb-6">Lista de chollos</h1>
+        <a href="">crear chollo</a>
         <div class=" flex flex-wrap">
             @foreach ($chollos as $chollo)
                 <div
