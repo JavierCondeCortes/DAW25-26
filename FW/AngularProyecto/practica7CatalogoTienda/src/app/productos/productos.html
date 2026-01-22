@@ -1,9 +1,15 @@
+<nav class="menu productMenu">
+    <a routerLink="alimentos">Alimentos</a>
+    <a routerLink="ropa">Ropa</a>
+    <a routerLink="Electronica">Electronica</a>
+</nav>
 <p>productos </p>
-
-<nav>
+<div>
     <ol>
-    @for (objeto of objetos; track $index) {
+    @for (objeto of lista; track $index) {
         <li><a routerLink="{{objeto.ID}}">{{objeto.Nombre}}</a></li>
     }
     </ol>
-</nav>
+</div>
+
+<router-outlet></router-outlet>

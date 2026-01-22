@@ -1,8 +1,15 @@
+
+<nav class="menu">
+    <a routerLink="./alimentos">Alimentos</a>
+    <a routerLink="./ropa">Ropa</a>
+    <a routerLink="./Electronica">Electronica</a>
+</nav>
 <p>producto-detalle</p>
 
-<h1>{{titulo}}</h1>
+<a routerLink="/productos">Volver</a>
 
-<h2>Detalle del producto</h2>
+<h1>{{ objeto.Nombre }}</h1>
+<p>{{ objeto.descripcion }}</p>
+<p>{{ objeto.precio }}</p>
 
-
-<p>Mostrando información del producto con ID: {{ id }}</p>
+<router-outlet></router-outlet>

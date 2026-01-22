@@ -5,6 +5,9 @@ import {Contacto} from './contacto/contacto';
 import {AcercaDe} from './acerca-de/acerca-de';
 import {Pagina404} from './pagina404/pagina404';
 import {ProductoDetalle} from './producto-detalle/producto-detalle';
+import {Ropa}from './productos/ropa/ropa';
+import {Electronica}from './productos/electronica/electronica';
+import {Alimentos}from './productos/alimentos/alimentos';
 
 export const routes: Routes = [
     {
@@ -28,18 +31,16 @@ export const routes: Routes = [
     }, {
         path: 'productos/:id',
         component: ProductoDetalle
-    },
-    // {
-    //     path 'productos/electronica',
-    //     component: ProductosElectronica
-    // },{
-    //     path 'productos/ropa',
-    //     component: ProductosRopa
-    // },{
-    //     path 'productos/alimentos',
-    //     component: ProductosAlimentos
-    // },
-    {
+    },{
+        path: 'productos/electronica',
+        component: Electronica
+    },{
+        path: 'productos/ropa',
+        component: Ropa
+    },{
+        path: 'productos/alimentos',
+        component: Alimentos
+    },{
         path: '**',
         redirectTo: 'pagina404'
     }
