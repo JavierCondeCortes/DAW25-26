@@ -16,11 +16,10 @@
     <body>
 
         <h1 class="with-full text-center text-7xl bg-gray-600 text-white pb-6">Lista de chollos</h1>
-        <a href="">crear chollo</a>
+        <a href="{{ route('crearChollo') }}" class="boton">crear chollo</a>
         <div class=" flex flex-wrap">
             @foreach ($chollos as $chollo)
-                <div
-                    class="border border-black bg-slate-200 rounded-xl m-10 w-1/5 h-[50vh] p-4 flex flex-col justify-between">
+                <div class="border border-black bg-slate-200 rounded-xl m-10 w-1/5 h-[50vh] p-4 flex flex-col justify-between">
                     <p class="w-full h-[33%] overflow-hidden text-ellipsis">
 
                     </p>
@@ -38,7 +37,7 @@
                             Precio: {{ $chollo->precio }} €
                         </p>
                         <p class=" bg-gray-400 p-2 px-6 rounded-xl basis-0">
-                            <a href="{{ route('detalles',['id' => $chollo->id]) }}">detalles</a>
+                            <a href="{{ route('detalles', ['id' => $chollo->id]) }}">detalles</a>
                         </p>
                     </div>
                 </div>

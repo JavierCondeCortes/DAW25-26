@@ -28,7 +28,6 @@ class ChollosController extends Controller
             $nuevoChollo -> save();
 
             return redirect()->route('chollos.index');
-
     }
 }
 
