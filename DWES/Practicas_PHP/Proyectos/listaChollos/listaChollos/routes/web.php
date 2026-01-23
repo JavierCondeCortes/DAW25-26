@@ -36,8 +36,8 @@ Route::get('/', function () {
 Route::get('detalles/{id?}',[ChollosController::class, 'detalles'])->name('detalles');
 
 Route::get('/nuevoForm', function () {
-    return view('chollos.crearChollo');
-});
+    return view(view: 'chollos.crearChollo');
+})->name('crearChollo');
 
 
 

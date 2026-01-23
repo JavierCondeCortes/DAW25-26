@@ -5,7 +5,9 @@
 input{
     display: block;
 }
-input[type='submit']{
+
+input[type='submit'], a[class='boton']{
+    margin: 1rem;
     border: 1px solid black;
     border-radius: 8px;
     padding: 0 4px;
@@ -15,6 +17,11 @@ input[type='submit']{
     cursor: pointer;
     transition: all 1s;
 }
+
 input[type='submit']:hover{
+    scale:110%;
+}
+
+a[class='boton']:hover{
     scale:110%;
 }

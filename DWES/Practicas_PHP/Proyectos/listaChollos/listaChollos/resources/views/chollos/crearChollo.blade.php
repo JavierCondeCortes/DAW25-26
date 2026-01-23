@@ -38,6 +38,7 @@
             <input type="number" name="precioDescuento" id="precioDescuento">
 
             <input type="submit" value="Agregar" name="agregar">
+            <a href="{{ route('inicio') }}" class="boton">regresar</a>
         </form>
     </body>
 

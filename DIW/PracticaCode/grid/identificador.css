@@ -1,0 +1,199 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+    color: white;
+    user-select: none;
+}
+
+.identificador {
+    scale: 80%;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 6fr 3fr 1fr;
+    grid-template-columns: 1fr 2fr;
+    border: 1px solid gray;
+    border-radius: 50px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://wallpapers.com/images/featured/textura-de-pared-nscwts307wlfoebg.jpg);
+    /* grid-auto-flow: column; */
+}
+
+h1,
+h2 {
+    text-align: center;
+    transition: all 1s;
+}
+
+.avatar {
+    border-right: 1px solid aqua;
+    grid-area: span 2 /span 1;
+    margin: 10vh 5vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar>img {
+    height: 70%;
+    width: 70%;
+    border-radius: 18px;
+    border: aqua 3px solid;
+    transition: all 1s;
+}
+
+.avatar>img:hover {
+    scale: 110%;
+}
+
+.avatar>h2 {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.avatar>h3 {
+    flex-grow: 1;
+    color: gainsboro;
+    transition: all 1s;
+}
+
+.avatar>h3:hover,
+.avatar>h2:hover {
+    text-shadow: 2px 2px 4px skyblue;
+    scale: 110%;
+}
+
+
+
+progress {
+    width: 80%;
+    height: 60px;
+    border: solid 2px white;
+    border-radius: 19px;
+    overflow: hidden;
+    position: absolute;
+    right: 3rem;
+}
+
+.js {
+    color: yellow;
+}
+
+.js>progress::-webkit-progress-value {
+    background-color: yellow;
+    border-radius: 18px;
+}
+
+.css {
+    color: skyblue;
+}
+
+.css>progress::-webkit-progress-value {
+    background-color: skyblue;
+    border-radius: 18px;
+}
+
+.html {
+    color: orange;
+}
+
+.html>progress::-webkit-progress-value {
+    background-color: orange;
+    border-radius: 18px;
+}
+
+.ingles {
+    color: greenyellow;
+}
+
+.ingles>progress::-webkit-progress-value {
+    background-color: greenyellow;
+    border-radius: 18px;
+}
+
+.aleman {
+    color: skyblue;
+}
+
+.aleman>progress::-webkit-progress-value {
+    background-color: skyblue;
+    border-radius: 18px;
+}
+
+
+progress::-webkit-progress-bar {
+    background: transparent;
+}
+
+progress:hover::-webkit-progress-value {
+    background-color: white;
+}
+
+progress::-webkit-progress-value {
+    transition: all 0.5s;
+
+}
+
+
+.habilidades {
+    border-bottom: 1px solid white;
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.skillContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-grow: 1;
+}
+
+.skill {
+    margin: 0 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.idiomas {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-grow: 1;
+    position: relative;
+}
+
+img {
+    height: 50px;
+}
+
+.redesSociales {
+    border-top: 1px solid white;
+    grid-area: span 1 /span 2;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.redSocial {
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.redSocial:hover {
+    color: skyblue;
+    border-bottom: 1px solid skyblue;
+}
