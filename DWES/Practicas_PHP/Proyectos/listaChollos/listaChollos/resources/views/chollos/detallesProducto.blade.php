@@ -16,8 +16,8 @@
     <p>precio con descuento: {{ $chollo -> precio_descuento }}€</p>
     <p>precio con descuento: {{ $chollo -> categoria->name}}</p>
 
-    <button class=" bg-slate-700 p-2 rounded text-white hover:bg-slate-400 hover:text-black transition-all"> <a href="">editar datos</a></button>
-    <button class=" bg-slate-700 p-2 rounded text-white hover:bg-slate-400 hover:text-black transition-all"> <a href="{{route('inicio')}}">regresar</a></button>
+    <button class=" bg-slate-700 p-2 rounded text-white hover:bg-slate-400 hover:text-black transition-all"> <a href="{{route('inicio')}}">Inicio</a></button>
+    <button class=" bg-slate-700 p-2 rounded text-white hover:bg-slate-400 hover:text-black transition-all"> <a href="{{route('editar',['id' => $chollo->id])}}">Editar</a></button>
     
     @endsection
 </body>
