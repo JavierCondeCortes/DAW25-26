@@ -37,11 +37,11 @@ export class Edificio {
         this.#plantas = plantas;
     }
 
-    agregarPlantas(nPlantas, nPuertas) {
-        this.#plantas = Array.from({ length: nPlantas }, () =>
-            Array.from({ length: nPuertas }, () => null)
-        );
+    agregarPlanta(numPuertas) {
+        const puertas = Array.from({ length: numPuertas }, () => null);
+        this.#plantas.push(puertas);
     }
+
     agregarPropietario(prop, planta, puerta) {
         this.#plantas[planta][puerta] = prop
     }
@@ -55,6 +55,20 @@ export class Edificio {
     getPropietario(planta, puerta) {
         return this.#plantas[planta][puerta];
     }
-
 };
+
+const inquilinosImportar = new Map[
+    [1, 1, 'mercedes', 'femenino', 3],
+    [1, 2, 'maria', 'femenino', 1],
+    [2, 2, 'alejandro', 'masculino', 2]
+];
+
+const edificio = new Edificio('san mertin', 65, 47010);
+
+edificio.agregarPlanta(2);
+edificio.agregarPlanta(2);
+edificio.agregarPlanta(1);
+edificio.agregarPlanta(1);
+
+console.table(edificio.plantas);
 
