@@ -15,19 +15,64 @@ class ChollosController extends Controller
         return view('chollos.detallesProducto', compact('chollo'));
     }
 
-    public function nuevoChollo(Request $request){
+    public function nuevoChollo(Request $request)
+    {
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'descripcion' => 'required|string',
+            'url' => 'nullable|file|mimes:jpg,jpeg,png,webp',
+            'categoria_id' => 'required|integer',
+            'puntuacion' => 'required|integer|min:0|max:10',
+            'precio' => 'required|numeric|min:0',
+            'precio_descuento' => 'required|numeric|min:0',
+            'disponible' => 'required|boolean',
+        ]);
+
+
         $nuevoChollo = new Chollo;
-            $nuevoChollo -> titulo = $request -> titulo;
-            $nuevoChollo -> descripcion  -> $request -> descripcion;
-            $nuevoChollo -> url ->$request->url;
-            $nuevoChollo -> categoria_id ->$request->categoria_id;
-            $nuevoChollo -> puntuacion ->$request->puntuacion;
-            $nuevoChollo -> precio ->$request->precio;
-            $nuevoChollo -> precio_descuento ->$request->precio_descuento;
+        $nuevoChollo->titulo = $request->titulo;
+        $nuevoChollo->descripcion  = $request->descripcion;
+        $nuevoChollo->url = $request->url;
+        $nuevoChollo->categoria_id = $request->categoria_id;
+        $nuevoChollo->puntuacion = $request->puntuacion;
+        $nuevoChollo->precio = $request->precio;
+        $nuevoChollo->precio_descuento = $request->precio_descuento;
+        $nuevoChollo->disponible = $request->disponible;
 
-            $nuevoChollo -> save();
+        if($nuevoChollo->save()){}
 
-            return redirect()->route('chollos.index');
+        return redirect()->route('inicio') -> with('mensaje', 'agregado exitoso');
+    }
+
+    public function editar($id)
+    {
+        $chollo = Chollo::findOrFail($id);
+        return view('chollos.editarChollo', compact('chollo'));
+    }
+    public function actualizar(Request $request, $id)
+    {
+        $chollo = Chollo::findOrFail($id);
+
+        $chollo->titulo = $request->titulo;
+        $chollo->descripcion = $request->descripcion;
+        $chollo->categoria_id = $request->categoria_id;
+        $chollo->puntuacion = $request->puntuacion;
+        $chollo->precio = $request->precio;
+        $chollo->precio_descuento = $request->precio_descuento;
+        $chollo->disponible = $request->disponible;
+
+        // Si hay nueva imagen
+        if ($request->hasFile('url')) {
+            $chollo->url = $request->file('url')->store('chollos', 'public');
+        }
+
+        $chollo->save();
+        
+        return redirect()->route('inicio')->with('success', 'Chollo actualizado');
+    }
+
+    public function categorias(){
+        $categorias = Categoria::all();
+        return view('chollos.listaCategorias', compact('categorias'));
     }
 }
-

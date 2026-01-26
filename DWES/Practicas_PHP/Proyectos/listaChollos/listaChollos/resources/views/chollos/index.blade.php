@@ -12,11 +12,12 @@
 </head>
 
 @section('content')
-
     <body>
-
         <h1 class="with-full text-center text-7xl bg-gray-600 text-white pb-6">Lista de chollos</h1>
         <a href="{{ route('crearChollo') }}" class="boton">crear chollo</a>
+        @if (@session('mensaje'))
+            <p class=" text-green-400">{{session('mensaje')}}</p>
+        @endif
         <div class=" flex flex-wrap">
             @foreach ($chollos as $chollo)
                 <div class="border border-black bg-slate-200 rounded-xl m-10 w-1/5 h-[50vh] p-4 flex flex-col justify-between">
