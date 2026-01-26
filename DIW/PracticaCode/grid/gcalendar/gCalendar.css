@@ -1,0 +1,127 @@
+*{
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  background-color: rgb(44, 44, 44);
+  font-size: clamp(8px,2vw,12px );
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 25%;
+}
+
+h1 {
+  color: white;
+}
+
+.weekday {
+  text-align: center;
+  background-color: rgb(18, 18, 20);
+  color: white;
+  gap: 0;
+  text-transform: uppercase;
+  /* para que esten pegados, se hace quitando el border inferior, pdt no vale con gap sino con bordes abajo derecha ejemplo */
+}
+
+button{
+    background: none;
+    border: none;
+    color: white;
+    scale: 150%;
+
+}
+
+.days-grid {
+  border-radius: 20px;
+  height: 90vh;
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(7, 1fr);
+  /* para la primera fila */
+  grid-template-rows: 1.5rem;
+  /* para el resto de filas  nota: darle un alto porque sino coge el tamaño del mas grande*/
+  grid-auto-rows: 1fr;
+  /* para evitar que unas celdas sean mas pequeñas que otras se debe poner unidades enteras y no fraccionarias como fr */
+  /* grid-auto-rows: 125px; comentar para ver en valores fraccionarios */
+  overflow: hidden;
+  /* otra opcion es hacer con border y border-with: A D B I*/
+}
+
+/* al poner posicion absolute es una opcion para omitir los valores fijos */
+.event-container{
+  position: absolute;
+}
+
+.day {
+  /* overflow: hidden; */
+  background-color: rgb(18, 18, 20);
+  color: white;
+  overflow-y: auto;
+}
+.day::-webkit-scrollbar{
+  background-color: transparent;
+}
+
+.is-inactive {
+  background-color: rgb(17, 17, 19);
+}
+
+time {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.event {
+  /* display: flex; */
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  /* para poner la elipsis (corte de texto) debemos eliminar flex*/
+  text-overflow: ellipsis;
+}
+
+.event--timed {
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+}
+.event--timed::before{
+  content: "";
+  display: inline-block;
+  height:7px; 
+  width:7px;
+  background-color: orange;
+  border-radius: 100%;
+  margin-right: 2px;
+}
+
+/* .circulo {
+  padding: 0 6.7px;
+  border-radius: 100%;
+  background-color: rgb(74, 152, 210);
+  margin-right: 0.5rem;
+} */
+
+.event--full-day {
+  height: 1rem;
+  border-radius: 5px;
+  margin: 0 0 0.5rem 0;
+  padding-left: 10px;
+}
+
+.event--purple {
+  background-color: purple;
+}
+.event--green {
+  background-color: green;
+}
+.event--red {
+  background-color: red;
+}
