@@ -18,6 +18,7 @@
 
     <button class=" bg-slate-700 p-2 rounded text-white hover:bg-slate-400 hover:text-black transition-all"> <a href="{{route('inicio')}}">Inicio</a></button>
     <button class=" bg-slate-700 p-2 rounded text-white hover:bg-slate-400 hover:text-black transition-all"> <a href="{{route('editar',['id' => $chollo->id])}}">Editar</a></button>
+    <button class=" bg-slate-700 p-2 rounded text-white hover:bg-slate-400 hover:text-black transition-all"> <a href="{{route('eliminar',['id' => $chollo->id])}}">Eliminar</a></button>
     
     @endsection
 </body>

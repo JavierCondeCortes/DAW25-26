@@ -42,9 +42,9 @@
                         </p>
                     </div>
                 </div>
-            @endforeach
-        </div>
-
+                @endforeach
+            </div>
+            {{ $chollos->links() }}
     </body>
 @endsection
 

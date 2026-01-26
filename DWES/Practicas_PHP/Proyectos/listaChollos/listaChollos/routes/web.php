@@ -31,7 +31,7 @@ use App\Http\Controllers\PagesController;
 use App\Models\Categoria;
 
 Route::get('/', function () {
-    $chollos = Chollo::all();
+    $chollos = Chollo::paginate(8);
     return view('chollos.index', compact('chollos'));
 })->name('inicio');
 
@@ -50,9 +50,16 @@ Route::get('/nuevoForm', function () {
 // Guardar formulario
 Route::post('/nuevoChollo', [ChollosController::class, 'nuevoChollo'])->name('chollos.nuevoChollo');
 
+//eliminar chollos
+Route::get('/chollos/eliminar/{id}',[ChollosController::class,'eliminarChollo'])->name('eliminar');
 
 //muestra categorias
 Route::get('/categorias', [ChollosController::class, 'categorias'])->name('lista');
 
+//Eliminar  categoria
+Route::get('/categorias/eliminar/{id}',[ChollosController::class, 'removeCategorias'])->name('catElim');
+
+//crear categoria
+Route::post('/categorias/crear', [ChollosController::class, 'createCategorias'])->name('catCreate');
 
 require __DIR__ . '/auth.php';
