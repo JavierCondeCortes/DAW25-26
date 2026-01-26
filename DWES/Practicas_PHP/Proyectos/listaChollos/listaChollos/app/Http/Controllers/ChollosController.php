@@ -15,6 +15,12 @@ class ChollosController extends Controller
         return view('chollos.detallesProducto', compact('chollo'));
     }
 
+    public function eliminarChollo($id){
+        $eliminar = Chollo::findOrFail($id);
+        $eliminar -> delete();
+
+        return redirect()->route('inicio')-> with('mensaje','Chollo Eliminado');
+    }
     public function nuevoChollo(Request $request)
     {
         $request->validate([
@@ -71,8 +77,32 @@ class ChollosController extends Controller
         return redirect()->route('inicio')->with('success', 'Chollo actualizado');
     }
 
+    //eliminar categorias
+    public function removeCategorias($id){
+        $catEliminar = Categoria::findOrFail($id);
+        $catEliminar -> delete();
+
+        return redirect()->route('lista')-> with('catEstado','Categoria Eliminada');
+    }
+
+    //crear categorias
+    public function createCategorias(Request $request){
+
+        $request -> validate([
+            'name'=>'required'
+        ]);
+
+        $nuevaCategoria = new Categoria;
+        $nuevaCategoria -> name = $request -> name;
+
+        $nuevaCategoria -> save();
+
+        return redirect()->route('lista')->with('catEstado','Categoria Creada');
+    }
+
     public function categorias(){
-        $categorias = Categoria::all();
+        $categorias = Categoria::withCount('chollos')->get();
+        
         return view('chollos.listaCategorias', compact('categorias'));
     }
 }
