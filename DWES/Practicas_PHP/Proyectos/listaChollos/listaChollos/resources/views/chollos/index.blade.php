@@ -29,6 +29,8 @@
                         {{ $chollo->titulo }}
                     </p>
 
+                    <p>puntuacion: {{$chollo->puntuacion}}</p>
+
                     <p class=" flex-shrink overflow-hidden">
                         {{ $chollo->descripcion }}
                     </p>

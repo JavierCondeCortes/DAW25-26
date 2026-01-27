@@ -27,8 +27,13 @@
             <input type="file" name="url" id="url" value="{{$chollo->url}}">
 
             <label for="categoria">categoria</label>
-            <input type="number" name="categoria_id" id="categoria" value="{{$chollo->categoria_id}}">
-
+            <br>
+            <select name="categoria_id" id="categoria">
+                @foreach ($categorias as $categoria)
+                    <option value="{{$categoria->id}}">{{$categoria->name}}</option>
+                @endforeach
+            </select>
+            <br>
             <label for="puntuacion">puntuacion</label>
             <input type="number" name="puntuacion" id="puntuacion" value="{{$chollo->puntuacion}}">
 

@@ -5,22 +5,38 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 use App\Models\Chollo;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 
 class ChollosController extends Controller
 {
+
+    public function logOut()
+    {
+        Auth::logout();
+        return redirect()->route('inicio');
+    }
+
     public function detalles($id)
     {
         $chollo = Chollo::findOrFail($id);
         return view('chollos.detallesProducto', compact('chollo'));
     }
 
-    public function eliminarChollo($id){
+    public function eliminarChollo($id)
+    {
         $eliminar = Chollo::findOrFail($id);
-        $eliminar -> delete();
+        $eliminar->delete();
 
-        return redirect()->route('inicio')-> with('mensaje','Chollo Eliminado');
+        return redirect()->route('inicio')->with('mensaje', 'Chollo Eliminado');
     }
+
+    public function newChollo(){
+        $categorias = Categoria::all();
+        return view('chollos.crearChollo', compact('categorias'));
+    }
+
     public function nuevoChollo(Request $request)
     {
         $request->validate([
@@ -34,26 +50,34 @@ class ChollosController extends Controller
             'disponible' => 'required|boolean',
         ]);
 
-
         $nuevoChollo = new Chollo;
         $nuevoChollo->titulo = $request->titulo;
         $nuevoChollo->descripcion  = $request->descripcion;
-        $nuevoChollo->url = $request->url;
         $nuevoChollo->categoria_id = $request->categoria_id;
         $nuevoChollo->puntuacion = $request->puntuacion;
         $nuevoChollo->precio = $request->precio;
         $nuevoChollo->precio_descuento = $request->precio_descuento;
         $nuevoChollo->disponible = $request->disponible;
 
-        if($nuevoChollo->save()){}
+        $nuevoChollo->url = $request->url->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+        ]);
+        $imageName = time() . '_' . Str::random(10) . '.' . $request->image->extension();
+        $request->image->move(public_path('uploads'), $imageName);
 
-        return redirect()->route('inicio') -> with('mensaje', 'agregado exitoso');
+        return back()->with('success', 'Image uploaded successfully!');
+
+        if ($nuevoChollo->save()) {
+        }
+
+        return redirect()->route('inicio')->with('mensaje', 'agregado exitoso');
     }
 
     public function editar($id)
     {
+        $categorias = Categoria::all();
         $chollo = Chollo::findOrFail($id);
-        return view('chollos.editarChollo', compact('chollo'));
+        return view('chollos.editarChollo', compact('chollo', 'categorias'));
     }
     public function actualizar(Request $request, $id)
     {
@@ -73,36 +97,39 @@ class ChollosController extends Controller
         }
 
         $chollo->save();
-        
+
         return redirect()->route('inicio')->with('success', 'Chollo actualizado');
     }
 
     //eliminar categorias
-    public function removeCategorias($id){
+    public function removeCategorias($id)
+    {
         $catEliminar = Categoria::findOrFail($id);
-        $catEliminar -> delete();
+        $catEliminar->delete();
 
-        return redirect()->route('lista')-> with('catEstado','Categoria Eliminada');
+        return redirect()->route('lista')->with('catEstado', 'Categoria Eliminada');
     }
 
     //crear categorias
-    public function createCategorias(Request $request){
+    public function createCategorias(Request $request)
+    {
 
-        $request -> validate([
-            'name'=>'required'
+        $request->validate([
+            'name' => 'required'
         ]);
 
         $nuevaCategoria = new Categoria;
-        $nuevaCategoria -> name = $request -> name;
+        $nuevaCategoria->name = $request->name;
 
-        $nuevaCategoria -> save();
+        $nuevaCategoria->save();
 
-        return redirect()->route('lista')->with('catEstado','Categoria Creada');
+        return redirect()->route('lista')->with('catEstado', 'Categoria Creada');
     }
 
-    public function categorias(){
+    public function categorias()
+    {
         $categorias = Categoria::withCount('chollos')->get();
-        
+
         return view('chollos.listaCategorias', compact('categorias'));
     }
 }
