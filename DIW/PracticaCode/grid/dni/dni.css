@@ -1,35 +1,90 @@
-h1,h2,h3,p{
+h1,
+h2,
+h3,
+p {
     margin: 0;
     padding: 0;
 }
+h1,h2,h3{
+    font-weight: 900;
+}
 
-.identificador{
+.identificador {
     display: grid;
-    grid-template-columns: 3;
+    grid-template-columns: 0.7fr 0.6fr 0.3fr;
     grid-row: 3;
 
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: bisque;
+    background-color: rgba(255, 228, 196, 0.486);
     border-radius: 30px;
-    width: 50%;
+    width: 40%;
     margin: auto;
+    overflow: hidden;
 }
-header{
+
+header {
     grid-area: span 1/span 3;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(224, 247, 237);
 }
-aside:first-of-type{
+
+h1{
+    font-size: 380%;
+    font-weight: 500;
+    margin-right: 2rem;
+}
+
+aside:first-of-type {
     grid-area: span 2/span 1;
-}
-aside:last-of-type{
+    margin: 1rem;
+
+    display: flex;
+    flex-direction: column;
     
 }
-footer{
+aside:first-of-type h2{
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    font-weight: 600;
+    font-size: xx-large;
+    margin-left: 1rem;
+}
+
+.fotoDni>img{
+    height: 17vw;
+}
+
+main{
+    margin-top: 2rem;
+}
+aside:last-of-type {
+    margin: 1rem;
+    position: relative;
+}
+aside:last-of-type img{
+    position:absolute;
+    bottom: 0px;
+}
+
+.contendedorDoble {
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+}
+
+footer {
     text-align: center;
 }
-h3{
+
+h3 {
     font-size: medium;
 }
-p{
-    font-size: xx-large;
+
+p {
+    font-size: 32px;
     margin-left: 10px;
 }
