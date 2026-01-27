@@ -57,11 +57,11 @@ export class Edificio {
     }
 };
 
-const inquilinosImportar = new Map[
-    [1, 1, 'mercedes', 'femenino', 3],
-    [1, 2, 'maria', 'femenino', 1],
-    [2, 2, 'alejandro', 'masculino', 2]
-];
+// const inquilinosImportar = new Map[
+//     [1, 1, 'mercedes', 'femenino', 3],
+//     [1, 2, 'maria', 'femenino', 1],
+//     [2, 2, 'alejandro', 'masculino', 2]
+// ];
 
 const edificio = new Edificio('san mertin', 65, 47010);
 
