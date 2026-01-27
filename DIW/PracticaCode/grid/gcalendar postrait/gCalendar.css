@@ -1,6 +1,15 @@
+/* la diferencia */
+/* .day:nth-child(7n + 6),
+.day:nth-child(7n + 7),
+.weekday:nth-child(6),
+.weekday:nth-child(7){
+  display: none;
+} */
+/* otra opcion es usar row template repeat(5,1fr) 0px 0px */
 *{
   box-sizing: border-box;
 }
+
 
 body {
   overflow: hidden;
@@ -52,6 +61,10 @@ button{
   /* grid-auto-rows: 125px; comentar para ver en valores fraccionarios */
   overflow: hidden;
   /* otra opcion es hacer con border y border-with: A D B I*/
+}
+
+header:has(input.laborales:checked) ~ .days-grid{
+    grid-template-columns: repeat(5, 1fr)0px 0px;
 }
 
 /* al poner posicion absolute es una opcion para omitir los valores fijos */
