@@ -13,9 +13,17 @@
 <body class="h-[100vh]">
     <div class=" bg-slate-900 py-5">
         <nav class=" w-1/2 text-white flex justify-around mx-auto">
-            <a href="{{route('inicio')}}">Inicio</a>
-            <a href="">Nuevos</a>
-            <a href="">Destacados</a>
+            <a href="{{ route('inicio') }}">Inicio</a>
+            <a href="{{ route('nuevos') }}">Nuevos</a>
+            <a href="{{ route('destacados') }}">Destacados</a>
+            <form action="{{ route('cerrarSesion') }}" method="POST" class="inline">
+                @csrf
+                <button type="submit" class="text-red-500 hover:underline bg-transparent border-none cursor-pointer">
+                    Cerrar sesión
+                </button>
+            </form>
+
+
         </nav>
     </div>
 
@@ -25,9 +33,10 @@
 
 
     <footer class=" bg-slate-900 py-5">
-            <p class=" w-1/2 text-white flex justify-around mx-auto">
-                &copy; Chollos 2026
-            </p>
+        <p class=" w-1/2 text-white flex justify-around mx-auto">
+            &copy; Chollos 2026
+        </p>
     </footer>
 </body>
+
 </html>

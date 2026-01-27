@@ -35,12 +35,32 @@
             <label for="descripcion">descripcion</label>
             <input type="text" name="descripcion" id="descripcion">
 
-            <label for="url">url</label>
-            <input type="file" name="url" id="url">
+            <label for="image">imagen</label>
+            <div class="mb-3">
+                <div class="input-group">
+                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="inputGroupFile04"
+                        aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept="image/*" name="image"
+                        onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0]);document.getElementById('preview').style.display = 'block';">
+                </div>
+            </div>
+            <div class="mb-3">
+                @error('image')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <img id="preview" src="" alt="Image preview"
+                    style="max-width: 300px; display: block; border: 1px solid #ccc; padding: 5px;display:none;">
+            </div>
 
             <label for="categoria">categoria</label>
-            <input type="number" name="categoria_id" id="categoria">
-
+            <br>
+            <select name="categoria_id" id="categoria">
+                @foreach ($categorias as $categoria)
+                    <option value="{{ $categoria->id }}">{{ $categoria->name }}</option>
+                @endforeach
+            </select>
+            <br>
             <label for="puntuacion">puntuacion</label>
             <input type="number" name="puntuacion" id="puntuacion">
 
