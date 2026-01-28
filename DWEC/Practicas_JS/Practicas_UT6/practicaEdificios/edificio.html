@@ -1,15 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gestión de Edificio</title>
     <link rel="stylesheet" href="stilos.css">
-    <script src="dom.js">
-        
-    </script>
+    <script type="module" src="main.js" defer></script>
 </head>
 <body>
-    
+
+    <!-- MODAL -->
+    <div id="modal" class="modal">
+        <div class="contenido-modal">
+
+            <form id="formulario">
+
+                <h2>Gestión de propietarios</h2>
+
+                <div class="linea_formulario">
+                    <label>Nombre:</label>
+                    <input type="text" id="nombre">
+                </div>
+
+                <div class="linea_formulario">
+                    <label>Género:</label>
+                    <select id="genero">
+                        <option value="masculino">Hombre</option>
+                        <option value="femenino">Mujer</option>
+                    </select>
+                </div>
+
+                <div class="linea_formulario">
+                    <label>Miembros:</label>
+                    <input type="number" id="miembros">
+                </div>
+
+                <div class="linea_formulario">
+                    <label>Planta:</label>
+                    <input type="number" id="planta" readonly>
+                </div>
+
+                <div class="linea_formulario">
+                    <label>Puerta:</label>
+                    <input type="number" id="puerta" readonly>
+                </div>
+
+                <div class="linea_formulario">
+                    <button id="aniadir" class="aniadir">Añadir</button>
+                    <button id="modificar" class="modificar">Modificar</button>
+                    <button id="cerrar" class="cerrar">Cerrar</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+    <!-- EDIFICIO -->
+    <div class="edificio" id="edificio"></div>
+
 </body>
 </html>
