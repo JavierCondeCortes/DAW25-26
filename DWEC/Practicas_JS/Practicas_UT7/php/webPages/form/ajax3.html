@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="./pruebajson.php" method="POST">
+        <fieldset>
+            <legend>prueba con POST</legend>
+            <label for="nombre">nombre:</label>
+            <input type="text" id="nombre" name="nombre">
+            <label for="edad">edad:</label>
+            <input type="text" id="edad" name="edad">
+            <input type="submit" value="enviar">
+        </fieldset>
+    </form>
+    <div id="datos"></div>
+    <script>
+        let xhr = new XMLHttpRequest();
+        xhr.addEventListener("load", function (e) {
+            if (xhr.status === 200) {
+                document.querySelector("#datos").innerHTML = xhr.responseText;
+            } else {
+                alert(`Error ${xhr.status} ${xhr.statusText}`)
+            }
+        });
+
+        document.forms[0].addEventListener("submit", function (e) {
+            e.preventDefault()
+            
+            //enviar datos del formulario
+            xhr.open("POST", "http://localhost:8080/webpages/form/pruebajson.php");
+            xhr.send(new FormData(document.forms[0]));
+
+            //crear un nuevo formData y enviarlo
+            let formulario = new FormData();
+            formulario.append('nombre',(document.querySelector('#nombre').value));
+            formulario.append('edad', (document.querySelector('#edad').value));
+            xhr.open("POST", "http://localhost:8080/webpages/form/pruebajson.php");
+            xhr.send(formulario);
+
+            //para mandar a php
+            
+            // xhr.setRequestHeader('content-Type','application/json;charset=UTF-8');
+            // xhr.send(JSON.stringify({nombre:nombre, edad:edad}));
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+<h1>prueba de formularios php js</h1>
+<h2 id="datos"></h2>
+<script>
+    const parametros = new URLSearchParams('nombre=Pepe García$edad=10');
+    const url = "http://localhost:8080/webpages/form/pruebaget.php?" + parametros.toString();
+    let xhr = new XMLHttpRequest();
+    xhr.addEventListener("load",function(e){
+        if(xhr.status === 200){
+            document.querySelector("#datos").innerHTML = xhr.responseText;
+        }else{
+            alert(`Error: ${xhr.status} ${xhr.statusText}`);
+        }
+    });
+    xhr.open("GET",url);
+    xhr.send();
+</script>
