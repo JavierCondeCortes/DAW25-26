@@ -1,0 +1,8 @@
+<script>
+    const parametros = new URLSearchParams('nombre=Pepe García&edad=10');
+    for (let parametro of parametros){
+        console.log(parametro);
+    }
+    alert('se enviaran los datos');
+    location.href="http://localhost:8080/webpages/form/pruebaget.php?"+parametros.toString();
+</script>

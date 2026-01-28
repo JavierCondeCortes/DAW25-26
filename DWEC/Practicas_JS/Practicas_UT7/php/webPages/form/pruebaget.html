@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="./pruebaget.php" method="get">
+        <fieldset>
+            <legend>prueba con GET</legend>
+            <label for="nombre">nombre:</label>
+            <input type="text" id="nombre" name="nombre">
+            <label for="edad">edad:</label>
+            <input type="text" id="edad" name="edad">
+            <input type="submit" value="enviar">
+        </fieldset>
+    </form>
+    <form action="./pruebapost.php" method="POST">
+        <fieldset>
+            <legend>prueba con POST</legend>
+            <label for="nombre">nombre:</label>
+            <input type="text" id="nombre" name="nombre">
+            <label for="edad">edad:</label>
+            <input type="text" id="edad" name="edad">
+            <input type="submit" value="enviar">
+        </fieldset>
+    </form>
+    <script>
+        const formulario=document.forms[0];
+        formulario.addEventListener('submit',function(e){
+            e.preventDefault();
+            
+            alert('se enviará el formulario');
+            e.target.submit();
+        })
+    </script>
+</body>
+</html>

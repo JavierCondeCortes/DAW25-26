@@ -1,0 +1,24 @@
+<form id="formu" enctype="multipart/form-data">
+    <input type="file" name="mifichero" id="mifichero">
+    <input type="submit" value="enviar">
+</form>
+
+<div id="resultado"></div>
+
+<script>
+document.querySelector("#formu").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let datos = new FormData(this);
+
+    fetch("http://localhost:8080/webpages/form/Recibirfichero.php", {
+        method: "POST",
+        body: datos
+    })
+    .then(res => res.text())
+    .then(ruta => {
+        document.querySelector("#resultado").innerHTML =
+            `<img src="${ruta}" width="200">`;
+    });
+});
+</script>
