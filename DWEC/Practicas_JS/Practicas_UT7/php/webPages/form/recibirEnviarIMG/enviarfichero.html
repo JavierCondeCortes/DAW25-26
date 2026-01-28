@@ -11,14 +11,19 @@ document.querySelector("#formu").addEventListener("submit", function(e){
 
     let datos = new FormData(this);
 
-    fetch("http://localhost:8080/webpages/form/Recibirfichero.php", {
+    fetch("http://localhost:8080/webPages/form/recibirEnviarIMG/Recibirfichero.php", {
         method: "POST",
         body: datos
     })
-    .then(res => res.text())
-    .then(ruta => {
-        document.querySelector("#resultado").innerHTML =
-            `<img src="${ruta}" width="200">`;
+    .then(res => res.json())
+    .then(rutas => {
+
+        const cont = document.querySelector("#resultado");
+        cont.innerHTML = ""; // limpiar
+
+        rutas.forEach(ruta => {
+            cont.innerHTML += `<img src="${ruta}" width="200" style="margin:10px;">`;
+        });
     });
 });
 </script>
