@@ -1,2 +1,9 @@
-pechuga
-<!-- <router-outlet></router-outlet> -->
+<h2>Ropa</h2>
+<ul>
+  @for (producto of productos; track producto.ID) {
+    <li>
+      <strong>{{ producto.Nombre }}</strong> - {{ producto.precio }}
+      <p>{{ producto.descripcion }}</p>
+    </li>
+  }
+</ul>
