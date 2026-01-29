@@ -11,6 +11,7 @@
     @section('content')
         
     <h1>{{ $chollo -> titulo }}</h1>
+    <img src="{{ asset($chollo->url) }}" alt="" class="w-[25%] h-full object-cover">
     <p>{{ $chollo -> descripcion }}</p>
     <p>precio sin descuento: {{ $chollo -> precio }}€</p>
     <p>precio con descuento: {{ $chollo -> precio_descuento }}€</p>
