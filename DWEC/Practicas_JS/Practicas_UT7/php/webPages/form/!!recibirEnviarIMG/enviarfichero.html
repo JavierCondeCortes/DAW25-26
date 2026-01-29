@@ -1,0 +1,18 @@
+<form id="formu" enctype="multipart/form-data">
+    <input type="file" name="mifichero" id="mifichero">
+    <input type="submit" value="enviar">
+</form>
+
+<div id="resultado"></div>
+
+<script>
+    let xhr = new XMLHttpRequest();
+    xhr.addEventListener("laod",function(e){
+        if (xhr.status === 200){
+            document.querySelector('#resultado').innerHTML = xhr.responseText;           
+        }else{
+            alert(`error ${xhr.status} ${xhr.statusText}`);
+        }
+    });
+    
+</script>
