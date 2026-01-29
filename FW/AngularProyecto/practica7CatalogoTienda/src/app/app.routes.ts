@@ -17,9 +17,6 @@ export const routes: Routes = [
         path: 'inicio',
         component: Inicio
     }, {
-        path: 'productos',
-        component: Productos
-    }, {
         path: 'contacto',
         component: Contacto
     }, {
@@ -29,17 +26,26 @@ export const routes: Routes = [
         path: 'pagina404',
         component: Pagina404
     }, {
-        path: 'productos/:id',
-        component: ProductoDetalle
-    },{
-        path: 'productos/electronica',
-        component: Electronica
-    },{
-        path: 'productos/ropa',
-        component: Ropa
-    },{
-        path: 'productos/alimentos',
-        component: Alimentos
+        path: 'productos',
+        component: Productos,
+        children: [
+            {
+                path: 'alimentos',
+                component: Alimentos
+            },
+            {
+                path: 'electronica',
+                component: Electronica
+            },
+            {
+                path: 'ropa',
+                component: Ropa
+            },
+            {
+                path: ':id',
+                component: ProductoDetalle
+            }
+        ]
     },{
         path: '**',
         redirectTo: 'pagina404'
