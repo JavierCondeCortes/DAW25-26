@@ -1,0 +1,27 @@
+<!-- lo comentado son imagenes -->
+
+<!-- hay que cambiar los comentarios para la imagen -->
+
+<!-- <img id="img"> -->
+<div class="container"></div>
+
+<input type="button" id="btn" value="Leer">
+<script>
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener('load', function(){
+        if(xhr.status===200){
+
+        //para img hay que cambiar los comentarios
+
+        document.querySelector('.container').innerHTML =xhr.response;
+        // const img=document.querySelector('#container').innerHTML =xhr.response;
+        // img.src=URL.createObjectURL(xhr.response);
+        }
+    });
+    document.querySelector('#btn').addEventListener('click',()=>{
+
+        xhr.open('get', './/assets//datos.html');
+        // xhr.responseType='blob'; <- para img solo hay que descomentar
+        xhr.send();
+    })
+</script>
