@@ -23,7 +23,7 @@
             <label for="descripcion">descripcion</label>
             <input type="text" name="descripcion" id="descripcion" value="{{$chollo->descripcion}}">
 
-            <label for="url">url</label>
+            <label for="url">imagen</label>
             <input type="file" name="url" id="url" value="{{$chollo->url}}">
 
             <label for="categoria">categoria</label>

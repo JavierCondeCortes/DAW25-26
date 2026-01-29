@@ -8,77 +8,94 @@ use Inertia\Inertia;
 use App\Models\Categoria;
 use App\Models\Chollo;
 use App\Http\Controllers\ChollosController;
-use App\Http\Controllers\ImageController;
 
 
-Route::get('/', function () {
+// -----------------------------
+// PÁGINA PÚBLICA (SIN LOGIN)
+// -----------------------------
+Route::get('/welcome', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('welcome');
 
+
+// -----------------------------
+// DASHBOARD REDIRIGE A INICIO
+// -----------------------------
 Route::get('/dashboard', function () {
-    return route('inicio');
+    return redirect()->route('inicio');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-//todo lo que esta es que tiene que estar autenticado
+// -----------------------------
+// RUTAS QUE REQUIEREN LOGIN
+// -----------------------------
 Route::middleware('auth')->group(function () {
+
+    // PERFIL
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    //cerrar sesion
+    // CERRAR SESIÓN
     Route::post('/cierreSesion', [ChollosController::class, 'logOut'])->name('cerrarSesion');
 
-    //trabajo
 
-    Route::get('/', function () {
-        $chollos = Chollo::paginate(8);
-        return view('chollos.index', compact('chollos'));
-    })->name('inicio');
+    // -----------------------------
+    // INICIO (LISTA DE CHOLLOS)
+    // -----------------------------
+    Route::get('/', [ChollosController::class, 'index'])->name('inicio');
 
-    //destacados order by puntuacion desc
+
+    // DESTACADOS
     Route::get('/destacados', function () {
+        $categorias = Categoria::all();
         $chollos = Chollo::orderBy('puntuacion', 'desc')->paginate(8);
-        return view('chollos.index', compact('chollos'));
+        return view('chollos.index', compact('categorias', 'chollos'));
     })->name('destacados');
 
-    //nuevos order by date_created
+    // NUEVOS
     Route::get('/nuevos', function () {
+        $categorias = Categoria::all();
         $chollos = Chollo::orderBy('created_at', 'desc')->paginate(8);
-        return view('chollos.index', compact('chollos'));
+        return view('chollos.index', compact('categorias', 'chollos'));
     })->name('nuevos');
 
-    Route::get('detalles/{id?}', [ChollosController::class, 'detalles'])->name('detalles');
 
-    //mostrar formulario
+    // DETALLES
+    Route::get('/detalles/{id}', [ChollosController::class, 'detalles'])->name('detalles');
+
+
+    // EDITAR CHOLLO
     Route::get('/chollos/{id}/editar', [ChollosController::class, 'editar'])->name('editar');
-    //actualizacion
     Route::post('/chollos/{id}/actualizar', [ChollosController::class, 'actualizar'])->name('actualizar');
-    
-    // Mostrar formulario
+
+
+    // NUEVO CHOLLO
     Route::get('/nuevoForm', [ChollosController::class, 'newChollo'])->name('crearChollo');
-        
-        // Guardar formulario
     Route::post('/nuevoChollo', [ChollosController::class, 'nuevoChollo'])->name('chollos.nuevoChollo');
 
-    //eliminar chollos
+
+    // FILTRO POR CATEGORÍA
+    Route::get('/filtro-categorias', [ChollosController::class, 'filtroCategorias'])->name('filtro.categorias');
+
+
+    // ELIMINAR CHOLLO
     Route::get('/chollos/eliminar/{id}', [ChollosController::class, 'eliminarChollo'])->name('eliminar');
 
-    //muestra categorias
+
+    // LISTA DE CATEGORÍAS
     Route::get('/categorias', [ChollosController::class, 'categorias'])->name('lista');
 
-    //Eliminar  categoria
+    // ELIMINAR CATEGORÍA
     Route::get('/categorias/eliminar/{id}', [ChollosController::class, 'removeCategorias'])->name('catElim');
 
-    //crear categoria
+    // CREAR CATEGORÍA
     Route::post('/categorias/crear', [ChollosController::class, 'createCategorias'])->name('catCreate');
-
-    //imagenes
-    Route::post('/image-upload', [ChollosController::class, 'postImage'])->name('post.image');
 });
+
 require __DIR__ . '/auth.php';
