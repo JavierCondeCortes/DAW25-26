@@ -17,9 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('email')->unique();
-            $table->int('telefono', 9);
-            $table->string('telefono');
-            $table->boolval('activo');
+            $table->integer('telefono');
+            $table->boolean('activo');
         });
     }
 
