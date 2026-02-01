@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('servicios', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->int('duracion_minutos', 9);
-            $table->int('precio');
-            $table->boolval('activo');
+            $table->integer('duracion_minutos');
+            $table->integer('precio');
+            $table->boolean('activo');
         });
     }
 

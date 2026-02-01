@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\clientesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,5 +28,22 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+//CLIENTES-----------------------------------------
+
+//funcion ir a crear
+Route::get('crear', function(){
+    return view('citas.clientes.crear');
+})->name('page_crear');
+
+//funcion crear
+Route::post('crear_form',[clientesController::class, 'crear'])->name('crearform');
+
+//funcion mostrar
+Route::get('clientes',[clientesController::class, 'mostrar'])->name('clientes');
+
+// funcion eliminar
+Route::delete('eliminar/{id}',[clientesController::class, 'eliminar'])->name('eliminar');
 
 require __DIR__.'/auth.php';
