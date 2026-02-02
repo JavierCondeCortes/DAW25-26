@@ -14,7 +14,7 @@ export class App {
 
   constructor(private peliculasService: PeliculasService) {
     this.peliculasService.retornar()
-      .subscribe(result => this.peliculas = result)
+      .subscribe(result => { this.peliculas = result; console.log('Peliculas cargadas', result); })
   }
 
 }

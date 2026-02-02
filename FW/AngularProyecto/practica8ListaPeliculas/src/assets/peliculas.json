@@ -1,0 +1,114 @@
+[
+    {
+        "id": 0,
+        "titulo": "lo que el viento se llevó",
+        "director": "carlos sainz",
+        "anio": 1997,
+        "genero": "drama",
+        "disponible": true
+    },
+    {
+        "id": 1,
+        "titulo": "Ali ali aliooo",
+        "director": "gypsy kings",
+        "anio": 2007,
+        "genero": "gitano",
+        "disponible": true
+    },
+    {
+        "id": 2,
+        "titulo": "mi carro me lo robaron",
+        "director": "paco felina",
+        "anio": 1983,
+        "genero": "drama",
+        "disponible": false
+    },
+    {
+        "id": 3,
+        "titulo": "por la raja de la falda",
+        "director": "panda",
+        "anio": 2009,
+        "genero": "terror",
+        "disponible": true
+    },
+    {
+        "id": 4,
+        "titulo": "La sombra del calcetín perdido",
+        "director": "Marcos del Fresno",
+        "anio": 1994,
+        "genero": "drama",
+        "disponible": true
+    },
+    {
+        "id": 5,
+        "titulo": "Gitaneo en la autopista",
+        "director": "Los Hermanos del Alba",
+        "anio": 2002,
+        "genero": "gitano",
+        "disponible": false
+    },
+    {
+        "id": 6,
+        "titulo": "El misterio del bocadillo fantasma",
+        "director": "Tito Barragán",
+        "anio": 1987,
+        "genero": "terror",
+        "disponible": true
+    },
+    {
+        "id": 7,
+        "titulo": "Bailando con la farola",
+        "director": "Rafael Cumbiero",
+        "anio": 2011,
+        "genero": "drama",
+        "disponible": true
+    },
+    {
+        "id": 8,
+        "titulo": "La maldición del mechero verde",
+        "director": "Lola Trujillo",
+        "anio": 1999,
+        "genero": "terror",
+        "disponible": false
+    },
+    {
+        "id": 9,
+        "titulo": "Gitanos al amanecer",
+        "director": "Kiko del Monte",
+        "anio": 2005,
+        "genero": "gitano",
+        "disponible": true
+    },
+    {
+        "id": 10,
+        "titulo": "El día que se cayó el wifi",
+        "director": "Sandra Poveda",
+        "anio": 2018,
+        "genero": "drama",
+        "disponible": true
+    },
+    {
+        "id": 11,
+        "titulo": "La noche del pollo asesino",
+        "director": "Rubén Gallardo",
+        "anio": 1991,
+        "genero": "terror",
+        "disponible": true
+    },
+    {
+        "id": 12,
+        "titulo": "A ritmo de rumba y gasolina",
+        "director": "Los Chispas",
+        "anio": 2003,
+        "genero": "gitano",
+        "disponible": false
+    },
+    {
+        "id": 13,
+        "titulo": "El susurro del ventilador roto",
+        "director": "Pilar Medina",
+        "anio": 1985,
+        "genero": "drama",
+        "disponible": true
+    }
+]
