@@ -10,6 +10,6 @@ export class PeliculasService {
   constructor(private http: HttpClient) { }
 
   retornar() {
-    return this.http.get("https://ejerciciostutorialesya.com/vue/datos.php");
+    return this.http.get<any[]>('assets/peliculas.json');
   }  
 }

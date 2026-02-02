@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,4 +9,8 @@ import { Component } from '@angular/core';
 })
 export class ListaPeliculas {
 
+  constructor(private http: HttpClient){ };
+  retornar(){
+    // return this.http.get();
+  }
 }
