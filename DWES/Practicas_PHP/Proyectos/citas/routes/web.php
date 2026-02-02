@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\clientesController;
+use App\Http\Controllers\serviciosController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,10 +41,37 @@ Route::get('crear', function(){
 //funcion crear
 Route::post('crear_form',[clientesController::class, 'crear'])->name('crearform');
 
+//funcion editar
+Route::post('editar/{id}',[clientesController::class, 'editado'])->name('editado');
+
 //funcion mostrar
 Route::get('clientes',[clientesController::class, 'mostrar'])->name('clientes');
 
 // funcion eliminar
 Route::delete('eliminar/{id}',[clientesController::class, 'eliminar'])->name('eliminar');
+
+// funcion editar
+Route::get('editar/{id}',[clientesController::class,'editar'])->name('editar');
+
+
+
+
+//SERVICIOS----------------------------------------
+
+//lista servicios------------------º
+Route::get('servicios',[serviciosController::class,'lista'])->name('servicios');
+
+//Crear Servicios--------------------
+
+Route::get('servicios/crear',function(){
+    return view('citas.servicios.crear');
+})->name('serviciosCrear');
+
+Route::post('servicios/servicio_creado',[serviciosController::class,'crear'])->name('formServCreate');
+
+//editar servicios-----------------------------
+Route::get('servicios/editar/{id}',[serviciosController::class,'editar'])->name('serv_editar');
+
+route::get('servicios/editar/{id}',[serviciosController::class,'editado'])->name('formServEditar');
 
 require __DIR__.'/auth.php';
