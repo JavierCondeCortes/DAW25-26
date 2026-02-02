@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{{ route('crearform') }}" method="post">
+    <form action="{{ route('editado',$cliente->id) }}" method="post">
         @csrf
         @error('nombre')
             <p>el nombre es obligatorio</p>
@@ -19,13 +19,13 @@
         @enderror
 
         <label for="">nombre</label>
-        <input type="text" name="nombre" id="nombre">
+        <input type="text" name="nombre" id="nombre" value="{{$cliente->nombre}}">
         <label for="">email</label>
-        <input type="text" name="email" id="email">
+        <input type="text" name="email" id="email" value="{{$cliente->email}}">
         <label for="">telefono</label>
-        <input type="text" name="telefono" id="telefono">
+        <input type="text" name="telefono" id="telefono" value="{{$cliente->telefono}}">
         <label for="">activado</label>
-        <input type="checkbox" name="activado" id="activado">
+        <input type="checkbox" name="activado" id="activado" >
         <input type="submit" value="editar">
     </form>
 </body>

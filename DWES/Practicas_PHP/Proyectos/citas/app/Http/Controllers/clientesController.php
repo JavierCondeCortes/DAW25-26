@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
-use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Schema;
-use PhpParser\Node\Expr\FuncCall;
+
 
 class clientesController extends Controller
 {
@@ -17,7 +15,8 @@ class clientesController extends Controller
         $request->validate([
             'nombre' => 'required',
             'email' => 'email',
-            'telefono' => 'numeric'
+            'telefono' => 'numeric',
+            'lenght=9'
         ]);
 
         $clienteN = new Cliente;
@@ -29,26 +28,48 @@ class clientesController extends Controller
 
         $clienteN->save();
 
+        return redirect()->route('serviciosCrear');
+    }
+
+    //editar cliente-------------------
+    public function editado(Request $request, $id)
+    {
+        $request->validate([
+            'nombre' => 'required',
+            'email' => 'email',
+            'telefono' => 'numeric',
+            'lenght=9'
+        ]);
+        $clienteE = Cliente::findOrFail($id);
+
+        $clienteE->nombre = $request->nombre;
+        $clienteE->email = $request->email;
+        $clienteE->telefono = $request->telefono;
+        $clienteE->activo = $request->activo ?? 0;
+
+        $clienteE->save();
+
         return redirect()->route('clientes');
     }
+
+    //editar cliente (mostrar web)------------------
+    public function editar($id)
+    {
+        $cliente = Cliente::findOrFail($id);
+        return view('citas.clientes.editar', compact('cliente'));
+    }
+
     //mostrar clientes----------------------------
     public function mostrar()
     {
         $clientes = Cliente::all();
         return view('citas.clientes.lista_clientes', compact('clientes'));
-
     }
     //eliminar cliente------------------------------
     public function eliminar($id)
     {
         $clienteEliminar = Cliente::findOrFail($id);
         $clienteEliminar->delete();
-        return redirect()->route('clientes',compact('clienteEliminar'));
-    }
-    
-    //editar cliente
-    public function editar ($id){
-        $cliente = Cliente::findOrFail($id);
-        return view('citas.clientes.editar');
+        return redirect()->route('clientes', compact('clienteEliminar'));
     }
 }
