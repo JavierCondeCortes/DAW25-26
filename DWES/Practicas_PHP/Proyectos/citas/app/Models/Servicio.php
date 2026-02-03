@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Servicio extends Model
 {
     public $timestamps = false;
+
+        public function citas(){
+        return $this -> hasMany(Cita::class);
+    }
 }

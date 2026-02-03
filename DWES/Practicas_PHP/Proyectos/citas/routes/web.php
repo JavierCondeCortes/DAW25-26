@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\clientesController;
 use App\Http\Controllers\serviciosController;
+use App\Http\Controllers\citasController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -70,8 +71,18 @@ Route::get('servicios/crear',function(){
 Route::post('servicios/servicio_creado',[serviciosController::class,'crear'])->name('formServCreate');
 
 //editar servicios-----------------------------
-Route::get('servicios/editar/{id}',[serviciosController::class,'editar'])->name('serv_editar');
+Route::get('servicios/editar/{id}', [serviciosController::class, 'editar'])
+    ->name('serv_editar');
 
-route::get('servicios/editar/{id}',[serviciosController::class,'editado'])->name('formServEditar');
+route::get('servicios/editado/{id}',[serviciosController::class,'editado'])->name('formServEditar');
+
+route::get('servicios/deshabilitar/{id}',[serviciosController::class, 'deshabilitar'])->name('deshabilitar');
+
+
+
+
+
+//CITAS-------------------------------------------
+Route::get('citas',[citasController::class,'citas'])->name('citas');
 
 require __DIR__.'/auth.php';

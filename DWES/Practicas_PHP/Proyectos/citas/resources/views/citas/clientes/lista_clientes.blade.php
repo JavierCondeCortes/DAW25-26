@@ -9,19 +9,19 @@
 
 </head>
 
-<body class=" ">
-    <div class=" flex gap-1">
+<body>
+    <div>
         @foreach ($clientes as $cliente)
-            <div class=" flex flex-col h-28 w-[25%] bg-slate-700 text-white pl-2 rounded-lg">
+            <div class=" my-2 text-white bg-slate-700 gap-2">
                 <p>{{ $cliente->nombre }}</p>
                 <p>{{ $cliente->email }}</p>
-                <div class=" flex flex-row flex-grow content-center">
+                <div>
                     <form action="{{ route('eliminar', $cliente->id) }}" method="post">
                         @method('DELETE')
                         @csrf
-                        <input type="submit" value="Eliminar" class=" bg-red-500 text-white rounded-lg p-2">
+                        <input type="submit" value="Eliminar" class=" text-red-300 cursor-pointer">
                     </form>
-                    <a href="{{route('editar',$cliente->id)}}">Editar</a>
+                    <a href="{{route('editar',$cliente->id)}}" class=" text-blue-300">Editar</a>
                 </div>
             </div>
         @endforeach

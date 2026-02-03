@@ -17,8 +17,10 @@
                 <span>duracion:{{ $servicio->duracion_minutos }} minutos</span>
                 <span>precio:{{ $servicio->precio }}€</span>
                 <div>
-                    <a href="{{route('serv_editar', $servicio->id)}}">Editar</a>
-                    <button><a href="">Deshabilitar</a></button>
+                    <button><a href="{{route('serv_editar', $servicio->id)}}">Editar</a></button>
+                    <form action="{{route('deshabilitar', $servicio->id)}}" method="get">
+                        <button type="submit">Deshabilitar</button>
+                    </form>
                 </div>
             </div>
         @endforeach
