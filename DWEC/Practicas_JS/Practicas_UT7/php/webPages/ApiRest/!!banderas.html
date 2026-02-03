@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<div id="contenido">
+
+</div>
+
+<body>
+
+    <script>
+        fetch('https://restcountries.com/v3.1/name/spain')
+            .then(response => response.json())
+            .then(banderas => {
+                console.log('Datos recibidos:', banderas);
+                let info = document.querySelector('#contenido');
+                banderas.forEach(pais => {
+                    // info.innerHTML += `
+                    //     <div>
+                    //         <span>${pais.name.common}</span>
+                    //         <img src="${pais.flags.png}"></img>
+                    //     </div>`
+                    
+                    let infoPais = document.createElement('div');
+                    infoPais.appendChild(info);
+
+                    let namePais = document.createElement('span');
+                    namePais.textContent=`${pais.name.common}`;
+
+                    let flagPais = document.createElement('img');
+                    namePais.setAttribute('src',pais.flags.png);
+
+                    infoPais.appendChild(flagPais);
+                    infoPais.appendChild(namePais);
+                });
+            })
+            .catch(error => {
+                console.error('Error al obtener datos:', error);
+            });
+
+    </script>
+</body>
+
+</html>
