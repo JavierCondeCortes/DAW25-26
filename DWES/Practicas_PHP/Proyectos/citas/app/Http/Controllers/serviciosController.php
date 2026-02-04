@@ -18,8 +18,8 @@ class serviciosController extends Controller
     {
         $request->validate([
             'nombre' => 'required',
-            'duracion_minutos' => 'required|numeric',
-            'precio' => 'required|numeric',
+            'duracion_minutos' => 'required|numeric|min:1',
+            'precio' => 'required|numeric|min:1',
         ]);
 
         $servicioN = new Servicio;
@@ -37,16 +37,16 @@ class serviciosController extends Controller
     //editar servicios -----------------------------------
 
     public function editar($id){
-        $servicioE = Servicio::findOrFail($id);
-        return view('citas.servicios.editar',compact('servicioE'));
+        $servicio = Servicio::findOrFail($id);
+        return view('citas.servicios.editar',compact('servicio'));
     }
 
     public function editado(Request $request, $id)
     {
         $request->validate([
             'nombre' => 'required',
-            'duracion_minutos' => 'required|numeric',
-            'precio' => 'required|numeric',
+            'duracion_minutos' => 'required|numeric|min:1',
+            'precio' => 'required|numeric|min:1',
         ]);
 
         $servicioN = Servicio::findOrFail($id);
@@ -55,6 +55,17 @@ class serviciosController extends Controller
         $servicioN->duracion_minutos = $request->duracion_minutos;
         $servicioN->precio = $request->precio;
         $servicioN->activo = $request->activo ? 1 : 0;
+
+        $servicioN->save();
+        return redirect()->route('servicios');
+    }
+
+        public function deshabilitar(Request $request, $id)
+    {
+
+        $servicioN = Servicio::findOrFail($id);
+
+        $servicioN->activo = 0;
 
         $servicioN->save();
         return redirect()->route('servicios');
