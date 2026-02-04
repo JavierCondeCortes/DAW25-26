@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table id="datos">
+        <tr>
+            <th>Accion</th>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Nombre Usuario</th>
+            <th>Email</th>
+            <th>Ciudad</th>
+        </tr>
+    </table>
+
+    <h2>Detalle de Usuario</h2>
+
+    <form action="" method="post">
+        <label for="id">id</label>
+        <input type="text" name="id" id="id">
+        <label for="nombre">nombre</label>
+        <input type="text" name="nombre" id="nombre">
+        <label for="nombreUsuario">nombre usuario</label>
+        <input type="text" name="nombreUsuario" id="nombreUsuario">
+        <label for="email">email</label>
+        <input type="text" name="email" id="email">
+        <label for="ciudad">ciudad</label>
+        <input type="text" name="ciudad" id="ciudad">
+        <input type="submit" value="Añadir" id="añadir" name="añadir">
+    </form>
+
+    <script>
+        //insertar con async/await
+        //editar fetch
+        //Borrar async/await + fetch
+
+        const xhr1 = new XMLHttpRequest();
+        xhr1.addEventListener('load', function () {
+            if (xhr1.status === 200) {
+                xhr1.response.forEach(usuario => {
+                    let datos = document.getElementById('datos');
+
+                    let elemento = document.createElement('tr');
+                    elemento.addEventListener('click', function () {
+                        let id = document.getElementById('id');
+                        id.value = `${usuario.id}`;
+                        let nombre = document.getElementById('nombre');
+                        nombre.value = `${usuario.name}`;
+                        let username = document.getElementById('nombreUsuario');
+                        username.value = `${usuario.username}`;
+                        let email = document.getElementById('email');
+                        email.value = `${usuario.email}`;
+                        let city = document.getElementById('ciudad');
+                        city.value = `${usuario.address.city}`;
+                    });
+
+                    let opcion = document.createElement('td');
+                    let botonEditar = document.createElement('button');
+                    botonEditar.setAttribute('name', 'editar');
+                    botonEditar.setAttribute('id', 'editar');
+                    botonEditar.textContent = 'editar';
+
+                    let botonBorrar = document.createElement('button');
+                    botonBorrar.setAttribute('name', 'borrar');
+                    botonBorrar.setAttribute('id', 'borrar');
+                    botonBorrar.textContent = 'borrar';
+                    botonBorrar.addEventListener('click', async function () {
+                        try {
+                            const id = usuario.id;
+                            const response = await fetch(`http://localhost:3000/users/id/${id}`, {
+                                method: 'DELETE',
+                            });
+
+                            if (response.ok) {
+                                console.log('Post deleted successfully.');
+                            } else {
+                                console.error('Failed to delete post. Status:', response.status);
+                            }
+                        } catch (error) {
+                            console.error(error);
+                        }
+                    })
+
+                    elemento.appendChild(opcion);
+                    opcion.appendChild(botonEditar);
+                    opcion.appendChild(botonBorrar);
+
+                    let contentId = document.createElement('td');
+                    contentId.textContent = `${usuario.id}`;
+                    let contentName = document.createElement('td');
+                    contentName.textContent = `${usuario.name}`;
+                    let contentUserName = document.createElement('td');
+                    contentUserName.textContent = `${usuario.username}`;
+                    let contentEmail = document.createElement('td');
+                    contentEmail.textContent = `${usuario.email}`;
+                    let contentCity = document.createElement('td');
+                    contentCity.textContent = `${usuario.address.city}`;
+
+                    datos.appendChild(elemento);
+                    elemento.appendChild(contentId);
+                    elemento.appendChild(contentName);
+                    elemento.appendChild(contentUserName);
+                    elemento.appendChild(contentEmail);
+                    elemento.appendChild(contentCity);
+                });
+            }
+        });
+        xhr1.open('GET', 'http://localhost:3000/users');
+        xhr1.responseType = 'json';
+        xhr1.send();
+        // http://localhost:3000/comments
+    </script>
+</body>
+
+</html>
