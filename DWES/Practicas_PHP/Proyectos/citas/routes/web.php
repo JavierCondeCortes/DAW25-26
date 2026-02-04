@@ -28,50 +28,51 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+
+    //CLIENTES-----------------------------------------
+
+    //funcion ir a crear
+    Route::get('crear', function () {
+        return view('citas.clientes.crear');
+    })->name('page_crear');
+
+    //funcion crear
+    Route::post('crear_form', [clientesController::class, 'crear'])->name('crearform');
+
+    //funcion editar
+    Route::post('editar/{id}', [clientesController::class, 'editado'])->name('editado');
+
+    //funcion mostrar
+    Route::get('clientes', [clientesController::class, 'mostrar'])->name('clientes');
+
+    // funcion eliminar
+    Route::delete('eliminar/{id}', [clientesController::class, 'eliminar'])->name('eliminar');
+
+    // funcion editar
+    Route::get('editar/{id}', [clientesController::class, 'editar'])->name('editar');
+
+
+
+
+    //SERVICIOS----------------------------------------
+
+    //lista servicios------------------º
+    Route::get('servicios', [serviciosController::class, 'lista'])->name('servicios');
+
+    //Crear Servicios--------------------
+
+    Route::get('servicios/crear', function () {
+        return view('citas.servicios.crear');
+    })->name('serviciosCrear');
+
+    Route::post('servicios/servicio_creado', [serviciosController::class, 'crear'])->name('formServCreate');
+
+    //editar servicios-----------------------------
+    Route::get('servicios/editar/{id}', [serviciosController::class, 'editar'])->name('serv_editar');
+
+    route::get('servicios/editar/{id}', [serviciosController::class, 'editado'])->name('formServEditar');
 });
 
-
-//CLIENTES-----------------------------------------
-
-//funcion ir a crear
-Route::get('crear', function(){
-    return view('citas.clientes.crear');
-})->name('page_crear');
-
-//funcion crear
-Route::post('crear_form',[clientesController::class, 'crear'])->name('crearform');
-
-//funcion editar
-Route::post('editar/{id}',[clientesController::class, 'editado'])->name('editado');
-
-//funcion mostrar
-Route::get('clientes',[clientesController::class, 'mostrar'])->name('clientes');
-
-// funcion eliminar
-Route::delete('eliminar/{id}',[clientesController::class, 'eliminar'])->name('eliminar');
-
-// funcion editar
-Route::get('editar/{id}',[clientesController::class,'editar'])->name('editar');
-
-
-
-
-//SERVICIOS----------------------------------------
-
-//lista servicios------------------º
-Route::get('servicios',[serviciosController::class,'lista'])->name('servicios');
-
-//Crear Servicios--------------------
-
-Route::get('servicios/crear',function(){
-    return view('citas.servicios.crear');
-})->name('serviciosCrear');
-
-Route::post('servicios/servicio_creado',[serviciosController::class,'crear'])->name('formServCreate');
-
-//editar servicios-----------------------------
-Route::get('servicios/editar/{id}',[serviciosController::class,'editar'])->name('serv_editar');
-
-route::get('servicios/editar/{id}',[serviciosController::class,'editado'])->name('formServEditar');
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
