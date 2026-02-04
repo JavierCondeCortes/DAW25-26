@@ -31,7 +31,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-
     //CLIENTES-----------------------------------------
 
     //funcion ir a crear
@@ -70,19 +69,20 @@ Route::middleware('auth')->group(function () {
 
     Route::post('servicios/servicio_creado', [serviciosController::class, 'crear'])->name('formServCreate');
 
-//editar servicios-----------------------------
-Route::get('servicios/editar/{id}', [serviciosController::class, 'editar'])
-    ->name('serv_editar');
+    //editar servicios-----------------------------
+    Route::get('servicios/editar/{id}', [serviciosController::class, 'editar'])
+        ->name('serv_editar');
 
-route::get('servicios/editado/{id}',[serviciosController::class,'editado'])->name('formServEditar');
+    route::get('servicios/editado/{id}', [serviciosController::class, 'editado'])->name('formServEditar');
 
-route::get('servicios/deshabilitar/{id}',[serviciosController::class, 'deshabilitar'])->name('deshabilitar');
-
-
+    route::get('servicios/deshabilitar/{id}', [serviciosController::class, 'deshabilitar'])->name('deshabilitar');
 
 
 
-//CITAS-------------------------------------------
-Route::get('citas',[citasController::class,'citas'])->name('citas');
+
+
+    //CITAS-------------------------------------------
+    Route::get('citas', [citasController::class, 'citas'])->name('citas');
+});
 
 require __DIR__ . '/auth.php';
