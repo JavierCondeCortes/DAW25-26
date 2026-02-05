@@ -73,14 +73,14 @@
                     botonBorrar.addEventListener('click', async function () {
                         try {
                             const id = usuario.id;
-                            const response = await fetch(`http://localhost:3000/users/id/${id}`, {
+                            const response = await fetch(`http://localhost:3000/users/${id}`, {
                                 method: 'DELETE',
                             });
 
                             if (response.ok) {
                                 console.log('Post deleted successfully.');
                             } else {
-                                console.error('Failed to delete post. Status:', response.status);
+                                console.error(`Failed to delete post. Status:  ${response.status}`);
                             }
                         } catch (error) {
                             console.error(error);
