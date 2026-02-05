@@ -1,1 +1,20 @@
 <p>lista-peliculas works!</p>
+<table>
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Título</th>
+            <th>Director</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(peli of peliculas;track peli.id){
+        <tr>
+            <td>{{ peli.id }}</td>
+            <td>{{ peli.titulo }}</td>
+            <td>{{ peli.director }}</td>
+        </tr>
+        }
+    </tbody>
+</table>
+<router-outlet></router-outlet>

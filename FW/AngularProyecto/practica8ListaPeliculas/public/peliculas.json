@@ -1,0 +1,162 @@
+[
+    {
+        "id": 1,
+        "titulo": "Sombras en la Niebla",
+        "director": "Lucía Herrera",
+        "anio": 2018,
+        "genero": "Suspense",
+        "disponible": true
+    },
+    {
+        "id": 2,
+        "titulo": "Horizonte Carmesí",
+        "director": "Marco Vidal",
+        "anio": 2020,
+        "genero": "Acción",
+        "disponible": false
+    },
+    {
+        "id": 3,
+        "titulo": "El Último Invierno",
+        "director": "Sofía Lamas",
+        "anio": 2015,
+        "genero": "Drama",
+        "disponible": true
+    },
+    {
+        "id": 4,
+        "titulo": "Códigos del Pasado",
+        "director": "Álvaro Montes",
+        "anio": 2022,
+        "genero": "Ciencia Ficción",
+        "disponible": true
+    },
+    {
+        "id": 5,
+        "titulo": "Risas Bajo la Lluvia",
+        "director": "Elena Ruiz",
+        "anio": 2019,
+        "genero": "Comedia",
+        "disponible": false
+    },
+    {
+        "id": 6,
+        "titulo": "Ecos del Mar",
+        "director": "Julián Ortega",
+        "anio": 2017,
+        "genero": "Aventura",
+        "disponible": true
+    },
+    {
+        "id": 7,
+        "titulo": "Ciudad de Cristal",
+        "director": "Nerea Campos",
+        "anio": 2021,
+        "genero": "Thriller",
+        "disponible": true
+    },
+    {
+        "id": 8,
+        "titulo": "La Casa del Eco",
+        "director": "Pablo Serrano",
+        "anio": 2014,
+        "genero": "Terror",
+        "disponible": false
+    },
+    {
+        "id": 9,
+        "titulo": "Caminos Paralelos",
+        "director": "Irene Solís",
+        "anio": 2016,
+        "genero": "Romance",
+        "disponible": true
+    },
+    {
+        "id": 10,
+        "titulo": "El Guardián del Tiempo",
+        "director": "Tomás Beltrán",
+        "anio": 2023,
+        "genero": "Fantasía",
+        "disponible": true
+    },
+    {
+        "id": 11,
+        "titulo": "Noche de Acero",
+        "director": "Raúl Medina",
+        "anio": 2018,
+        "genero": "Acción",
+        "disponible": false
+    },
+    {
+        "id": 12,
+        "titulo": "Voces del Bosque",
+        "director": "Marina Torres",
+        "anio": 2013,
+        "genero": "Misterio",
+        "disponible": true
+    },
+    {
+        "id": 13,
+        "titulo": "El Viaje Infinito",
+        "director": "Héctor Lozano",
+        "anio": 2020,
+        "genero": "Aventura",
+        "disponible": true
+    },
+    {
+        "id": 14,
+        "titulo": "Cenizas del Ayer",
+        "director": "Claudia Rivas",
+        "anio": 2011,
+        "genero": "Drama",
+        "disponible": false
+    },
+    {
+        "id": 15,
+        "titulo": "Planeta Rojo",
+        "director": "Sergio Navarro",
+        "anio": 2024,
+        "genero": "Ciencia Ficción",
+        "disponible": true
+    },
+    {
+        "id": 16,
+        "titulo": "El Último Acuerdo",
+        "director": "Daniela Paredes",
+        "anio": 2019,
+        "genero": "Thriller",
+        "disponible": true
+    },
+    {
+        "id": 17,
+        "titulo": "Bajo el Sol de Enero",
+        "director": "Rocío Álvarez",
+        "anio": 2012,
+        "genero": "Romance",
+        "disponible": false
+    },
+    {
+        "id": 18,
+        "titulo": "La Ruta del Silencio",
+        "director": "Óscar Benítez",
+        "anio": 2017,
+        "genero": "Suspense",
+        "disponible": true
+    },
+    {
+        "id": 19,
+        "titulo": "Fragmentos del Futuro",
+        "director": "Valeria Montes",
+        "anio": 2021,
+        "genero": "Ciencia Ficción",
+        "disponible": false
+    },
+    {
+        "id": 20,
+        "titulo": "El Eco de las Montañas",
+        "director": "Jorge Salvatierra",
+        "anio": 2016,
+        "genero": "Aventura",
+        "disponible": true
+    }
+]
