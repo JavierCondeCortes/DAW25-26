@@ -29,11 +29,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-<<<<<<< HEAD
-// });
-=======
 
->>>>>>> d91edfe3db7e336f7e4612b68913e1952dbb9dfc
+// });
 
     //CLIENTES-----------------------------------------
 
@@ -88,9 +85,8 @@ Route::middleware('auth')->group(function () {
     //CITAS-------------------------------------------
     Route::get('citas', [citasController::class, 'citas'])->name('citas');
 });
-<<<<<<< HEAD
 // en el caso de que no funcione el auth comentar la linea 86 y descomentar la linea 32
-=======
 
->>>>>>> d91edfe3db7e336f7e4612b68913e1952dbb9dfc
+
+
 require __DIR__ . '/auth.php';
