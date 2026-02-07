@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        document.cookie = 'usuario=pepe';
+        document.cookie = 'usuario='+encodeURIComponent('pepe perez');
+
+        const expires = new Date();
+        expires.setTime(expires.getTime()+600);
+        document.cookie = 'telefono=124565789; expires='+expires.toUTCString();
+
+        function setCookie (name,value, days){
+            let cookie = name + '=' + encodeURIComponent(value);
+            if(typeof days === 'number'){
+                cookie += '; max-age=' + (days*24*60*60);
+                document.cookie = cookie;
+            }
+        }
+        setCookie('si',2,1);
+    </script>
+</body>
+</html>

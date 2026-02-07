@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" method="post">
+        <label for="">nombre</label>
+        <input type="text">
+        <label for="">valor</label>
+        <input type="text">
+        <label for="">dias</label>
+        <input type="number">
+
+        <button type="button" id="verTodas">ver</button>
+        <button type="button" id="crearCookie">crear</button>
+        <button type="button" id="modificarCookie">modificar</button>
+        <button type="button" id="leerCookie">leer</button>
+        <button type="button" id="borrarCookie">borrar</button>
+    </form>
+
+    <script>
+        let ver = document.getElementById('verTodas');
+        ver.addEventListener('click', function () {
+            console.log(document.cookie);
+            const cookieArray = document.cookie.split(';');
+            for (let i = 0; i > cookieArray.length; i++) {
+                const cookiePar = cookieArray[i].split('=');
+                console.log(`${cookiePar[0].trim()}->${decodeURIComponent(cookiePar[1])}`)
+            }
+        });
+
+        let crear = document.getElementById('crearCookie');
+        crear.addEventListener('click', function (name, value, days) {
+            let cookie = name + '=' + encodeURIComponent(value);
+            if (typeof days === 'number') {
+                cookie += '; max-age=' + (days * 24 * 60 * 60);
+                document.cookie = cookie;
+            }
+        });
+        
+
+        let modificar = document.getElementById('modificarCookie');
+        modificar.addEventListener('click', function (name, value, days) {
+            let cookie = name + '=' + encodeURIComponent(value);
+            if (typeof days === 'number') {
+                cookie += '; max-age=' + (days * 24 * 60 * 60);
+                document.cookie = cookie;
+            }
+        });
+
+        let borrar = document.getElementById('borrarCookie');
+        borrar.addEventListener('click', function (name) {
+
+            let cookie = name + '=' + encodeURIComponent("");
+            if (typeof days === 'number') {
+                cookie += '; max-age=' + (0);
+                document.cookie = cookie;
+            }
+        });
+        
+    </script>
+</body>
+
+</html>
