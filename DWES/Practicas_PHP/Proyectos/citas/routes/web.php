@@ -84,6 +84,7 @@ Route::middleware('auth')->group(function () {
 
     //CITAS-------------------------------------------
     Route::get('citas', [citasController::class, 'citas'])->name('citas');
+    Route::get('crearCitas', [citasController::class, 'crearCitas'])->name('crearCitas');
 });
 // en el caso de que no funcione el auth comentar la linea 86 y descomentar la linea 32
 

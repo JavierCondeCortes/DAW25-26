@@ -15,11 +15,21 @@ return new class extends Migration
     {
         Schema::create('citas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_usuario')->references('id')->on('users');
-            $table->foreignId('id_cliente')->references('id')->on('clientes');
-            $table->foreignId('id_servicio')->references('id')->on('servicios');
-            $table->timestamps();
+
+            $table->foreignId('id_usuario')
+                ->constrained('users')
+                ->onDelete('cascade');
+
+            $table->foreignId('id_cliente')
+                ->constrained('clientes')
+                ->onDelete('cascade');
+
+            $table->foreignId('id_servicio')
+                ->constrained('servicios')
+                ->onDelete('cascade');
+
             $table->boolean('activo');
+            $table->timestamps();
         });
     }
 
