@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApisController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -96,6 +97,9 @@ Route::middleware('auth')->group(function () {
 
     // CREAR CATEGORÍA
     Route::post('/categorias/crear', [ChollosController::class, 'createCategorias'])->name('catCreate');
+
+    //API
+    Route::get('api/chollos',[ApisController::class,'index']);
 });
 
 require __DIR__ . '/auth.php';

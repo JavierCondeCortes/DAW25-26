@@ -1,162 +1,114 @@
 [
     {
+        "id": 0,
+        "titulo": "lo que el viento se llevó",
+        "director": "carlos sainz",
+        "anio": 1997,
+        "genero": "drama",
+        "disponible": true
+    },
+    {
         "id": 1,
-        "titulo": "Sombras en la Niebla",
-        "director": "Lucía Herrera",
-        "anio": 2018,
-        "genero": "Suspense",
+        "titulo": "Ali ali aliooo",
+        "director": "gypsy kings",
+        "anio": 2007,
+        "genero": "gitano",
         "disponible": true
     },
     {
         "id": 2,
-        "titulo": "Horizonte Carmesí",
-        "director": "Marco Vidal",
-        "anio": 2020,
-        "genero": "Acción",
+        "titulo": "mi carro me lo robaron",
+        "director": "paco felina",
+        "anio": 1983,
+        "genero": "drama",
         "disponible": false
     },
     {
         "id": 3,
-        "titulo": "El Último Invierno",
-        "director": "Sofía Lamas",
-        "anio": 2015,
-        "genero": "Drama",
+        "titulo": "por la raja de la falda",
+        "director": "panda",
+        "anio": 2009,
+        "genero": "terror",
         "disponible": true
     },
     {
         "id": 4,
-        "titulo": "Códigos del Pasado",
-        "director": "Álvaro Montes",
-        "anio": 2022,
-        "genero": "Ciencia Ficción",
+        "titulo": "La sombra del calcetín perdido",
+        "director": "Marcos del Fresno",
+        "anio": 1994,
+        "genero": "drama",
         "disponible": true
     },
     {
         "id": 5,
-        "titulo": "Risas Bajo la Lluvia",
-        "director": "Elena Ruiz",
-        "anio": 2019,
-        "genero": "Comedia",
+        "titulo": "Gitaneo en la autopista",
+        "director": "Los Hermanos del Alba",
+        "anio": 2002,
+        "genero": "gitano",
         "disponible": false
     },
     {
         "id": 6,
-        "titulo": "Ecos del Mar",
-        "director": "Julián Ortega",
-        "anio": 2017,
-        "genero": "Aventura",
+        "titulo": "El misterio del bocadillo fantasma",
+        "director": "Tito Barragán",
+        "anio": 1987,
+        "genero": "terror",
         "disponible": true
     },
     {
         "id": 7,
-        "titulo": "Ciudad de Cristal",
-        "director": "Nerea Campos",
-        "anio": 2021,
-        "genero": "Thriller",
+        "titulo": "Bailando con la farola",
+        "director": "Rafael Cumbiero",
+        "anio": 2011,
+        "genero": "drama",
         "disponible": true
     },
     {
         "id": 8,
-        "titulo": "La Casa del Eco",
-        "director": "Pablo Serrano",
-        "anio": 2014,
-        "genero": "Terror",
+        "titulo": "La maldición del mechero verde",
+        "director": "Lola Trujillo",
+        "anio": 1999,
+        "genero": "terror",
         "disponible": false
     },
     {
         "id": 9,
-        "titulo": "Caminos Paralelos",
-        "director": "Irene Solís",
-        "anio": 2016,
-        "genero": "Romance",
+        "titulo": "Gitanos al amanecer",
+        "director": "Kiko del Monte",
+        "anio": 2005,
+        "genero": "gitano",
         "disponible": true
     },
     {
         "id": 10,
-        "titulo": "El Guardián del Tiempo",
-        "director": "Tomás Beltrán",
-        "anio": 2023,
-        "genero": "Fantasía",
+        "titulo": "El día que se cayó el wifi",
+        "director": "Sandra Poveda",
+        "anio": 2018,
+        "genero": "drama",
         "disponible": true
     },
     {
         "id": 11,
-        "titulo": "Noche de Acero",
-        "director": "Raúl Medina",
-        "anio": 2018,
-        "genero": "Acción",
-        "disponible": false
+        "titulo": "La noche del pollo asesino",
+        "director": "Rubén Gallardo",
+        "anio": 1991,
+        "genero": "terror",
+        "disponible": true
     },
     {
         "id": 12,
-        "titulo": "Voces del Bosque",
-        "director": "Marina Torres",
-        "anio": 2013,
-        "genero": "Misterio",
-        "disponible": true
+        "titulo": "A ritmo de rumba y gasolina",
+        "director": "Los Chispas",
+        "anio": 2003,
+        "genero": "gitano",
+        "disponible": false
     },
     {
         "id": 13,
-        "titulo": "El Viaje Infinito",
-        "director": "Héctor Lozano",
-        "anio": 2020,
-        "genero": "Aventura",
-        "disponible": true
-    },
-    {
-        "id": 14,
-        "titulo": "Cenizas del Ayer",
-        "director": "Claudia Rivas",
-        "anio": 2011,
-        "genero": "Drama",
-        "disponible": false
-    },
-    {
-        "id": 15,
-        "titulo": "Planeta Rojo",
-        "director": "Sergio Navarro",
-        "anio": 2024,
-        "genero": "Ciencia Ficción",
-        "disponible": true
-    },
-    {
-        "id": 16,
-        "titulo": "El Último Acuerdo",
-        "director": "Daniela Paredes",
-        "anio": 2019,
-        "genero": "Thriller",
-        "disponible": true
-    },
-    {
-        "id": 17,
-        "titulo": "Bajo el Sol de Enero",
-        "director": "Rocío Álvarez",
-        "anio": 2012,
-        "genero": "Romance",
-        "disponible": false
-    },
-    {
-        "id": 18,
-        "titulo": "La Ruta del Silencio",
-        "director": "Óscar Benítez",
-        "anio": 2017,
-        "genero": "Suspense",
-        "disponible": true
-    },
-    {
-        "id": 19,
-        "titulo": "Fragmentos del Futuro",
-        "director": "Valeria Montes",
-        "anio": 2021,
-        "genero": "Ciencia Ficción",
-        "disponible": false
-    },
-    {
-        "id": 20,
-        "titulo": "El Eco de las Montañas",
-        "director": "Jorge Salvatierra",
-        "anio": 2016,
-        "genero": "Aventura",
+        "titulo": "El susurro del ventilador roto",
+        "director": "Pilar Medina",
+        "anio": 1985,
+        "genero": "drama",
         "disponible": true
     }
 ]
