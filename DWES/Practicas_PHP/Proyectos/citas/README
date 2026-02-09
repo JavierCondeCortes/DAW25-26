@@ -1,0 +1,20 @@
+el proyecto se encuentra a medias debido a estado de salud de estos dias atras, para entregarlo a 
+tiempo aun con la desventaja de dias por terminar el de chollos.
+
+solo hay un posible problema que me sudece en casa pero en clase no, y es que me puedo registrar sin problema
+
+en el caso de que haya error en la penultima linea de web.php salen la forma de salvarlo
+
+para que todo funciones se usa 
+
+-- php artisan migration:fresh 
+
+para que la base de datos se actualice
+
+no hay un usuario como tal, pero hay que tener en cuenta 1 cosa, al no darme tiempo al poner el header compartido
+
+habra que poner las url a mano
+
+    /citas
+    /clientes
+    /serviciosº
