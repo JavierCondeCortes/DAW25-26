@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+// });
 
     //CLIENTES-----------------------------------------
 
@@ -84,5 +85,8 @@ Route::middleware('auth')->group(function () {
     //CITAS-------------------------------------------
     Route::get('citas', [citasController::class, 'citas'])->name('citas');
 });
+// en el caso de que no funcione el auth comentar la linea 86 y descomentar la linea 32
+
+
 
 require __DIR__ . '/auth.php';
