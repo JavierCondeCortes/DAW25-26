@@ -1,0 +1,87 @@
+@media (min-width: 450px) {
+
+    .destacados {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-rows: auto;
+        gap: 10px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    }
+
+    .productCard {
+        position: relative;
+        height: 300px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .productCard::before {
+        content: "";
+        position: absolute;
+        background-color: beige;
+        border-radius: 20px;
+        height: 100%;
+        width: 50%;
+    }
+
+    .title {
+        font-weight: bold;
+        text-align: center;
+        height: 60%;
+        width: 60%;
+        transform: rotate(-80deg);
+        z-index: 0;
+    }
+
+    .title:hover {
+
+        transform: rotate(-80deg);
+    }
+
+    .infoCard {
+        text-align: center;
+        position: absolute;
+        display: grid;
+        grid-template-columns: 2fr 3fr 3fr;
+        grid-template-rows: 1fr 2fr 2fr 1fr;
+        margin-right: 10%;
+        left: 30%;
+        background-color: blueviolet;
+        border-radius: 20px;
+        height: 80%;
+        width: 70%;
+        z-index: 10;
+    }
+
+    h2 {
+        text-align: center;
+        grid-column: 2/4;
+    }
+
+    .precio {
+        grid-row: 2/3;
+        grid-column: 2/3;
+    }
+
+    .detalles {
+        display: flex;
+        justify-content: space-around;
+        grid-row: 3/4;
+        grid-column: 2/4;
+    }
+
+    .boton {
+        margin: auto;
+        margin-bottom: 30px;
+        padding: 10px;
+        grid-row: 4/5;
+        grid-column: 2/4;
+        border: 1px black solid;
+        border-radius: 18px;
+        background-color: white;
+        width: 40%;
+    }
+}
