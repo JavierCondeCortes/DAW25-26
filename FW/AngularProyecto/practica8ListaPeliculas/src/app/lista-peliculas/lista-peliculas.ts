@@ -1,18 +1,29 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { PeliculasService } from '../peliculas';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
+  standalone: true,
   selector: 'app-lista-peliculas',
-  imports: [RouterOutlet],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './lista-peliculas.html',
-  styleUrl: './lista-peliculas.css',
+  styleUrls: ['./lista-peliculas.css'],
 })
 export class ListaPeliculas {
-  peliculas:any;
+  peliculas: any[] = [];
+  loading = true;
+  errorMessage: string | null = null;
 
-  constructor(private peliculasService: PeliculasService){
+  constructor(private peliculasService: PeliculasService) {
     this.peliculasService.retornar()
-    .subscribe(result=> this.peliculas = result);
+      .subscribe({
+        next: result => {
+          console.log('peliculas result:', result);
+          this.peliculas = result || [];
+          this.loading = false;
+        }
+      })
   }
+
 }

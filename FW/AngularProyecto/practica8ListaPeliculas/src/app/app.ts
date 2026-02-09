@@ -1,6 +1,5 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet,RouterLink } from '@angular/router';
-import { PeliculasService } from './peliculas';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +9,5 @@ import { PeliculasService } from './peliculas';
 })
 export class App {
 
-  peliculas: any;
-
-  constructor(private peliculasService: PeliculasService) {
-    this.peliculasService.retornar()
-      .subscribe(result => { this.peliculas = result; console.log('Peliculas cargadas', result); })
-  }
 
 }

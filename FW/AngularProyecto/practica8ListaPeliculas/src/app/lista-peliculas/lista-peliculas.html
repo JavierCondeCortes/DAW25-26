@@ -1,4 +1,8 @@
 <p>lista-peliculas works!</p>
+
+<div *ngIf="loading">Cargando...</div>
+<div *ngIf="errorMessage" style="color:darkred">{{ errorMessage }}</div>
+<div>Encontradas: {{ peliculas?.length }}</div>
 <table>
     <thead>
         <tr>
@@ -8,13 +12,14 @@
         </tr>
     </thead>
     <tbody>
-        @for(peli of peliculas;track peli.id){
-        <tr>
+        <tr *ngFor="let peli of peliculas">
             <td>{{ peli.id }}</td>
             <td>{{ peli.titulo }}</td>
             <td>{{ peli.director }}</td>
         </tr>
-        }
     </tbody>
 </table>
 <router-outlet></router-outlet>
+
+<!-- Debug: show raw JSON fetched from the service -->
+<!-- <pre>{{ peliculas | json }}</pre> -->
