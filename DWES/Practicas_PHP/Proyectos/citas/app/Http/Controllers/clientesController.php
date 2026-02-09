@@ -28,7 +28,7 @@ class clientesController extends Controller
 
         $clienteN->save();
 
-        return redirect()->route('serviciosCrear');
+        return redirect()->route('clientes');
     }
 
     //editar cliente-------------------
