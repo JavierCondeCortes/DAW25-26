@@ -42,7 +42,7 @@
                 document.cookie = cookie;
             }
         });
-        
+
 
         let modificar = document.getElementById('modificarCookie');
         modificar.addEventListener('click', function (name, value, days) {
@@ -63,6 +63,17 @@
             }
         });
         
+        function getCookie(name) {
+            const cookies = document.cookie.split(';');
+            for (let c of cookies) {
+                const [key, value] = c.split('=');
+                if (key.trim() === name) {
+                    return decodeURIComponent(value);
+                }
+            }
+            return null; // si no existe
+        }
+
     </script>
 </body>
 
