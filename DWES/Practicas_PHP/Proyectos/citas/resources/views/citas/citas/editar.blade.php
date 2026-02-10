@@ -15,6 +15,7 @@
         <select name="id_cliente" class="form-control">
             @foreach ($clientes as $cliente)
                 <option value="{{ $cliente->id }}">
+                    {{ $cliente->id == $cita->id_cliente ? 'selected' : '' }}>
                     {{ $cliente->nombre }}
                 </option>
             @endforeach
