@@ -84,7 +84,13 @@ Route::middleware('auth')->group(function () {
 
     //CITAS-------------------------------------------
     Route::get('citas', [citasController::class, 'citas'])->name('citas');
+    //creear
     Route::get('crearCitas', [citasController::class, 'crearCitas'])->name('crearCitas');
+    Route::post('citaCreada', [citasController::class, 'crear'])->name('citaCreada');
+
+    //editar
+    Route::get('citas/editar/{id}',[citasController::class,'formedit'])->name('formEditar');
+    Route::put('citas/editado/{id}',[citasController::class, 'editar'])->name('editarCita');
 });
 // en el caso de que no funcione el auth comentar la linea 86 y descomentar la linea 32
 
