@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="navbar.css">
+</head>
+
+<body>
+    <header class="airbnb-header">
+        <div class="header-top">
+            <div class="logo">
+                <a href="#">
+                    <span>Airbnb</span>
+                </a>
+            </div>
+            <div class="buscador">
+                <div>🔍 Busca alojamientos</div>
+            </div>
+
+            <nav class="main-nav">
+                <button class="nav-item active">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-text">Alojamientos</span>
+                </button>
+                <button class="nav-item">
+                    <span class="nav-icon">✨</span>
+                    <!-- <span class="nav-label-nuevo">NUEVO</span> -->
+                    <span class="nav-text">Experiencias</span>
+                </button>
+                <button class="nav-item">
+                    <span class="nav-icon">🧹</span>
+                    <!-- <span class="nav-label-nuevo">NUEVO</span> -->
+                    <span class="nav-text">Servicios</span>
+                </button>
+            </nav>
+
+            <div class="header-right">
+                <a href="#" class="host-link">Hazte anfitrión</a>
+                <button class="icon-button" aria-label="Idioma y moneda">
+                    🌐
+                </button>
+                <button class="menu-button" aria-label="Menú">
+                    ☰
+                </button>
+            </div>
+        </div>
+
+        <div class="search-bar">
+            <form action="#" method="get" class="search-form">
+                <div class="search-field">
+                    <label for="destino">Destino</label>
+                    <input type="text" id="destino" name="destino" placeholder="Buscar destinos" />
+                </div>
+
+                <div class="search-field">
+                    <label for="fechas">Fechas</label>
+                    <input type="text" id="fechas" name="fechas" placeholder="Introduce las fechas" />
+                </div>
+
+                <div class="search-field">
+                    <label for="viajeros">Viajeros</label>
+                    <input type="text" id="viajeros" name="viajeros" placeholder="Añade viajeros" />
+                </div>
+
+                <button type="submit" class="search-button">
+                    Buscar
+                </button>
+            </form>
+        </div>
+    </header>
+</body>
+
+</html>
