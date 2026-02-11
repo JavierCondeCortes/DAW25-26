@@ -1,0 +1,15 @@
+<p>lista works!</p>
+
+<table>
+    @for(peli of peliculas;track $index) {
+    <tr>
+        <td>{{peli.id}}</td>
+        <td>{{peli.titulo}}</td>
+        <td>{{peli.director}}</td>
+        <td>{{peli.anio}}</td>
+        <td>{{peli.genero}}</td>
+        <td>{{peli.disponible}}</td>
+    </tr>
+    }
+</table>
+<router-outlet />
