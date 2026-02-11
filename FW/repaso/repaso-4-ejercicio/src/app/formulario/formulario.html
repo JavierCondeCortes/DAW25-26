@@ -1,0 +1,53 @@
+<p>formulario works!</p>
+
+<form [formGroup]="formulario" (ngSubmit)="submit()">
+    <label for="">titulo</label>
+    <input type="text" formControlName="titulo">
+
+    @if(this.formulario.get('titulo')?.errors?.['required']) {
+    <span>(Requerido)</span>
+    }
+
+    <label for="">director</label>
+    <input type="text" formControlName="director">
+
+    @if(this.formulario.get('director')?.errors?.['maxlength']) {
+    <span>(max)</span>
+    }
+
+    @if(this.formulario.get('director')?.errors?.['minlength']) {
+    <span>(min)</span>
+    }
+
+    @if(this.formulario.get('director')?.errors?.['required']) {
+    <span>(Requerido)</span>
+    }
+
+    <label for="">año</label>
+    <input type="number" formControlName="anio">
+
+    @if(this.formulario.get('anio')?.errors?.['mayorCero']) {
+    <span>(El valor debe ser mayor a cero)</span>
+    }
+
+    <label for="">genero</label>
+    <select formControlName="genero" id="">
+        <option value="terror">terror</option>
+        <option value="thriller">thriller</option>
+        <option value="accion">accion</option>
+        <option value="comedia">comedia</option>
+        <option value="carreras">carreras</option>
+    </select>
+
+    @if(this.formulario.get('genero')?.errors?.['required']) {
+    <span>(Requerido)</span>
+    }
+
+    <label for="">disponible</label>
+    <input type="checkbox" formControlName="disponible">
+
+    <input type="submit" value="Enviar">
+</form>
+
+<div>{{resultado}}</div>
+<router-outlet></router-outlet>
