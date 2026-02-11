@@ -12,8 +12,17 @@
     <a href="{{ route('crearCitas') }}">crear</a>
     <h1>lista citas</h1>
     <div>
+
         @foreach ($citas as $cita)
-            {{ $cita->id_cliente->nombre }}
+            <div>
+                {{ $cita->cliente->nombre }} /
+                {{ $cita->servicio->nombre }} /
+                {{ $cita->fecha }} /
+                {{ $cita->hora }}
+                <button><a href="{{route('formEditar', $cita->id)}}">Editar</a></button>
+                <button><a href="">Eliminar</a></button>
+                <button><a href="">Cancelar</a></button>
+            </div>
         @endforeach
     </div>
 </body>

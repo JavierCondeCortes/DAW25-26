@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">nombre<input id="nombre" type="text" required></label><br>
+        <label for="">apellidos<input id="apellido" type="text" required></label><br>
+        <label for="">fecha nacimiento<input id="fecha" type="date"></label><br>
+        <label for="">DNI<input id="dni" type="text"></label><br>
+        <label for="">Email<input id="email" type="email" required></label><br>
+        <label for="">contraseña<input id="contra" type="password" required></label><br>
+        <label for="">repetir contraseña<input id="contraRep" type="password" required></label><br>
+        <label for="">genero
+            <input type="radio" name="hombre" id="genero">hombre
+            <input type="radio" name="mujer" id="genero">mujer
+            <input type="radio" name="helicopter" id="genero" checked>helicoptero apache de guerra
+        </label><br>
+        <label for=""><input type="checkbox"></label>suscribirme a las ofertas<br>
+        <label for=""><input type="checkbox"></label>informame de las ofertas<br>
+        <label for="">numero favorito
+            <select name="" id="">
+                <option value="0">elige uno...</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+        </label><br>
+        <label for="">comentario<textarea name="" id="coment"></textarea></label><br>
+        <input id="enviar" type="submit" value="Enviar datos"><br>
+        <div id="demo"></div>
+    </form>
+
+    <script>
+        let envio = document.getElementById('enviar');
+        let inicio = 1;
+        envio.addEventListener('click', function () {
+            nombre = document.getElementById('nombre');
+            apellido = document.getElementById('apellido');
+            email = document.getElementById('email');
+            contra = document.getElementById('contra');
+            contraRep = document.getElementById('contraRep');
+
+            if (!nombre.checkValidity()) {
+                nombre.setAttribute('style', 'border: red solid 1px;')
+            } else {
+                nombre.setAttribute('style', 'border: black solid 1px;')
+                document.getElementById("demo").innerHTML = "Input OK";
+            }
+
+            if (!apellido.checkValidity()) {
+                apellido.setAttribute('style', 'border: red solid 1px;')
+            } else {
+                apellido.setAttribute('style', 'border: black solid 1px;')
+                document.getElementById("demo").innerHTML = "Input OK";
+            }
+
+            if (!email.checkValidity()) {
+                email.setAttribute('style', 'border: red solid 1px;')
+            } else {
+                email.setAttribute('style', 'border: black solid 1px;')
+                document.getElementById("demo").innerHTML = "Input OK";
+            }
+
+            if (!contra.checkValidity()) {
+                contra.setAttribute('style', 'border: red solid 1px;')
+            } else {
+                contra.setAttribute('style', 'border: black solid 1px;')
+                document.getElementById("demo").innerHTML = "Input OK";
+            }
+
+            if (!contraRep.checkValidity()) {
+                contraRep.setAttribute('style', 'border: red solid 1px;')
+            } else {
+                contraRep.setAttribute('style', 'border: black solid 1px;')
+                document.getElementById("demo").innerHTML = "Input OK";
+            }
+
+            let cookie = 'contador' + '=' + encodeURIComponent(inicio++);
+            cookie += '; max-age=' + (5 * 60);
+            document.cookie = cookie;
+
+            if(cookie === '5'){
+                envio.setAttribute('disabled', true);
+            }
+        });
+    </script>
+</body>
+
+</html>

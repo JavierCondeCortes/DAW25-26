@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>introducir datos</h1>
+    <fieldset>
+        <legend>Datos para grafico</legend>
+
+        <form action="" id="form">
+            <label for="">nombre</label>
+            <input type="text" name="name" id="name">
+
+            <label for="">valor</label>
+            <input type="range" name="value" id="rango">
+
+            <label for="">color</label>
+            <input type="color" name="color" id="color">
+
+            <input type="submit" value="enviar valor">
+        </form>
+    </fieldset>
+
+
+    <script>
+        nombre = document.getElementById('name');
+        valor = document.getElementById('rango');
+        color = document.getElementById('color');
+
+        form = document.getElementById('form');
+
+        form.addEventListener('submit', function () {
+            let configuracion = {
+                cantidad: valor.value,
+                tono: color.value
+            }
+            localStorage.setItem(nombre.value, JSON.stringify(configuracion));
+        });
+    </script>
+</body>
+
+</html>

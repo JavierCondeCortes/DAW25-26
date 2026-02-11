@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // addEventListener("storage", () =>{
+            for (let i = 0; i < localStorage.length; i++) {
+
+                let clave = localStorage.key(i); // nombre del item
+                let datos = JSON.parse(localStorage.getItem(clave)); // {cantidad: X, tono: Y}
+
+
+                let posicion = document.createElement('div');
+                posicion.setAttribute('id', 'item-' + i);
+
+
+                posicion.innerHTML = `
+                <strong>${clave}</strong><br>
+                Valor: ${datos.cantidad}<br>
+                Color: <span style="background:${datos.tono}; padding:5px 20px; display:inline-block;"></span>
+                <hr>
+            `;
+
+                // Insertarlo en el body
+                document.body.appendChild(posicion);
+            }
+        // });
+
+    </script>
+</body>
+
+</html>
