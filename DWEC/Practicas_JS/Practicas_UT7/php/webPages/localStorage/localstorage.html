@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="texto">
+
+    </div>
+    <script>
+        //CREAR
+        localStorage.setItem('bmw', 'M3 e30');
+        localStorage.setItem('mercedes', 'e Evo2 2.5');
+
+        //MOSTRAR
+        // let texto = document.getElementById('texto');
+        // texto.textContent(localStorage.getItem('bmw'))
+
+        // function todos(){
+        let texto = document.getElementById('texto');
+        for (let i = 0; i < localStorage.length; i++) {
+            let clave = localStorage.key(i);
+            let contenido = localStorage.getItem(clave);
+            console.log(clave + ": " + contenido) //CONSOLAA
+        }
+        // }
+
+        //VER EN LA SECCION DE APLICACION DE LAS DEVTOOLS
+        //ELIMINAR
+        localStorage.removeItem('bmw');
+
+        //elimina todos
+        // localStorage.clear();
+
+    </script>
+</body>
+
+</html>

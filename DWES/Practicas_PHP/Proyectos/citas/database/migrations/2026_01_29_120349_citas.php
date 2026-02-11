@@ -28,6 +28,8 @@ return new class extends Migration
                 ->constrained('servicios')
                 ->onDelete('cascade');
 
+            $table->date('fecha');
+            $table->time('hora');
             $table->boolean('activo');
             $table->timestamps();
         });
