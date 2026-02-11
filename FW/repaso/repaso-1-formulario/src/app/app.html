@@ -1,0 +1,137 @@
+<form [formGroup]="RegistroEventosForm" (ngSubmit)="submit()">
+  <p>Titulo:
+    <input type="text" formControlName="Titulo">
+  </p>
+  @if(this.RegistroEventosForm.get('Titulo')?.errors?.['required']) {
+  <div>(El mensaje no puede quedar vacío)</div>
+  }
+  @if(this.RegistroEventosForm.get('Titulo')?.errors?.['minLength']) {
+  <div>(minlength)</div>
+  }
+  @if(this.RegistroEventosForm.get('Titulo')?.errors?.['maxLength']) {
+  <div>(max)</div>
+  }
+
+
+  <p>Descripcion:
+    <textarea formControlName="Descripcion"></textarea>
+  </p>
+  @if(this.RegistroEventosForm.get('Descripcion')?.errors?.['required']) {
+  <div>(El mensaje no puede quedar vacío)</div>
+  }
+  @if(this.RegistroEventosForm.get('Descripcion')?.errors?.['minLength']) {
+  <div>(min)</div>
+  }
+  @if(this.RegistroEventosForm.get('Descripcion')?.errors?.['maxLength']) {
+  <div>(max)</div>
+  }
+
+
+  <p>Fecha:
+    <input type="date" formControlName="Fecha">
+  </p>
+  @if(this.RegistroEventosForm.get('Fecha')?.errors?.['required']) {
+  <div>(El mensaje no puede quedar vacío)</div>
+  }
+
+
+  <p>Aforo:
+    <input type="number" formControlName="Aforo">
+  </p>
+  @if(this.RegistroEventosForm.get('Aforo')?.errors?.['required']) {
+  <div>(El mensaje no puede quedar vacío)</div>
+  }
+  @if(this.RegistroEventosForm.get('mensaje')?.errors?.['max']) {
+  <div>(maximo)</div>
+  }
+
+
+  <p>Pais:
+    <select formControlName="Pais" id="">
+      <option value="esp">Spain</option>
+      <option value="por">Portugal</option>
+      <option value="fr">French</option>
+    </select>
+  </p>
+  @if(this.RegistroEventosForm.get('Pais')?.errors?.['required']) {
+  <div>(El mensaje no puede quedar vacío)</div>
+  }
+
+
+  <p>Ciudad:
+    <input type="text" formControlName="Ciudad">
+  </p>
+  @if(this.RegistroEventosForm.get('Ciudad')?.errors?.['required']) {
+  <div>(El mensaje no puede quedar vacío)</div>
+  }
+
+
+  <p>Gratuito:
+    <input type="checkbox" formControlName="Gratuito">
+  </p>
+
+
+  <p>Modalidad:
+    <label for="modalidad">
+      <input type="radio" value="presencial" formControlName="Modalidad">
+      <input type="radio" value="online" formControlName="Modalidad">
+      <input type="radio" value="mixto" formControlName="Modalidad">
+    </label>
+  </p>
+  @if(this.RegistroEventosForm.get('Modalidad')?.errors?.['required']) {
+  <div>(Selecciona)</div>
+  }
+
+
+  <p>Categoria:
+    <select formControlName="Categoria" id="categoria">
+      <option value="obr">obra teatral</option>
+      <option value="pl">pelicula</option>
+      <option value="mon">monologo</option>
+      <option value="mag">magia</option>
+    </select>
+  </p>
+
+
+  <p>Nombre:
+    <input type="text" formControlName="Nombre">
+  </p>
+  @if(this.RegistroEventosForm.get('Nombre')?.errors?.['required']) {
+  <div>(El mensaje no puede quedar vacío)</div>
+  }
+  @if(this.RegistroEventosForm.get('Nombre')?.errors?.['minLength']) {
+  <div>(minLength)</div>
+  }
+
+
+  <p>Email:
+    <input type="email" formControlName="Email">
+  </p>
+  @if(this.RegistroEventosForm.get('Email')?.errors?.['required']) {
+  <div>(El mensaje no puede quedar vacío)</div>
+  }
+  @if(this.RegistroEventosForm.get('Email')?.errors?.['email']) {
+  <div>(Formato Email)</div>
+  }
+
+
+  <p>Telefono:
+    <input type="number" formControlName="Telefono">
+  </p>
+  @if(this.RegistroEventosForm.get('Telefono')?.errors?.['required']) {
+  <div>(El mensaje no puede quedar vacío)</div>
+  }
+
+
+  <p>Terminos:
+    <input type="checkbox" formControlName="Terminos">
+  </p>
+  @if(this.RegistroEventosForm.get('Terminos')?.errors?.['required']) {
+  <div>(El mensaje no puede quedar vacío)</div>
+  }
+
+
+  <button type="submit" [disabled]="RegistroEventosForm.invalid">Confirmar</button>
+</form>
+<pre>{{resultado}}</pre>
+<router-outlet />
