@@ -16,9 +16,7 @@ class municipiosController extends Controller
     public function index()
     {
         $municipio = Municipio::all();
-        $evento = Evento::all();
-        $role = Rol::all();
-        $usuario = User::all();
+        return $municipio;
     }
 
     /**
