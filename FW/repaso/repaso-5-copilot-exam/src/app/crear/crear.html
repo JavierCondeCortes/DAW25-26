@@ -1,0 +1,23 @@
+<p>crear works!</p>
+
+<form action="">
+    <label for="">titulo</label>
+    <input type="text">
+
+    <label for="">director</label>
+    <input type="text">
+    
+    <label for="">anio</label>
+    <input type="number">
+    
+    <label for="">genero</label>
+    <select name="" id="">
+        @for (genero of generos; track $index) {
+            <option value="{{genero}}">{{genero}}</option>
+        }
+    </select>
+    
+    <label for="">disponible</label>
+    <input type="checkbox">
+
+</form>
