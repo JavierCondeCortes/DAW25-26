@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">nacionalidad</label>
+        <select name="nacion" id="">
+            <option value="es">españa</option>
+        </select>
+
+        <input type="text" name="newNacion">
+        <button name="new">insertar</button>
+
+        <br>
+
+        <button name="delete">eliminar</button>
+        <input type="radio" name="deleteNacion" value="ultima" id="ultima">ultima
+        <input type="radio" name="deleteNacion" value="seleccionada" id="seleccionada">seleccionada
+    </form>
+
+    <script>
+        let agregar = document.getElementsByName('new')[0]
+        let eliminar = document.getElementsByName('delete')[0]
+        let form = document.querySelector('form')
+        let select = form['nacion'];
+
+        agregar.addEventListener('click',function(e){
+            e.preventDefault();
+
+            let valor = form['newNacion'].value
+            
+            let opcion = document.createElement('option');
+            opcion.value=valor.slice(0,2);
+            opcion.textContent=valor;
+
+            select.appendChild(opcion);
+
+        })
+        
+        eliminar.addEventListener('click',function(e){
+            e.preventDefault()
+
+            let opcion = form['deleteNacion'].value;
+
+            if(opcion==='ultima'){
+                let ultima = document.querySelector('option:last-of-type')
+                
+                ultima.remove();
+
+            }else if (opcion==='seleccionada') {
+                let seleccionada = select[select.selectedIndex];
+
+                seleccionada.remove();
+            } else {
+                
+            }
+        })
+    </script>
+</body>
+</html>

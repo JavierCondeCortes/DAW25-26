@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 250px;
+        gap: 10px;
+    }
+
+    #resultado {
+        margin-top: 20px;
+        padding: 10px;
+        border: 2px solid #333;
+        min-height: 50px;
+    }
+
+    input:required{
+        background-color: aqua;
+    }
+
+    input:invalid{
+        background-color: red;
+    }
+
+    input:valid{
+        background-color:green;
+    }
+</style>
+
+<body>
+    <h2>Formulario para practicar DOM</h2>
+
+    <form id="formulario">
+
+        <!-- Texto -->
+        <label>Nombre:</label>
+        <input type="text" name="nombre" minlength="3" maxlength="10">
+
+        <!-- Número -->
+        <label>Edad:</label>
+        <input type="number" name="edad" required min="18">
+
+        <!-- Lista desplegable -->
+        <label>País:</label>
+        <select name="pais">
+            <option value="España">España</option>
+            <option value="México">México</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Colombia">Colombia</option>
+        </select>
+
+        <!-- Radiobuttons -->
+        <label>Género:</label>
+        <label><input type="radio" name="genero" value="Hombre"> Hombre</label>
+        <label><input type="radio" name="genero" value="Mujer"> Mujer</label>
+        <label><input type="radio" name="genero" value="Otro"> Otro</label>
+
+        <!-- Checkboxes -->
+        <label>Intereses:</label>
+        <label><input type="checkbox" class="interes" value="Deporte"> Deporte</label>
+        <label><input type="checkbox" class="interes" value="Música"> Música</label>
+        <label><input type="checkbox" class="interes" value="Videojuegos"> Videojuegos</label>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <hr>
+
+    <div id="resultado"></div>
+
+    <script>
+        let form = document.querySelector('form');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let resultado = document.querySelector('#resultado');
+
+            resultado.innerHTML = ""; // limpiar antes de añadir
+
+            let lista = form['pais'];
+            let pais = document.createElement('p');
+            pais.textContent = lista[lista.selectedIndex].value;
+
+            let nombre = form['nombre'];
+            let name = document.createElement('p');
+            name.textContent = nombre.value;
+
+            let edad = form['edad'];
+            let age = document.createElement('p');
+            age.textContent = edad.value;
+
+            let gen = form['genero'];
+            let genero = document.createElement('p')
+            genero.textContent=gen.value;
+
+            // Obtener checkboxes seleccionados
+            let seleccionadas = [];
+            document.querySelectorAll(".interes:checked")
+                .forEach(chk => seleccionadas.push(chk.value));
+
+            let interesesP = document.createElement('p');
+            interesesP.textContent = "Intereses: " + seleccionadas.join(", ");
+
+            resultado.appendChild(name);
+            resultado.appendChild(age);
+            resultado.appendChild(pais);
+            resultado.appendChild(genero);
+            resultado.appendChild(interesesP);
+        });
+
+    </script>
+</body>
+
+</html>
