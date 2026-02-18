@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Vehiculo {
+            #pasajeros
+            constructor(pasajeros) {
+                this.#pasajeros = pasajeros;
+            }
+
+            getPasajeros() {
+                return this.#pasajeros;
+            }
+        }
+
+        class Turismo extends Vehiculo {
+            #color
+            constructor(pasajeros, color) {
+                super(pasajeros);
+                this.#color = color;
+            }
+
+            static generar(pasajeros, color) {
+                return new this(pasajeros, color);
+            }
+
+            getColor() {
+                return this.#color;
+            }
+        }
+
+        class Camion extends Vehiculo {
+            #tara
+            constructor(pasajeros, tara) {
+                super(pasajeros);
+                this.#tara = tara;
+            }
+
+            static generar(pasajeros, tara) {
+                return new this(pasajeros, tara);
+            }
+
+            getTara() {
+                return this.#tara;
+            }
+        }
+
+        // Mapa donde guardamos los vehículos
+        const mapaVehiculos = new Map();
+        let id = 0;
+
+        // Generación aleatoria de vehículos
+        function aleatorio() {
+            let tipo = Math.floor(Math.random() * 1.99);
+            let pasajeros = Math.floor(Math.random() * 7 + 1);
+
+            let vehiculo;
+
+            if (tipo === 1) {
+                let colores = ['rojo', 'verde', 'azul'];
+                let colorRand = colores[Math.floor(Math.random() * 3)];
+                vehiculo = Turismo.generar(pasajeros, colorRand);
+            } else {
+                let tara = Math.floor(Math.random() * 1000);
+                vehiculo = Camion.generar(pasajeros, tara);
+            }
+
+            mapaVehiculos.set(id++, vehiculo);
+        }
+
+        // Mostrar vehículos en HTML
+        function mostrarVehiculos() {
+            document.write("<h2>Listado de vehículos</h2>");
+            document.write("<ul>");
+
+            for (const [id, vehiculo] of mapaVehiculos) {
+                document.write("<li>");
+
+                if (vehiculo instanceof Turismo) {
+                    document.write(
+                        `Turismo (ID: ${id}) — Pasajeros: ${vehiculo.getPasajeros()}, Color: ${vehiculo.getColor()}`
+                    );
+                } else if (vehiculo instanceof Camion) {
+                    document.write(
+                        `Camión (ID: ${id}) — Pasajeros: ${vehiculo.getPasajeros()}, Tara: ${vehiculo.getTara()}`
+                    );
+                } else {
+                    document.write(
+                        `Vehículo (ID: ${id}) — Pasajeros: ${vehiculo.getPasajeros()}`
+                    );
+                }
+
+                document.write("</li>");
+            }
+
+            document.write("</ul>");
+        }
+
+        // Generar 10 vehículos
+        let contador = 0;
+        let repeat = setInterval(() => {
+            if (contador < 10) {
+                contador++;
+                aleatorio();
+            } else {
+                clearInterval(repeat);
+                mostrarVehiculos(); // ← Aquí se muestran en la página
+            }
+        }, 300);
+
+    </script>
+</body>
+
+</html>

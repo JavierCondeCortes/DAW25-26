@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hola</h1>
+    <form action="">
+        <button>hola</button>
+        <input type="submit" value="enviar">
+    </form>
+
+
+    <script>
+        let bod = document.querySelector("body")
+        let tit = document.querySelector("h1");
+
+        tit.addEventListener('mouseover',function(){
+            tit.textContent='adios'
+            tit.style.background='red'
+        })
+        
+        tit.addEventListener('mouseleave',function(){
+            tit.textContent='hola'
+            tit.style.background='white'
+        })
+
+        let bot = document.querySelector('button');
+
+        bot.addEventListener('click',function(e){
+            e.preventDefault()
+            let texto = document.createElement('p');
+            texto.textContent='boton clicado';
+            bod.appendChild(texto)
+
+        })
+    </script>
+</body>
+</html>
