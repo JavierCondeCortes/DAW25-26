@@ -1,0 +1,44 @@
+body{
+    height: 100vh;
+    background-color: rgb(97, 97, 97);
+}
+
+body>div{
+    background-color: rgb(151, 151, 151);
+    border-radius: 18px;
+}
+
+#Swing >.tarjeta{
+    background-color: aqua;
+}
+#Rock >.tarjeta{
+    background-color: orange;
+}
+#Bachata >.tarjeta{
+    background-color: plum;
+}
+#Salsa >.tarjeta{
+    background-color: red;
+}
+
+.tarjeta{
+    border-radius: 18px;
+    margin: 1px 3px;
+}
+
+label{
+    display: inline-block;
+    width: 100%;
+}
+
+.categoria{
+    display: inline-block;
+    background-color: gray;
+    padding-bottom: 10px;
+    border-radius: 18px;
+    width: 23%;
+}
+
+h1,h2,h3{
+    text-align: center;
+}

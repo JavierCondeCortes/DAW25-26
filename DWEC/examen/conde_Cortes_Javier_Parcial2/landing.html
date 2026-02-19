@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="landing.css">
+</head>
+
+<body>
+    <h1>Academia de baile IES Julian Marias</h1>
+    <div>
+        <form action="">
+            <h2>formulario inscripcion</h2>
+
+            <label for="">Nombre</label>
+            <input type="text" name="name" required>
+
+            <label for="">DNI</label>
+            <input type="text" name="dni" required pattern="^\d{8}[A-Z]$">
+
+            <label for="">Fecha Alta</label>
+            <input type="date" name="dateInscription" required>
+
+            <label for="">Estilo</label>
+            <select name="estilo" id="" required>
+                <option value="Salsa">Salsa</option>
+                <option value="Bachata">Bachata</option>
+                <option value="Rock">Rock&Roll</option>
+                <option value="Swing">Swing</option>
+            </select>
+
+            <label for="">Sexo</label>
+            <select name="sexo" id="" required>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+            </select>
+
+            <input type="submit" value="Inscribir" name="bSubmit">
+        </form>
+    </div>
+
+    <div class="categorias">
+        <h2>Bailarines inscritos</h2>
+        <div class="categoria" id="Salsa">
+            <h3>salsa</h3>
+        </div>
+        <div class="categoria" id="Bachata">
+            <h3>bachata</h3>
+        </div>
+        <div class="categoria" id="Rock">
+            <h3>Rock&Roll</h3>
+        </div>
+        <div class="categoria" id="Swing">
+            <h3>Swing</h3>
+        </div>
+
+
+    </div>
+    <p id="Mensaje"></p>
+    <script type="module" src="form.js"></script>
+</body>
+
+</html>
