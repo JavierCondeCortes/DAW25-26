@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Chollo;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,7 @@ class ApisController extends Controller
     {
         $chollos = Chollo::all();
         return $chollos;
+
     }
 
     /**

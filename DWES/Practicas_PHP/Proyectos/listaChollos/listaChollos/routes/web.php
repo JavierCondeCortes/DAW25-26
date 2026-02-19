@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiControllerCategoria;
 use App\Http\Controllers\ApisController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -100,6 +101,7 @@ Route::middleware('auth')->group(function () {
 
     //API
     Route::get('api/chollos',[ApisController::class,'index']);
+    Route::get('api/categorias',[ApiControllerCategoria::class,'index']);
 });
 
 require __DIR__ . '/auth.php';

@@ -6,6 +6,7 @@ use App\Models\Categoria;
 use Illuminate\Http\Request;
 use App\Models\Chollo;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 
 class ChollosController extends Controller
@@ -18,8 +19,10 @@ class ChollosController extends Controller
 
     public function index()
     {
-        $categorias = Categoria::all();
-        $chollos = Chollo::paginate(8);
+        $categorias = Http::get('http://127.0.0.1:8000/api/categorias')->json();  
+        $chollos = Http::get('http://127.0.0.1:8000/api/chollos')->json();
+        // $categorias = Categoria::all(); 
+        // $chollos = Chollo::paginate(8);
 
         return view('chollos.index', compact('categorias', 'chollos'));
     }
