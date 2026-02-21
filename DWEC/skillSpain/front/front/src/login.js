@@ -1,34 +1,39 @@
-const API_URL = "http://localhost:8000/api"; // Cambia si tu API está en otro dominio
-
-document.querySelector("#loginForm").addEventListener("submit", async (e) => {
+document.getElementById("loginForm").addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const email = document.querySelector("#email").value;
-    const password = document.querySelector("#password").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-    const response = await fetch(`${API_URL}/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password })
-    });
+    try {
+        const response = await fetch("http://localhost:8000/api/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        });
 
-    const data = await response.json();
+        const data = await response.json();
 
-    const msg = document.querySelector("#message");
+        if (!response.ok) {
+            alert(data.message || "Error al iniciar sesión");
+            return;
+        }
 
-    if (response.ok) {
+        // ============================
+        //  GUARDAR TOKEN Y USUARIO
+        // ============================
         localStorage.setItem("token", data.token);
-        msg.textContent = "Login correcto. Redirigiendo...";
-        msg.classList.remove("text-red-600");
-        msg.classList.add("text-green-600");
+        localStorage.setItem("user", JSON.stringify(data.user));
 
-        // Redirige a tu página principal
-        setTimeout(() => {
-            window.location.href = "/home.html";
-        }, 1000);
+        // Redirigir a la landing
+        window.location.href = "home.html";
 
-    } else {
-        msg.textContent = data.error || "Error al iniciar sesión";
-        msg.classList.add("text-red-600");
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Error de conexión con el servidor");
     }
 });

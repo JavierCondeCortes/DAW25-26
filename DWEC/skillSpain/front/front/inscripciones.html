@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/style.css" rel="stylesheet">
+    <title>Mis inscripciones</title>
+</head>
+
+<body class="relative min-h-screen overflow-y-auto bg-black">
+    <script type="module" src="/src/inscrito.js"></script>
+
+    <div
+        class="fixed inset-0 bg-cover bg-center bg-no-repeat bg-[url('/fotos/imagen1.jpg')] opacity-[40%] grayscale-[20%] pointer-events-none">
+    </div>
+
+    <div class="relative z-10">
+        <!-- barra de navegacion -->
+        <nav>
+            <div class="px-4 mx-auto max-w-7xl sm:px-6">
+                <div class="relative pt-6 pb-16 sm:pb-24">
+                    <nav class="relative flex items-center justify-between sm:h-10 md:justify-center"
+                        aria-label="Global">
+                        <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
+                            <div class="flex items-center justify-between w-full md:w-auto">
+                                <div class="flex items-center -mr-2 md:hidden">
+                                    <button
+                                        class="inline-flex items-center justify-center p-2 text-gray-400 bg-gray-50 rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-50"
+                                        type="button" aria-expanded="false">
+                                        <span class="sr-only">Open main menu</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="2" stroke="currentColor" aria-hidden="true" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M4 6h16M4 12h16M4 18h16"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden md:flex md:space-x-10 list-none">
+                            <li>
+                                <a href="./home.html"
+                                    class="text-base font-normal text-white list-none hover:text-gray-300">
+                                    eventos
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./inscripciones.html"
+                                    class="text-base font-normal text-white list-none hover:text-gray-300">
+                                    inscripciones
+                                </a>
+                            </li>
+                        </div>
+                        <div class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
+                            <div id="authButton" class="inline-flex rounded-full shadow"></div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </nav>
+
+        <!-- tarjetas -->
+        <div class="mx-30">
+            <h1 class="text-3xl font-bold text-white px-6">Mis eventos inscritos</h1>
+            <div id="eventos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6"></div>
+        </div>
+    </div>
+</body>
+
+</html>
