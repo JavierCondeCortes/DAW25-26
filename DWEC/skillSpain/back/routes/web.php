@@ -7,7 +7,7 @@ use App\Models\Chollo;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return "API funcionando";
 });
 
 Route::get('/dashboard', function () {
@@ -23,4 +23,4 @@ Route::middleware('auth')->group(function () {
 Route::get('api/municipios',[municipiosController::class, 'index']);
 Route::get('api/eventos',[eventoController::class, 'index']);
 
-require __DIR__.'/auth.php';
+
