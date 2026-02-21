@@ -12,4 +12,9 @@ class Evento extends Model
     public function municipios(){
         return $this -> belongsTo(Municipio::class);
     }
+    public function inscripciones()
+    {
+        return $this->hasMany(EventoUsuario::class, 'id_evento');
+    }
+
 }

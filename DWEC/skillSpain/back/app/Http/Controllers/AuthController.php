@@ -38,7 +38,6 @@ class AuthController extends Controller
         }
 
         $user = Auth::user();
-
         // Crear token personal de Sanctum
         $token = $user->createToken('api-token')->plainTextToken;
 
@@ -47,7 +46,7 @@ class AuthController extends Controller
             'user' => [
                 'id' => $user->id,
                 'email' => $user->email,
-                'rol' => $user->rol ?? 'usuario'
+                'rol' => $user->rol->nombre
             ]
         ]);
     }
