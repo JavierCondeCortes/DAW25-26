@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/style.css" rel="stylesheet">
     <title>front</title>
-
 </head>
 
 <body class="bg-gray h-[100vh] content-center">
 
     <div id="app">
-        <main class="flex items-center justify-center  w-full px-4">
-            <form class="flex w-full flex-col max-w-96">
+        <main class="flex items-center justify-center w-full px-4">
+            <form id="loginForm" class="flex w-full flex-col max-w-96">
 
                 <h2 class="text-4xl font-medium text-gray-900">Sign in</h2>
 
@@ -23,14 +22,14 @@
 
                 <div class="mt-10">
                     <label class="font-medium">Email</label>
-                    <input placeholder="Please enter your email"
+                    <input id="email" placeholder="Please enter your email"
                         class="mt-2 rounded-md ring ring-gray-200 focus:ring-2 focus:ring-indigo-600 outline-none px-3 py-3 w-full"
                         required type="email" name="email" />
                 </div>
 
                 <div class="mt-6">
                     <label class="font-medium">Password</label>
-                    <input placeholder="Please enter your password"
+                    <input id="password" placeholder="Please enter your password"
                         class="mt-2 rounded-md ring ring-gray-200 focus:ring-2 focus:ring-indigo-600 outline-none px-3 py-3 w-full"
                         required type="password" name="password" />
                 </div>
@@ -39,13 +38,17 @@
                     class="mt-8 py-3 w-full cursor-pointer rounded-md bg-indigo-600 text-white transition hover:bg-indigo-700">
                     Login
                 </button>
+
                 <p class='text-center py-8'>
                     Don't have an account? <a href="/signup" class="text-indigo-600 hover:underline">Sign up</a>
                 </p>
+
+                <p id="message" class="text-center text-red-600 mt-4"></p>
             </form>
         </main>
     </div>
-    <script type="module" src="/src/main.js"></script>
+
+    <script type="module" src="src/login.js"></script>
 </body>
 
 </html>
