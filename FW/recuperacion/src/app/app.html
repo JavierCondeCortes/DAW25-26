@@ -1,0 +1,20 @@
+<div style="padding: 20px;">
+  <h1>Administrador de Tareas</h1>
+
+  <div>
+    Nombre de la tarea:
+    <input type="text" [(ngModel)]="nuevaTareaNombre">
+    <button (click)="agregarTarea()">Agregar</button>
+  </div>
+
+  <hr>
+
+  @for (t of tareas; track $index) {
+    <app-tarea 
+      [datos]="t" 
+      (cambioEstado)="actualizarLista($index)">
+    </app-tarea>
+  } @empty {
+    <p>No hay tareas</p>
+  }
+</div>

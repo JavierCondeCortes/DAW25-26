@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "repaso-5-copilot-exam": {
+    "recuperacion": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -56,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "repaso-5-copilot-exam:build:production"
+              "buildTarget": "recuperacion:build:production"
             },
             "development": {
-              "buildTarget": "repaso-5-copilot-exam:build:development"
+              "buildTarget": "recuperacion:build:development"
             }
           },
           "defaultConfiguration": "development"

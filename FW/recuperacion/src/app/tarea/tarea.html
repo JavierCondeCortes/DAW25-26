@@ -1,0 +1,5 @@
+<div [class.completada]="datos.estado == 'completada'" class="caja-tarea">
+    {{ datos.nombre }} - <strong>{{ datos.estado }}</strong>
+
+    <button (click)="marcar()">Cambiar Estado</button>
+</div>
