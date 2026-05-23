@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <div id="formulario">
+        <form action="" name="formulario" method="get">
+            <label for="nombre">nombre</label>
+            <input type="text"name id="nombre">
+            <label for="dni" pattern="/^\d{8}[A-Z]{1}$/">DNI</label>
+            <input type="text" id="dni">
+            <label for="fecha">fechaAlta</label>
+            <input type="date" name="fechaAlta" id="fecha">
+            <label for="estilo">estilo</label>
+            <select name="estilo" id="estilo">
+                <option value="salsa">salsa</option>
+                <option value="bachata">bachata</option>
+                <option value="swing">swing</option>
+                <option value="rock">rock</option>
+            </select>
+            <label for="sexo">sexo</label>
+            <select name="sexo" id="sexo">
+                <option value="masculino">masculino</option>
+                <option value="femenino">femenino</option>
+            </select>
+
+            <input type="submit" value="Inscribir">
+        </form>
+        <div class="contenedor baja"> dar de baja</div>
+    </div>
+
+    <div id="categorias"> 
+        <div class="contenedor" id="salsa">
+            <h2>salsa</h2>
+        </div>
+        <div class="contenedor" id="bachata">
+            <h2>bachata</h2>
+        </div>
+        <div class="contenedor" id="rock">
+            <h2>rock</h2>
+        </div>
+        <div class="contenedor" id="swing">
+            <h2>swing</h2>
+        </div>
+    </div>
+</body>
+<script type="module" src="main.js"></script>
+
+</html>

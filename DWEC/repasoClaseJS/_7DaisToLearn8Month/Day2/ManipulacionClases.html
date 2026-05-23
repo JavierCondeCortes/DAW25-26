@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .tema {
+        background-color: black;
+        color: white;
+    }
+
+    .fuenteGrande {
+        font-size: 24px;
+    }
+</style>
+
+<body>
+    <button id="noche">modo noche</button>
+    <button id="fuente">fuente grande</button>
+    <button id="reset">reset</button>
+    <div id="contenedor" style="border: 1px solid black; min-height: 50px;">
+        <p id="texto">letras letras letras</p>
+    </div>
+</body>
+<script>
+    //modo noche
+    let noche = document.getElementById('noche');
+    let contenedor = document.getElementById("contenedor");
+
+    noche.addEventListener("click", function () {
+        contenedor.classList.toggle("tema");
+    });
+
+    //texto grande
+    let fuente = document.getElementById("fuente");
+    let texto = document.getElementById("texto");
+
+    fuente.addEventListener("click", function () {
+        texto.style.fontSize = "24px";
+    })
+
+    //reset
+    document.getElementById('reset').addEventListener("click", () => {
+        contenedor.classList.remove("tema");
+        texto.style.fontSize = "16px"; // Volver al tamaño original
+    });
+
+</script>
+
+</html>

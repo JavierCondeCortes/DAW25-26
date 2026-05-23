@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btnGenerar">Generar</button>
+    <div id="contenedor" style="border: 1px solid black; min-height: 50px;"></div>
+</body>
+<script>
+    let btn = document.getElementById("btnGenerar");
+    let contenedor = document.getElementById("contenedor");
+
+    
+    btn.addEventListener("click",function(){
+        let numElements = document.getElementsByTagName("button").length;
+        let newElement = document.createElement("button");
+        newElement.textContent=`elemento nº${numElements}`;
+        newElement.style.display="block";
+
+        contenedor.appendChild(newElement);    
+    })
+</script>
+</html>

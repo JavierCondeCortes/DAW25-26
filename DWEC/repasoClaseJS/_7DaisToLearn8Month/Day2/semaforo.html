@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="iniciar"> iniciar</button>
+    <button id="stop"> stop</button>
+    <div id="luz" style="width: 50px; height: 50px; border-radius: 50%; background: grey;"></div>
+</body>
+<script>
+    const colores = ["green", "yellow", "red"];
+    let start = document.getElementById('iniciar');
+    let stop = document.getElementById('stop');
+    let componente = document.getElementById('luz');
+
+    let i=0;
+    start.addEventListener("click", () => {
+        idIntervalo = setInterval(() => {
+            componente.style.backgroundColor = colores[i];
+
+            // Aumentamos el índice y volvemos a 0 si llegamos al final
+            i = (i + 1) % colores.length;
+        }, 3000);
+    });
+
+    stop.addEventListener("click",()=>{
+        clearInterval(idIntervalo);
+    })
+
+</script>
+
+</html>

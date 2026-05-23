@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <h1>dom_09 - Ejercicio: Cambiar el párrafo anterior y siguientes con el contenido del párrafo sobre el que se hace
+        click</h1>
+    <hr>
+    <p class="cambiarParrafo">Primer párrafo</p>
+    <p class="cambiarParrafo">Segundo párrafo</p>
+    <p class="cambiarParrafo">Tercer párrafo</p>
+    <p class="cambiarParrafo">Quinto párrafo</p>
+    <p class="cambiarParrafo">Quinto párrafo</p>
+    <p class="cambiarParrafo">Quinto párrafo</p>
+    <p class="cambiarParrafo">Séptimo párrafo</p>
+    <p class="cambiarParrafo">Octavo párrafo</p>
+</body>
+
+<script>
+    let lista = document.querySelectorAll(".cambiarParrafo");
+
+    for (i = 0; i < lista.length; i++) {
+        lista[i].addEventListener("click", function () {
+
+            let texto = this.textContent;
+            // Check if the PREVIOUS neighbor exists before touching it
+            if (lista[i - 1] !== undefined) {
+                lista[i - 1].textContent = texto;
+            }
+
+            // Check if the NEXT neighbor exists before touching it
+            if (lista[i + 1] !== undefined) {
+                lista[i + 1].textContent = texto;
+            }
+        })
+
+    }
+</script>
+
+</html>

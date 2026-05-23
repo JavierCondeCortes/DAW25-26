@@ -1,0 +1,19 @@
+necesitamos un objeto bailarín que gestione:
+    -nombre
+    -dni (validacion de 8numeros y 1letra)
+    -FechaAlta (no superior al actual)
+    -Estilo (salsa, bachata, rock, swing)
+    -Sexo (masculino femenino)
+
+
+al inscribir se pondra en su respectivo lugar (tabas de categoria)
+
+arrastrar y soltar, cambiando el componente de padre (las tablas), con la posibilidad de eliminar
+
+al darse de baja, controla la FechaAlta y consulta la fecha actual, cada mes transcurrido son 50€
+
+hay que guardar los bailarines en localStorage
+
+y de ahi, coger los datos y darles los estilos
+
+

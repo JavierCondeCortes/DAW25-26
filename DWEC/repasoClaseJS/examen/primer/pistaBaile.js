@@ -1,4 +1,6 @@
-class pistaBaile{
+import festival from "./festival.js";
+
+export default class pistaBaile{
     #dimensiones;
     constructor(largo,ancho){
         this.#dimensiones = [];
@@ -8,5 +10,16 @@ class pistaBaile{
                 this.#dimensiones.push("x");
             }
         }
+    }
+
+    asignacion(festival){
+        const participantes = festival.parejas;
+
+        participantes.forEach(pareja => {
+            let pos1 = Math.random(largo);
+            let pos2 = Math.random(ancho);
+
+            pareja.posPista = [pos1,pos2];
+        });
     }
 }

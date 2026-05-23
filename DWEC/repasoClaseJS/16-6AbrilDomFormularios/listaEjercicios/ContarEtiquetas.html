@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+
+    <button id="bu">contar P</button>
+</body>
+</html>
+<script>
+    // 1. Es mejor obtener la lista dentro de la función por si el DOM cambia
+    const mostrar = document.getElementById("bu");
+    let contMax = 0;
+    let etiquetaMasRepetida = "";
+
+    function contarEtiquetas() {
+        const contarE = Array.from(document.getElementsByTagName("*"));
+        
+        // Creamos una lista de SOLAMENTE los nombres de las etiquetas (P, BR, BODY...)
+        const nombresTags = contarE.map(el => el.tagName);
+        
+        // Obtenemos los nombres únicos (P, BR, HTML, etc.)
+        const diferentes = [...new Set(nombresTags)];
+        
+        contMax = 0; // Reiniciamos para cada cálculo
+
+        for (let i = 0; i < diferentes.length; i++) {
+            let busqueda = diferentes[i];
+            let contador = 0;
+
+            nombresTags.forEach(nombre => {
+                if (nombre === busqueda) {
+                    contador++;
+                }
+            });
+
+            if (contador > contMax) {
+                contMax = contador;
+                etiquetaMasRepetida = busqueda;
+            }
+        }
+    }
+
+    mostrar.onclick = function() {
+        contarEtiquetas(); // ¡IMPORTANTE! Llamar a la función antes del alert
+        alert(
+            "Total de etiquetas en la página: " + document.getElementsByTagName("*").length + "\n" +
+            "La etiqueta más repetida es <" + etiquetaMasRepetida + "> con un total de: " + contMax
+        );
+    }
+</script>

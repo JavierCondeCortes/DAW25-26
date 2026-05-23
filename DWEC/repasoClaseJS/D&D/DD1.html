@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="texto" draggable="true">
+        texto a draguear
+    </div>
+
+    <div id="DS1" draggable="true"></div>
+    <div id="DS2" draggable="true"></div>
+</body>
+<style>
+    #DS1{
+        height: 5rem;
+        background-color: brown;
+    }
+    #DS2{
+        height: 5rem;
+        background-color: wheat;
+    }
+</style>
+<script>
+    let texto = document.getElementById("texto");
+    let zona1 = document.getElementById("DS1");
+    let zona2 = document.getElementById("DS2");
+
+    texto.addEventListener("dragstart", (e)=>{
+        texto.style.color="blue";
+    })
+    texto.addEventListener("dragend", (e)=>{
+        texto.style.color="black";
+    })
+    texto.addEventListener("dragenter",(e)=>{
+        texto.style.fontWeight="bold"
+    })
+
+    zona1.addEventListener("dragover",(e)=>{
+        e.preventDefault()
+        console.log(e.dataTransfer.getData("text"))
+    })
+    zona2.addEventListener("dragover",(e)=>{
+        e.preventDefault()
+    })
+
+    zona1.addEventListener("drop",()=>{
+        console.log("se movió en 1");
+    })
+
+    zona2.addEventListener("drop",()=>{
+        console.log("se movió en 2");
+    })
+</script>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .elementContenedor {
+        height: 100px;
+        width: 100px;
+        background-color: brown;
+        border: 1px solid black;
+        display: inline-block;
+    }
+</style>
+
+<body>
+    <button id="iniciador">Inicio</button>
+
+    <div id="contenedor"></div>
+</body>
+<script>
+
+    // contador
+    let crono = 0;
+    function contador() {
+        crono++;
+    };
+
+    let iniciador = document.getElementById("iniciador");
+    iniciador.addEventListener("click", () => {
+        setInterval(contador, 1000);
+    });
+
+    //panel
+    let contenedor = document.getElementById("contenedor");
+
+    let arrastrado = null; // Variable para recordar qué elemento empezamos a mover
+
+for (let j = 0; j < 7; j++) {
+    let elemento = document.createElement("div");
+    elemento.className = "elementContenedor"; // Usamos clase, no ID duplicado
+    elemento.textContent = j;
+    elemento.draggable = true;
+    contenedor.appendChild(elemento);
+
+    // 1. INICIO DEL ARRASTRE
+    elemento.addEventListener("dragstart", (e) => {
+        arrastrado = elemento; // Guardamos la referencia del nodo
+        e.target.style.backgroundColor = "blue";
+        // Guardamos el texto en el portapapeles del drag
+        e.dataTransfer.setData("text", e.target.innerText);
+    });
+
+    // 2. PERMITIR EL DROP (Obligatorio)
+    elemento.addEventListener("dragover", (e) => {
+        e.preventDefault(); // Si no haces esto, el drop no funciona
+    });
+
+    // 3. EL INTERCAMBIO
+    elemento.addEventListener("drop", (e) => {
+        e.preventDefault();
+        if (arrastrado !== elemento) {
+            // Intercambiamos los textos
+            let textoTemporal = elemento.innerText;
+            elemento.innerText = e.dataTransfer.getData("text");
+            arrastrado.innerText = textoTemporal;
+        }
+    });
+
+    // 4. RESETEAR COLOR
+    elemento.addEventListener("dragend", (e) => {
+        e.target.style.backgroundColor = "brown";
+    });
+}
+
+</script>
+
+</html>

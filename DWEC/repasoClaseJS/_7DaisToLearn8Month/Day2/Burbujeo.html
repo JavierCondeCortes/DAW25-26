@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="padre" style="padding: 50px; background: blue;">
+        <button id="hijo">Haz clic aquí</button>
+    </div>
+</body>
+<script>
+    const padre = document.getElementById('padre');
+    const hijo = document.getElementById('hijo');
+    
+    //dando click al hijo el padre tambien se ve afectado, despues del hijo
+    // padre.addEventListener('click', () => alert('Clic en el PADRE'));
+    // hijo.addEventListener('click', () => alert('Clic en el HIJO'));
+    
+    //evitar bubbling
+    padre.addEventListener('click', () => alert('Clic en el PADRE'));
+    hijo.addEventListener('click', (evento) =>{
+        evento.stopPropagation();
+        alert('Clic en el HIJO');
+    })
+</script>
+
+</html>

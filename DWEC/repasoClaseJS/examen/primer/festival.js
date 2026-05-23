@@ -1,17 +1,13 @@
-class festival{
-    #nombre
-    #fecha
-    #profesores
-    #parejas
+import profesores from "./profesores.js";
+
+export default class festival{
+    #nombre;
+    #fecha;
+    #profesores;
+    #parejas;
     constructor(nombre){
         this.#nombre = nombre;
         this.#fecha;
-        this.#profesores = [];
-        this.#parejas = [];
-    }
-    constructor(nombre,fecha){
-        this.#nombre = nombre;
-        this.#fecha = fecha;
         this.#profesores = [];
         this.#parejas = [];
     }
@@ -24,11 +20,12 @@ class festival{
         return this.#fecha;
     }
 
-    set agregarPofesores(pareja){
+    agregarProfesores(pareja){
+
         this.#profesores.push(pareja);
     }
 
-    set agregarPareja(pareja){
+    agregarPareja(pareja){
         this.#parejas.push(pareja);
     }
 }

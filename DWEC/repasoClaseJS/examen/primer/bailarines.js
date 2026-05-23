@@ -8,29 +8,37 @@ export default class bailarines{
     #posicionPista
     #orientacion
 
-    constructor(nombre1,nombre2,apellido1,apellido2,nivelGrupo = ["basico","intermedio","avanzado"]){
-        this.#nombre1 = nombre1;
-        this.#nombre2 = nombre2;
-        this.#apellido1 = apellido1;
-        this.#apellido2 = apellido2;
-        this.#nivelGrupo = nivelGrupo;
-        this.#posicionPista;
-        this.#orientacion;
+    constructor(nombre1,nombre2,apellido1,apellido2,nivelGrupo){
 
-        let nombreGrupo = [];
+        const nivelesValidos = ["basico","medio","avanzado"];
 
-        for(let i=0; i<nombre1.length; i++){
-            if(i%2!=0){
-                nombreGrupo.push(nombre1[i]);
+        if(!nivelesValidos.includes(nivelGrupo)){
+            throw new Error("error con la creacion, no se definieron los nivel de grupo");
+        }else{
+            this.#nombre1 = nombre1;
+            this.#nombre2 = nombre2;
+            this.#apellido1 = apellido1;
+            this.#apellido2 = apellido2;
+            this.#nivelGrupo = nivelGrupo;
+            this.#posicionPista;
+            this.#orientacion;
+    
+            let nombreGrupo = [];
+    
+            for(let i=0; i<nombre1.length; i++){
+                if(i%2!=0){
+                    nombreGrupo.push(nombre1[i]);
+                }
             }
-        }
-        for(let i=0; i<nombre2.length; i++){
-            if(i%2!=0){
-                nombreGrupo.push(nombre2[i]);
+            for(let i=0; i<nombre2.length; i++){
+                if(i%2!=0){
+                    nombreGrupo.push(nombre2[i]);
+                }
             }
+            this.#nombrePareja = nombreGrupo.join("");
         }
 
-        this.#nombrePareja = nombreGrupo.join("");
+
     }
 
     get nombre1 (){

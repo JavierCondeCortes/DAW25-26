@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="handleClick()">Click me</button>
+    <button id="botonaso">Click me v2</button>
+</body>
+</html>
+<script>
+    //opcion 1
+    function handleClick() {
+        alert("Button clicked!");
+    }
+    
+    //opcion 2 (recomendable)
+    const botonaso = document.getElementById("botonaso");
+    botonaso.onclick = function(){
+        alert("botonaso pulsado");
+    };
+</script>

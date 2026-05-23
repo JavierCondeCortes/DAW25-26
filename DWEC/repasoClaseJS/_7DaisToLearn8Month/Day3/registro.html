@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="registro">
+        <input type="text" id="nombre" placeholder="Nombre (solo letras)">
+        <input type="text" id="dni" placeholder="DNI (8 nudos y 1 letra)">
+
+        <textarea id="comentarios" placeholder="Cuéntanos algo..."></textarea>
+
+        <p>Género:</p>
+        <input type="radio" name="genero" value="hombre" id="r1"> Hombre
+        <input type="radio" name="genero" value="mujer" id="r2"> Mujer
+
+        <p>Intereses:</p>
+        <input type="checkbox" name="interes" value="web" class="check-interes"> Desarrollo Web
+        <input type="checkbox" name="interes" value="ai" class="check-interes"> IA
+
+        <button type="submit">Registrar</button>
+        <button type="submit">Registrar</button>
+    </form>
+    <div id="mensaje"></div>
+    <button id="borrarDatos">Borrar rastro</button>
+</body>
+<script>
+    // --- 1. REFERENCIAS AL DOM ---
+    const registro = document.getElementById("registro");
+    const clear = document.getElementById("borrarDatos");
+    const contenedorMensaje = document.getElementById("mensaje");
+
+    // --- 2. FUNCIONES DE APOYO (Cookies) ---
+    function crearCookie(nombre, valor, dias) {
+        let fecha = new Date();
+        fecha.setTime(fecha.getTime() + (dias * 24 * 60 * 60 * 1000));
+        let expiracion = "expires=" + fecha.toUTCString();
+        document.cookie = `${nombre}=${valor}; ${expiracion}; path=/`; // [cite: 62]
+    }
+
+    // --- 3. EVENTO DE CARGA (Recuperar datos) ---
+    window.addEventListener("load", function () {
+        // PERSISTENCIA LARGA: LocalStorage 
+        document.getElementById("nombre").value = localStorage.getItem("nombre") || "";
+        document.getElementById("dni").value = localStorage.getItem("dni") || "";
+
+        // PERSISTENCIA DE SESIÓN: SessionStorage 
+        // Los comentarios solo duran mientras la pestaña esté abierta
+        document.getElementById("comentarios").value = sessionStorage.getItem("temp_comentarios") || "";
+
+        // Control de bienvenida por sesión 
+        if (sessionStorage.getItem("sesionIniciada")) {
+            contenedorMensaje.innerHTML = "<small>Sesión activa desde: " + sessionStorage.getItem("horaInicio") + "</small>";
+        }
+
+        // Género (Radio) - Recuperado de LocalStorage
+        let gen = localStorage.getItem("genero");
+        if (gen) {
+            let radio = document.querySelector(`input[name="genero"][value="${gen}"]`);
+            if (radio) radio.checked = true;
+        }
+
+        // Intereses (Checkbox con JSON.parse)
+        let intSaved = JSON.parse(localStorage.getItem("intereses") || "[]");
+        intSaved.forEach(val => {
+            let check = document.querySelector(`.check-interes[value="${val}"]`);
+            if (check) check.checked = true;
+        });
+    });
+
+    // --- 4. EVENTO SUBMIT (Validación y Guardado) ---
+    registro.addEventListener("submit", (e) => {
+        e.preventDefault(); // [cite: 57, 59]
+
+        let name = document.getElementById("nombre").value;
+        let dni = document.getElementById("dni").value;
+        let comentarios = document.getElementById("comentarios").value;
+
+        let generoSeleccionado = document.querySelector('input[name="genero"]:checked');
+        let generoValue = generoSeleccionado ? generoSeleccionado.value : "No especificado";
+
+        let intereses = [];
+        document.querySelectorAll('.check-interes:checked').forEach(check => {
+            intereses.push(check.value);
+        });
+
+        // --- VALIDACIONES ---
+        if (!/^\d{8}[A-Z]$/.test(dni)) { // [cite: 33, 59]
+            alert("DNI inválido");
+            return;
+        }
+        if (name.trim().length < 2) {
+            alert("Nombre inválido");
+            return;
+        }
+
+        // --- GUARDADO HÍBRIDO ---
+
+        // A. LocalStorage (Permanente) 
+        localStorage.setItem("nombre", name);
+        localStorage.setItem("dni", dni);
+        localStorage.setItem("genero", generoValue);
+        localStorage.setItem("intereses", JSON.stringify(intereses));
+
+        // B. SessionStorage (Temporal) 
+        sessionStorage.setItem("temp_comentarios", comentarios);
+        sessionStorage.setItem("sesionIniciada", "true");
+        if (!sessionStorage.getItem("horaInicio")) {
+            sessionStorage.setItem("horaInicio", new Date().toLocaleTimeString()); // [cite: 34]
+        }
+
+        // C. Cookies (Con expiración) [cite: 62]
+        crearCookie("Usuario", name, 7);
+
+        contenedorMensaje.innerHTML = "¡Registrado! Datos de sesión guardados temporalmente.";
+    });
+
+    // --- 5. EVENTO LIMPIAR (Borrado total) ---
+    clear.addEventListener("click", function () {
+        registro.reset();
+        localStorage.clear(); // Borra permanente 
+        sessionStorage.clear(); // Borra sesión 
+        crearCookie("Usuario", "", -1); // Borra Cookie [cite: 62]
+        contenedorMensaje.innerHTML = "Todo rastro ha sido eliminado.";
+    });
+</script>
+
+</html>
