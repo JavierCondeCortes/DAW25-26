@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="get">
+        <label for="nombre">nombre</label>
+        <input type="text" name="nombre" id="nombre" required>
+        <label for="dni">dni</label>
+        <input type="text" name="dni" id="dni" pattern="\d{8}[A-Z]" required>
+        <label for="fecha">Fecha Alta</label>
+        <input type="date" name="fecha" id="fecha" required>
+        <label for="estilo">estilo</label>
+        <select name="estilo" id="estilo" required>
+        
+        </select>
+        <label for="sexo">sexo</label>
+        <select name="sexo" id="sexo">
+        
+        </select>
+        
+        <button type="submit">enviar</button>
+    </form>
+
+    <div id="contenedor">
+        <div class="baile salsa">
+            <h2>salsa</h2>
+        </div>
+        <div class="baile bachata">
+            <h2>bachata</h2>
+        </div>
+        <div class="baile rock">
+            <h2>rock</h2>
+        </div>
+        <div class="baile swing">
+            <h2>swing</h2>
+        </div>
+    </div>
+    <div id="eliminar">
+        eliminar
+    </div>
+
+
+    <script defer src="./index.js" type="module"></script>
+</body>
+</html>

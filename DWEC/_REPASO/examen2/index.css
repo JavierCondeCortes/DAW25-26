@@ -1,0 +1,16 @@
+#contenedor{
+    margin-top: 1rem;
+    gap: 1rem;
+    display: flex;
+}
+#eliminar{
+    margin-top: 2rem;
+    height: 2rem;
+    width: 10rem;
+    border: 1px solid black;
+}
+.baile{
+    height: 40rem;
+    width: 20rem;
+    border: 1px solid black;
+}
