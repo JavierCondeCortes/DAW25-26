@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="get">
+        <label for="localidad">localidad</label>
+        <input type="text" name="localidad" id="localidad">
+        <label for="temperaturas">temperaturas (separado por comas)</label>
+        <textarea name="temperaturas" id="temperaturas" cols="30" rows="5"></textarea>
+        <label for="generacion">generacion</label>
+        manual<input type="radio" name="generacion" id="automatico" value="manual">
+        automático<input type="radio" name="generacion" id="manual" value="automatico">
+        
+        <input type="submit" value="enviar">
+    </form>
+    <script src="./main.js" type="module"></script>
+</body>
+</html>
