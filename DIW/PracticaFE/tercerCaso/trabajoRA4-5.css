@@ -1,0 +1,68 @@
+
+/* Versión modificada 
+    
+    cambios realizados:
+    - cambio de iconos cargados desde una web externa por el uso de svg que mejora el rendimiento y carga
+    - implementacion de micro animaciones que nos dan a entender que es un enlace y no es un elemento solamente visual
+        - cambiando el color de bg 
+        - desplazamiento hacia la derecha para dar a entender su interactividad
+        - (fuera de animaciones y multimedia) mejora de fuente haciendola mas legible */
+
+:root {
+    --vass-azul-fondo: #f4f8fb;
+    --vass-texto-links: #003366;
+    --vass-hover: #e0e9f1;
+    --vass-fuente: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.vass-enlaces-rapidos {
+    background-color: var(--vass-azul-fondo);
+    padding: 30px;
+    width: 320px;
+    border-radius: 8px;
+    font-family: var(--vass-fuente);
+}
+
+.titulo-enlaces {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--vass-texto-links);
+    margin-bottom: 25px;
+    margin-top: 0;
+}
+
+.contenedor-enlaces {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.item-enlace {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--vass-texto-links);
+    font-size: 14.5px;
+    font-weight: 500;
+    padding: 10px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;             /*tiempo, elementos de transicion*/
+}
+
+.item-enlace:hover {
+    background-color: var(--vass-hover);  /*cambio notorio en el boton, donde mas destaca*/
+    padding-left: 18px;                  /*el desplazamiento le de un toque de dinamismo*/
+}
+
+.icono-enlace {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: #444; 
+}
+
+.icono-enlace svg {                     /*cambio en el tamaño sin problemas de pixelizacion*/
+    width: 22px;        
+    height: 22px;
+}

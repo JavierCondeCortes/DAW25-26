@@ -1,0 +1,115 @@
+/* realizé este cambio debido a que las imagenes en png son una pesima idea en el momento en el que estamos para el diseño de una web
+    lo que quiero decir es que habiendo mejores opciones, el formato de imagen original (jpg y wepg) aportaba peso al renderizado, por lo que
+    asignando imagenes, que en este caso son elementos embebidos en el propio codigo aporta mucha menos carga en el proceso de la web. Ademas de que
+    se pueden reescalar de forma infinita sin pixelizacion y se pueden realciar un cambio de color
+    
+    la comparación se puede ver en el video, ya que no fui capaz de sacar el html y css de esta web, entonces la recreé como bien pude añadiendo estos cambios 
+    
+    Cambios Realizados:
+    - transformacion de formato png a svg
+    - adaptacion de la escalabilidad de las imagenes para evitar problemas de tamaño */
+
+:root {
+    --vass-fondo: #f4f7f9;
+    --vass-texto-oscuro: #1a1a1a;
+    --vass-texto-claro: #666666;
+    --vass-fuente: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.vass-estadisticas {
+    background-color: var(--vass-fondo);
+    padding: 60px 20px;
+    font-family: var(--vass-fuente);
+    color: var(--vass-texto-oscuro);
+}
+
+.contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.titulo {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.subtitulo {
+    font-size: 16px;
+    color: var(--vass-texto-claro);
+    margin-bottom: 50px;
+}
+
+/* El grid en flex nos ayuda a eliminar el problema que teníamos */
+.cuadricula-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.item-stat {
+    flex: 1;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centrado para móviles, se puede ajustar a left */
+    text-align: center;
+}
+
+.contenedor-icono {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Adaptamos los svg a este tamaño porque nos aporta la misma información de forma nitida en vista pc y movil */
+.contenedor-icono svg,
+.icono-moneda {
+    width: 50px;
+    height: 50px;
+    color: #000;
+}
+
+.icono-moneda {
+    font-size: 45px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.numero {
+    font-size: 36px;
+    font-weight: 400;
+    color: #000;
+}
+
+.etiqueta {
+    font-size: 14px;
+    color: var(--vass-texto-claro);
+    line-height: 1.4;
+    max-width: 150px;
+}
+
+.nota-pie {
+    text-align: right;
+    font-size: 12px;
+    color: #999;
+    margin-top: 40px;
+}
+
+/* Responsivo para móviles asi evitando el problema que tenemos en el original*/
+@media (max-width: 700px) {
+    .cuadricula-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .item-stat {
+        width: 100%;
+    }
+}

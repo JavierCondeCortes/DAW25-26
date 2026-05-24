@@ -1,0 +1,110 @@
+/* variables de vass */
+:root {
+    --fontFamilyBase: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --colorBrand: #4bbcee;         
+    --colorBrandHover: #0086b5;    
+    --colorTextPrimary: #242424;   
+    --colorTextSecondary: #616161; 
+    --borderRadius: 4px;
+    --duration: 0.3s;              
+    --curve: cubic-bezier(0.4, 0, 0.2, 1); /* Curva de fluidez */
+}
+
+body {
+    font-family: var(--fontFamilyBase);
+    background-color: #ffffff;
+    margin: 0;
+    padding: 40px 20px;
+}
+
+/*el posicionamiento de las columnas*/
+.seccion-imagenes-vass {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* el posicionamiento de los elementos de cada columna */
+.columna-vass {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none; 
+}
+
+
+/* el enlace que envuelve la imagen */
+.contenedor-interactivo a {
+    display: block;
+    line-height: 0; 
+    overflow: hidden;
+    border-radius: var(--borderRadius);
+    /* transicion con duracion y la curva de la fluidez */
+    transition: transform var(--duration) var(--curve),             /*<---------*/
+                box-shadow var(--duration) var(--curve);
+}
+
+/* El enlace del titulo  */
+.titulo-enlace {
+    color: var(--colorBrand);
+    text-decoration: none; 
+    font-size: 18px;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    transition: color var(--duration) var(--curve);                 /*<---------*/
+}
+
+/* --- interactividad y animaciones --- */
+
+/*efecto visual de la columna*/
+.columna-vass:hover .contenedor-interactivo a {
+    transform: translateY(-5px);                                    /*<--------- Elevación */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* sutil zoom de la imagen */
+.columna-vass:hover img {
+    transform: scale(1.05);                                         /*<---------*/
+}
+
+/* titulo subrallado + cambio de colr*/
+.columna-vass:hover .titulo-enlace {
+    text-decoration: underline;
+    color: var(--colorBrandHover);
+}
+
+/* --- multimedia --- */
+
+.contenedor-interactivo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    /* evita que la imagen se vea borrosa al escalar */
+    backface-visibility: hidden;
+    transition: transform var(--duration) var(--curve);             /*<---------*/
+}
+
+.descripcion-vass {
+    margin: 0;
+    font-size: 14px;
+    color: var(--colorTextSecondary);
+    line-height: 1.5;
+}
+
+/* borde al cliquear */
+a:focus {                                                           /*<---------*/
+    outline: 2px solid var(--colorBrand);
+    outline-offset: 4px;
+}
+
+/* responsive para moviles en 1 columna*/
+@media (max-width: 850px) {
+    .seccion-imagenes-vass {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}

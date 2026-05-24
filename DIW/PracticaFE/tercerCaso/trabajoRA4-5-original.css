@@ -1,0 +1,61 @@
+:root {
+    --vass-fondo-claro: #f4f8fb;
+    --vass-texto-primario: #242424;
+    --vass-azul-vass: #003366;
+    --vass-hover-bg: #edebe9;
+}
+
+.vass-enlaces-rapidos {
+    padding: 20px;
+    background-color: var(--vass-fondo-claro);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 400px;
+}
+
+.titulo-enlaces {
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--vass-texto-primario);
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+
+.contenedor-enlaces {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-enlace {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 12px 10px;
+    border-radius: 2px;
+    transition: background-color 0.2s ease;
+}
+
+.miniatura-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+}
+
+.icon-180 {
+    font-family: "FabricMDL2Icons"; 
+    font-style: normal;
+    font-weight: normal;
+    display: inline-block;
+    color: #242424;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+.texto-enlace {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--vass-texto-primario);
+    line-height: 20px;
+}

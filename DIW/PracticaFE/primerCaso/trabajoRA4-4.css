@@ -1,0 +1,104 @@
+    /* elementos globales */
+    /* tambien son los elementos que estaban antes del cambio */
+
+    a {
+        text-decoration: none;
+        color: var(--primary);
+        font-weight: bold;
+    }
+
+    :root {
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+        --blue: #007bff;
+        --indigo: #6610f2;
+        --purple: #6f42c1;
+        --pink: #e83e8c;
+        --red: #dc3545;
+        --orange: #fd7e14;
+        --yellow: #ffc107;
+        --green: #28a745;
+        --teal: #20c997;
+        --cyan: #17a2b8;
+        --white: #fff;
+        --gray: #6c757d;
+        --gray-dark: #343a40;
+        --primary: #007bff;
+        --secondary: #6c757d;
+        --success: #28a745;
+        --info: #17a2b8;
+        --warning: #ffc107;
+        --danger: #dc3545;
+        --light: #f8f9fa;
+        --dark: #343a40;
+        --breakpoint-xs: 0;
+        --breakpoint-sm: 576px;
+        --breakpoint-md: 768px;
+        --breakpoint-lg: 992px;
+        --breakpoint-xl: 1200px;
+        --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        color: #212529;
+        line-height: 28px;
+        word-wrap: break-word;
+        -webkit-border-horizontal-spacing: 0px;
+        -webkit-border-vertical-spacing: 0px;
+        box-sizing: border-box;
+        border-width: 0px;
+        border-style: none;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        border-collapse: collapse;
+        height: 244px;
+        width: 100%;
+        text-align: center;
+    }
+
+
+    /* cambios de diseño respecto al original:
+        los cambios realizados en este apartado marcan una gran diferencia, antes no se sabia si eran botones o informacion estatica, dando visibilidad de 3 maneras
+        cambio de color de bg - cambio de color de texto - cambio de tamaño de la imagen
+        
+        cada uno tiene un peso mayor al otro donde el que mas predomina es el cambio de color del fondo, siendo asi, visible de su posiblidad de seleccion al pasar
+        el raton por encima. Ademas, si acompañamos con una animacion de escalado nos aporta sensacion de la busqueda y llamada a la atención y el color del texto nos ayuda
+        a identificar un estandar que siempre hubo, por lo que hay 3 tipos de identificacion para saber que se un boton, siendo asi, una gran diferencia dando un toque sutíl*/
+
+    #despues {
+        border-collapse: collapse;
+        background-color: #fff;
+        /*Transición suave para el cambio de fondo de las celdas */
+        transition: background-color 0.4s ease;                                    /*<---------*/
+    }
+
+    #despues td {                             
+        cursor: pointer;
+    }
+
+    #despues td:hover {
+        background-color: #f1f8ff;                                                  /*cambio notorio en el boton, donde mas destaca la interaccion*/
+    }
+
+    /* Aplicamos el efecto al contenedor que envuelve el logo */
+    #despues .animar-contenido {
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);         /*<--------- */
+        /*incremento optimizacion*/
+        will-change: transform;                                                     /*<--------- evita carga, renderizado al inicar animaciones */
+    }
+
+    /* desplazamiento y reescalado en hover */
+    #despues td:hover .animar-contenido {
+        transform: translateY(-10px) scale(1.08);                                       /*la transformacion (GPU) que realizar un escalado y elevacion de imagen*/
+    }
+
+    /* Estilo de los enlaces dentro de la tabla #despues */
+    #despues a {
+        text-decoration: none;
+        color: #212529;
+        font-weight: 500;
+        transition: color 0.3s ease;                                                  /*<--------- tiempo, color - transicion*/
+    }
+
+    #despues td:hover a {                                                             /*<--------- cambio de color al interaccionar con el elemento*/
+        color: #007bff;
+    }
