@@ -1,0 +1,14 @@
+extensiones mínimas js exam
+
+color highlight
+css peek
+HTML css support
+indent rainbow
+IntelliSense for CSS class names in HTML
+JavaScript (ES6) code snippets
+JavaScript Snippet Pack
+Live Server
+Material Icon Theme
+Prettier - Code formatter
+
+Thunder Client
